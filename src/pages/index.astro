@@ -40,7 +40,7 @@ const testimonials = [
   title="Les écrans pas tout le temps – Spectacle écrans pour enfants 6-12 ans"
   description="Spectacle participatif et humoristique sur les écrans pour les enfants de 6 à 12 ans. Intervention en école, médiathèque, centre social. Béatrice & Samy."
   jsonLd={[jsonLdWebsite, jsonLdPerformingGroup]}
-  preloadImage="/images/hero-beatrice-enfants.jpg"
+  preloadImage="/images/hero-illustration.png"
 >
 
   <!-- ============================================================
@@ -79,13 +79,13 @@ const testimonials = [
           aria-hidden="true"
         ></div>
         <img
-          src="/images/hero-beatrice-enfants.jpg"
-          alt="Béatrice et Samy en scène avec des enfants lors du spectacle Les écrans pas tout le temps"
-          width="574"
-          height="342"
+          src="/images/hero-illustration.png"
+          alt="Illustration Les écrans pas tout le temps — personnages d'enfants entourés d'écrans"
+          width="768"
+          height="715"
           loading="eager"
           fetchpriority="high"
-          class="relative w-full rounded-sm object-cover"
+          class="relative w-full object-contain"
         />
       </div>
     </div>
@@ -130,11 +130,11 @@ const testimonials = [
        ============================================================ -->
   <section class="bg-text-main py-12 sm:py-16" aria-label="L'équipe artistique">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5">
+      <div class="grid grid-cols-3 gap-3 sm:gap-5 max-w-2xl mx-auto">
         {[
-          { src: '/images/portrait-beatrice.jpg', name: 'Béatrice', role: 'Direction artistique · Comédienne', alt: 'Béatrice Herrero, autrice, direction artistique et comédienne' },
-          { src: '/images/portrait-samy.jpg',     name: 'Samy',     role: 'Comédien',                          alt: 'Samy, comédien' },
-          { src: '/images/gallery-01.jpg',        name: 'En scène', role: 'Avec les élèves',                   alt: 'Béatrice et Samy en scène face aux élèves pendant le spectacle' },
+          { src: '/images/gallery-01.jpg',        name: 'Béatrice', role: 'Direction artistique · Comédienne', alt: 'Béatrice Herrero animant le débat avec les élèves' },
+          { src: '/images/portrait-beatrice.jpg', name: 'Samy',     role: 'Comédien',                          alt: 'Samy, comédien du spectacle Les écrans pas tout le temps' },
+          { src: '/images/en-scene.jpg',          name: 'En scène', role: 'Avec les élèves',                   alt: 'Béatrice et Samy en scène dans une salle de classe' },
         ].map(({ src, name, role, alt }) => (
           <div class="text-center">
             <div class="aspect-square overflow-hidden rounded-sm bg-gray-800 mb-3 ring-2 ring-transparent hover:ring-accent transition-all duration-200">
@@ -144,14 +144,6 @@ const testimonials = [
             <p class="font-body text-xs text-gray-500 mt-0.5">{role}</p>
           </div>
         ))}
-        <!-- Sticker -->
-        <div class="text-center">
-          <div class="aspect-square overflow-hidden rounded-sm bg-accent mb-3 flex items-center justify-center p-5 hover:brightness-90 transition-all duration-200">
-            <img src="/images/sticker.png" alt="Sticker Les écrans pas tout le temps" width="120" height="120" loading="lazy" class="w-full h-full object-contain" />
-          </div>
-          <p class="font-heading font-bold text-sm text-white">Rap avec les élèves</p>
-          <p class="font-body text-xs text-gray-500 mt-0.5">Participation active</p>
-        </div>
       </div>
     </div>
   </section>
