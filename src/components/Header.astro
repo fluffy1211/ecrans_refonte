@@ -1,10 +1,9 @@
 ---
 const pathname = Astro.url.pathname;
 
-// À VALIDER : "THÉÂTRE" dans le menu Wix est ambigu (lien ou label parent ?).
-// Provisoire : lien vers la page 6-9 ans. Clarifier avec Gabriel avant P3.
+const isTheatreActive = pathname.startsWith('/spectacle-6-9-ans') || pathname.startsWith('/spectacle-9-12-ans');
+
 const navLinks = [
-  { href: '/spectacle-6-9-ans', label: 'Théâtre' },
   { href: '/projet-realisations', label: 'Projet & réalisations' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -38,6 +37,71 @@ function isActive(href: string): boolean {
 
     <!-- Desktop nav -->
     <ul class="hidden md:flex items-center gap-6 list-none m-0 p-0" role="list">
+
+      <!-- Dropdown Théâtre -->
+      <li class="relative" id="theatre-li">
+        <button
+          id="theatre-btn"
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-controls="theatre-dropdown"
+          class={[
+            'flex items-center gap-1 font-heading font-semibold text-sm uppercase tracking-wide transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm pb-0.5 cursor-pointer',
+            isTheatreActive
+              ? 'text-text-main border-b-2 border-accent'
+              : 'text-text-main hover:text-accent',
+          ].join(' ')}
+        >
+          Théâtre
+          <svg
+            id="theatre-chevron"
+            width="12" height="12" viewBox="0 0 12 12" fill="none"
+            aria-hidden="true"
+            class="transition-transform duration-200 opacity-60"
+          >
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <ul
+          id="theatre-dropdown"
+          role="menu"
+          aria-label="Nos spectacles"
+          class="hidden absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52 bg-white border-2 border-text-main rounded-sm shadow-[4px_4px_0_0_#1C1C1C] list-none p-1"
+        >
+          <li role="none">
+            <a
+              href="/spectacle-6-9-ans"
+              role="menuitem"
+              class={[
+                'flex items-center gap-2 px-4 py-2.5 font-heading font-semibold text-xs uppercase tracking-wide rounded-sm transition-colors duration-150',
+                pathname.startsWith('/spectacle-6-9-ans')
+                  ? 'bg-accent text-text-main'
+                  : 'text-text-main hover:bg-gray-50',
+              ].join(' ')}
+              aria-current={pathname.startsWith('/spectacle-6-9-ans') ? 'page' : undefined}
+            >
+              <span class="font-black text-sm text-text-main" aria-hidden="true">6–9</span> ans
+            </a>
+          </li>
+          <li role="none">
+            <a
+              href="/spectacle-9-12-ans"
+              role="menuitem"
+              class={[
+                'flex items-center gap-2 px-4 py-2.5 font-heading font-semibold text-xs uppercase tracking-wide rounded-sm transition-colors duration-150',
+                pathname.startsWith('/spectacle-9-12-ans')
+                  ? 'bg-accent text-text-main'
+                  : 'text-text-main hover:bg-gray-50',
+              ].join(' ')}
+              aria-current={pathname.startsWith('/spectacle-9-12-ans') ? 'page' : undefined}
+            >
+              <span class="font-black text-sm text-text-main" aria-hidden="true">9–12</span> ans
+            </a>
+          </li>
+        </ul>
+      </li>
+
       {navLinks.map(({ href, label }) => (
         <li>
           <a
@@ -78,12 +142,42 @@ function isActive(href: string): boolean {
     aria-label="Menu de navigation mobile"
   >
     <ul class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-1 list-none m-0" role="list">
+      <!-- Spectacles directement dans le menu mobile (pas de sous-menu) -->
+      <li>
+        <p class="font-heading font-semibold text-[10px] uppercase tracking-wider text-gray-400 px-0 pt-1 pb-1.5">
+          Théâtre
+        </p>
+      </li>
+      <li>
+        <a
+          href="/spectacle-6-9-ans"
+          class={[
+            'flex items-center gap-2 font-heading font-semibold text-sm uppercase tracking-wide py-2.5 pl-3 border-b border-gray-100 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent rounded-sm',
+            pathname.startsWith('/spectacle-6-9-ans') ? 'text-accent' : 'text-text-main hover:text-accent',
+          ].join(' ')}
+          aria-current={pathname.startsWith('/spectacle-6-9-ans') ? 'page' : undefined}
+        >
+          <span class="text-accent font-black" aria-hidden="true">6–9</span> ans
+        </a>
+      </li>
+      <li>
+        <a
+          href="/spectacle-9-12-ans"
+          class={[
+            'flex items-center gap-2 font-heading font-semibold text-sm uppercase tracking-wide py-2.5 pl-3 border-b border-gray-100 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent rounded-sm',
+            pathname.startsWith('/spectacle-9-12-ans') ? 'text-accent' : 'text-text-main hover:text-accent',
+          ].join(' ')}
+          aria-current={pathname.startsWith('/spectacle-9-12-ans') ? 'page' : undefined}
+        >
+          <span class="text-accent font-black" aria-hidden="true">9–12</span> ans
+        </a>
+      </li>
       {navLinks.map(({ href, label }) => (
         <li>
           <a
             href={href}
             class={[
-              'block font-heading font-semibold text-sm uppercase tracking-wide py-3 border-b border-gray-100 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent',
+              'block font-heading font-semibold text-sm uppercase tracking-wide py-3 border-b border-gray-100 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent rounded-sm',
               isActive(href) ? 'text-accent' : 'text-text-main hover:text-accent',
             ].join(' ')}
             aria-current={isActive(href) ? 'page' : undefined}
@@ -97,12 +191,13 @@ function isActive(href: string): boolean {
 </header>
 
 <script>
+  // Burger menu
   const toggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('mobile-nav');
   const lines = document.querySelectorAll<HTMLElement>('.burger-line');
 
   if (toggle && nav) {
-    const open = () => {
+    const openBurger = () => {
       toggle.setAttribute('aria-expanded', 'true');
       toggle.setAttribute('aria-label', 'Fermer le menu de navigation');
       nav.classList.remove('hidden');
@@ -110,8 +205,7 @@ function isActive(href: string): boolean {
       lines[1]?.classList.add('opacity-0');
       lines[2]?.classList.add('-translate-y-2', '-rotate-45');
     };
-
-    const close = () => {
+    const closeBurger = () => {
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Ouvrir le menu de navigation');
       nav.classList.add('hidden');
@@ -119,18 +213,65 @@ function isActive(href: string): boolean {
       lines[1]?.classList.remove('opacity-0');
       lines[2]?.classList.remove('-translate-y-2', '-rotate-45');
     };
-
     toggle.addEventListener('click', () => {
-      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      isOpen ? close() : open();
+      toggle.getAttribute('aria-expanded') === 'true' ? closeBurger() : openBurger();
     });
-
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') close();
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') closeBurger();
+    });
+    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeBurger));
+  }
+
+  // Dropdown Théâtre (desktop)
+  const btn = document.getElementById('theatre-btn');
+  const dropdown = document.getElementById('theatre-dropdown');
+  const chevron = document.getElementById('theatre-chevron');
+
+  if (btn && dropdown) {
+    const openDropdown = () => {
+      btn.setAttribute('aria-expanded', 'true');
+      dropdown.classList.remove('hidden');
+      chevron?.classList.add('rotate-180');
+    };
+    const closeDropdown = () => {
+      btn.setAttribute('aria-expanded', 'false');
+      dropdown.classList.add('hidden');
+      chevron?.classList.remove('rotate-180');
+    };
+
+    btn.addEventListener('click', () => {
+      btn.getAttribute('aria-expanded') === 'true' ? closeDropdown() : openDropdown();
     });
 
-    nav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', close);
+    // Fermer si clic ailleurs
+    document.addEventListener('click', (e) => {
+      if (!btn.contains(e.target as Node) && !dropdown.contains(e.target as Node)) {
+        closeDropdown();
+      }
     });
+
+    // Fermer à l'Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        closeDropdown();
+        btn.focus();
+      }
+    });
+
+    // Navigation clavier dans le dropdown (flèches)
+    dropdown.addEventListener('keydown', (e) => {
+      const items = Array.from(dropdown.querySelectorAll<HTMLElement>('[role="menuitem"]'));
+      const idx = items.indexOf(document.activeElement as HTMLElement);
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        items[(idx + 1) % items.length]?.focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        items[(idx - 1 + items.length) % items.length]?.focus();
+      }
+    });
+
+    // Fermer après navigation
+    dropdown.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeDropdown));
   }
 </script>

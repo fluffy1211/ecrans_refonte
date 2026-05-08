@@ -5,10 +5,22 @@ import Cta from '@components/Cta.astro';
 const jsonLd = [
   {
     '@context': 'https://schema.org',
+    '@type': 'PerformingGroup',
+    name: 'Les écrans pas tout le temps',
+    description: 'Compagnie de spectacle théâtral participatif sur les écrans pour les enfants de 6 à 12 ans.',
+    url: 'https://www.lesecranspastoutletemps.fr/',
+    location: { '@type': 'Place', addressLocality: 'Marseille', addressCountry: 'FR' },
+    member: [
+      { '@type': 'Person', name: 'Béatrice Herrero', jobTitle: 'Autrice, direction artistique, comédienne' },
+      { '@type': 'Person', name: 'Samy', jobTitle: 'Comédien' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.lesecranspastoutletemps.fr' },
-      { '@type': 'ListItem', position: 2, name: 'Projet & réalisations', item: 'https://www.lesecranspastoutletemps.fr/projet-realisations' },
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.lesecranspastoutletemps.fr/' },
+      { '@type': 'ListItem', position: 2, name: 'Projet & réalisations', item: 'https://www.lesecranspastoutletemps.fr/projet-realisations/' },
     ],
   },
 ];

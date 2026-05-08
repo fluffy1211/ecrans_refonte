@@ -10,9 +10,10 @@ interface Props {
   ogImage?: string;
   jsonLd?: object | object[];
   noindex?: boolean;
+  preloadImage?: string;
 }
 
-const seoProps = Astro.props;
+const { preloadImage, ...seoProps } = Astro.props;
 ---
 
 <!doctype html>
@@ -40,6 +41,8 @@ const seoProps = Astro.props;
 
     <!-- google-site-verification — À REMPLACER : coller la valeur depuis Search Console -->
     <!-- <meta name="google-site-verification" content="VOTRE_CODE_SEARCH_CONSOLE" /> -->
+
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} />}
 
     <SEO {...seoProps} />
   </head>
