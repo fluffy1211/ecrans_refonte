@@ -137,19 +137,25 @@ Direction design retenue : théâtre éditorial noir/blanc/jaune.
 ### Phase 5 — SEO final + qualité
 **Durée estimée :** 20-30 min
 **Objectif :** peaufiner tout ce qui est invisible mais critique
+**✅ TERMINÉE (code) — 2026-05-08**
 
 Actions :
-- [ ] Vérifier toutes les données structurées via https://validator.schema.org/ (ou Rich Results Test)
-- [ ] Vérifier tous les `alt` d'images (descriptifs, orientés contenu, pas de noms de fichiers)
-- [ ] Vérifier le `sitemap.xml` généré (toutes les pages présentes, pas de route technique)
-- [ ] Vérifier `robots.txt`
-- [ ] Vérifier les Open Graph de chaque page (og:title, og:description, og:image)
-- [ ] Vérifier les canonicals
-- [ ] Tester les liens internes (aucun 404)
-- [ ] Audit accessibilité : contrastes AA, labels de formulaire, navigation clavier complète, skip-to-content
-- [ ] Audit Lighthouse final sur chaque page — capture des scores
-- [ ] Ajouter la balise `google-site-verification` (Gabriel fournit le code depuis Search Console)
-- [ ] Ajouter le script analytics (Plausible/Umami) si Gabriel a choisi
+- [x] Vérifier toutes les données structurées — JSON-LD dans la source (non injecté JS), valide schema.org. ⚠️ Event sans `startDate` = pas de rich results Google (normal pour spectacle sur-devis)
+- [x] Vérifier tous les `alt` d'images — ✅ Tous descriptifs et orientés contenu
+- [x] Vérifier le `sitemap.xml` — ✅ Corrigé : `/mentions-legales/` exclue du sitemap (noindex)
+- [x] Vérifier `robots.txt` — ✅ OK (Allow: /, sitemap référencé)
+- [x] Vérifier les Open Graph — ✅ Corrigé : og:image défaut → `hero-beatrice-enfants.jpg` (ancien `og-default.jpg` n'existait pas)
+- [x] Vérifier les canonicals — ✅ Cohérents avec trailing slash (matching sitemap)
+- [x] Tester les liens internes — ✅ Tous valides, aucune page orpheline
+- [x] Audit accessibilité — ✅ aria-label sections, focus-visible, labels form, skip-to-content, aria-hidden déco, aria-current nav
+- [x] Font Google non-bloquante — ✅ Corrigé : `media="print" onload` pattern (LCP)
+- [~] Audit Lighthouse — Bloqué (nécessite navigateur, à faire après déploiement ou en dev local)
+- [⏳] Ajouter `google-site-verification` — **Gabriel fournit le code depuis Search Console** → décommenter dans `Layout.astro`
+- [⏳] Ajouter analytics — **Gabriel choisit** Plausible ou Umami
+
+**⚠️ ACTIONS REQUISES avant P6 :**
+- Gabriel : fournir le code `google-site-verification` depuis Search Console (décommenter 1 ligne dans `Layout.astro`)
+- Gabriel : choisir analytics (Plausible / Umami / aucun)
 
 **Livrable :** site 100% prêt techniquement, tous les checks passent
 **Gate :** Gabriel fait un dernier tour complet et valide.

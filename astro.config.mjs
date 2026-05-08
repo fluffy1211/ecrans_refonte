@@ -6,6 +6,8 @@ export default defineConfig({
   site: 'https://www.lesecranspastoutletemps.fr',
   integrations: [
     tailwind(),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('/mentions-legales'),
+    }),
   ],
 });
