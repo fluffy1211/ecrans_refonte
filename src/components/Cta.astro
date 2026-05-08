@@ -2,19 +2,26 @@
 interface Props {
   text?: string;
   href?: string;
+  variant?: 'primary' | 'dark';
   class?: string;
 }
 
 const {
   text = 'Réserver le spectacle',
   href = '/contact',
+  variant = 'primary',
   class: className = '',
 } = Astro.props;
+
+const colorClasses =
+  variant === 'dark'
+    ? 'bg-text-main text-white focus-visible:outline-white'
+    : 'bg-accent text-text-main focus-visible:outline-text-main';
 ---
 
 <a
   href={href}
-  class={`inline-block bg-accent text-text-main font-heading font-bold text-sm uppercase tracking-widest px-8 py-3 rounded-sm hover:opacity-90 active:opacity-75 transition-opacity duration-150 focus-visible:outline-2 focus-visible:outline-text-main focus-visible:outline-offset-4 ${className}`}
+  class={`inline-block ${colorClasses} font-heading font-bold text-sm uppercase tracking-widest px-8 py-3 rounded-sm hover:opacity-90 active:opacity-75 transition-opacity duration-150 focus-visible:outline-2 focus-visible:outline-offset-4 ${className}`}
 >
   {text}
 </a>
