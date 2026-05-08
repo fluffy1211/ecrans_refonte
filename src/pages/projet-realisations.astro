@@ -29,6 +29,15 @@ const villes = [
   'Marseille', 'La Ciotat', 'Aubagne', 'Vitrolles', 'Martigues',
   'Châteauneuf-les-Martigues', 'Allauch', 'Plan-de-Cuques', 'Les Pennes-Mirabeau',
 ];
+
+const galleryPhotos = [
+  { src: '/images/gallery-01.jpg', alt: 'Béatrice et Samy en scène avec les élèves' },
+  { src: '/images/gallery-02.jpg', alt: 'Les élèves participent au débat après le spectacle' },
+  { src: '/images/gallery-03.jpg', alt: 'Moment de jeu interactif entre comédiens et enfants' },
+  { src: '/images/gallery-04.jpg', alt: "Scène humoristique sur l'usage des écrans" },
+  { src: '/images/gallery-05.jpg', alt: 'Béatrice pendant le rap participatif avec les élèves' },
+  { src: '/images/gallery-06.jpg', alt: 'Samy et les enfants lors du temps de débat collectif' },
+];
 ---
 
 <Layout
@@ -39,7 +48,7 @@ const villes = [
 
   <!-- HERO -->
   <section class="bg-text-main relative overflow-hidden py-14 sm:py-20" aria-label="Projet et réalisations">
-    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-02.png'); background-size:cover; mix-blend-mode:screen; opacity:0.1;" aria-hidden="true"></div>
+    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-01.png'); background-size:cover; mix-blend-mode:screen; opacity:0.10;" aria-hidden="true"></div>
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
       <nav aria-label="Fil d'Ariane" class="mb-8">
         <ol class="flex items-center gap-2 text-xs font-heading text-gray-500 list-none">
@@ -148,22 +157,26 @@ const villes = [
   </section>
 
   <!-- GALERIE -->
-  <section class="bg-text-main py-10 sm:py-12" aria-label="Photos des représentations">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <section class="bg-text-main relative overflow-hidden py-10 sm:py-12" aria-label="Photos des représentations">
+    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-02.png'); background-size:cover; mix-blend-mode:screen; opacity:0.10;" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
-        {[
-          { src: '/images/gallery-01.jpg', alt: 'Béatrice et Samy en scène avec les élèves' },
-          { src: '/images/gallery-02.jpg', alt: 'Les élèves participent au débat après le spectacle' },
-          { src: '/images/gallery-03.jpg', alt: 'Moment de jeu interactif entre comédiens et enfants' },
-          { src: '/images/gallery-04.jpg', alt: "Scène humoristique sur l'usage des écrans" },
-          { src: '/images/gallery-05.jpg', alt: 'Béatrice pendant le rap participatif avec les élèves' },
-          { src: '/images/gallery-06.jpg', alt: 'Samy et les enfants lors du temps de débat collectif' },
-        ].map(({ src, alt }) => (
-          <div class="aspect-square overflow-hidden bg-gray-800">
+        {galleryPhotos.map(({ src, alt }, i) => (
+          <a href={`#photo-${i}`} class="aspect-square overflow-hidden bg-gray-800 block cursor-zoom-in">
             <img src={src} alt={alt} width="300" height="300" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
-          </div>
+          </a>
         ))}
       </div>
+      <!-- Lightbox overlays -->
+      {galleryPhotos.map(({ src, alt }, i) => (
+        <div id={`photo-${i}`} class="lightbox-target pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-[#1C1C1C]/95 opacity-0 transition-opacity duration-200 [&:target]:pointer-events-auto [&:target]:opacity-100">
+          <a href="#" class="absolute inset-0" aria-label="Fermer"></a>
+          <div class="relative max-w-[90vw] max-h-[90vh] p-4">
+            <img src={src} alt={alt} class="max-w-full max-h-[85vh] object-contain" />
+            <a href="#" class="absolute top-2 right-2 w-10 h-10 flex items-center justify-center bg-accent text-text-main font-black text-xl rounded-sm hover:opacity-90 transition-opacity" aria-label="Fermer la galerie">&times;</a>
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 
@@ -178,3 +191,9 @@ const villes = [
   </section>
 
 </Layout>
+
+<style>
+  .lightbox-target {
+    scroll-behavior: smooth;
+  }
+</style>

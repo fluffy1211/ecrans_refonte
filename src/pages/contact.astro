@@ -32,7 +32,7 @@ const jsonLd = [
 
   <!-- HERO -->
   <section class="bg-text-main relative overflow-hidden py-14 sm:py-20" aria-label="Contact">
-    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-02.png'); background-size:cover; mix-blend-mode:screen; opacity:0.1;" aria-hidden="true"></div>
+    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-01.png'); background-size:cover; mix-blend-mode:screen; opacity:0.10;" aria-hidden="true"></div>
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
       <nav aria-label="Fil d'Ariane" class="mb-8">
         <ol class="flex items-center gap-2 text-xs font-heading text-gray-500 list-none">
@@ -119,7 +119,7 @@ const jsonLd = [
 
           <button
             type="submit"
-            class="w-full sm:w-auto bg-accent text-text-main font-heading font-bold text-sm uppercase tracking-widest px-10 py-3 rounded-sm hover:opacity-90 transition-opacity duration-150 focus-visible:outline-2 focus-visible:outline-text-main focus-visible:outline-offset-4"
+            class="w-full sm:w-auto bg-accent text-text-main font-heading font-bold text-sm uppercase tracking-widest px-10 py-3 rounded-sm border-2 border-text-main shadow-[4px_4px_0_0_#1C1C1C] hover:shadow-[2px_2px_0_0_#1C1C1C] hover:translate-x-0.5 hover:translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 hover:opacity-90 transition-all duration-150 focus-visible:outline-2 focus-visible:outline-text-main focus-visible:outline-offset-4"
           >
             Envoyer ma demande
           </button>
@@ -140,7 +140,7 @@ const jsonLd = [
         <div>
           <h2 class="font-heading font-black text-xl text-text-main mb-4">Coordonnées</h2>
           <div class="space-y-3">
-            <p class="font-heading font-semibold text-xs uppercase tracking-wider text-accent">Marseille</p>
+            <p class="font-heading font-semibold text-xs uppercase tracking-wider bg-accent text-text-main px-2 py-0.5 rounded-sm inline-block">Marseille</p>
             <a href="tel:+33673158508" class="block font-heading font-bold text-lg text-text-main hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent rounded-sm">
               06 73 15 85 08
             </a>
@@ -205,6 +205,6 @@ const jsonLd = [
     @apply block font-heading font-semibold text-xs uppercase tracking-wider text-text-main mb-1.5;
   }
   .form-input {
-    @apply block w-full border-2 border-gray-200 rounded-sm px-4 py-2.5 font-body text-sm text-text-main bg-white focus:border-accent focus:outline-none transition-colors duration-150;
+    @apply block w-full border-2 border-text-main rounded-sm px-4 py-2.5 font-body text-sm text-text-main bg-white focus:border-accent focus:outline-none transition-colors duration-150;
   }
 </style>

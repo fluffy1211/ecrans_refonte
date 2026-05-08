@@ -13,7 +13,7 @@ const { items } = Astro.props;
 
 <div class="space-y-3">
   {items.map(({ q, a }) => (
-    <details class="group border-2 border-text-main rounded-sm">
+    <details class="group border-2 border-text-main rounded-sm shadow-[3px_3px_0_0_#1C1C1C] group-open:shadow-none transition-shadow duration-200">
       <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none font-heading font-semibold text-sm text-text-main hover:bg-gray-50 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[-2px] rounded-sm">
         <span>{q}</span>
         <span
