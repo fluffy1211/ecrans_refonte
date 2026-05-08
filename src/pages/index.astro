@@ -33,7 +33,7 @@ const galleryPhotos = [
   { src: '/images/gallery-02.jpg', alt: 'Les élèves participent activement au débat après le spectacle' },
   { src: '/images/gallery-03.jpg', alt: 'Moment de jeu interactif entre les comédiens et les enfants' },
   { src: '/images/gallery-04.jpg', alt: "Scène humoristique sur l'usage des écrans en famille" },
-  { src: '/images/gallery-05.jpg', alt: 'Béatrice en scène pendant le rap participatif avec les élèves' },
+  { src: '/images/gallery-05.webp', alt: 'Béatrice en scène pendant le rap participatif avec les élèves' },
   { src: '/images/gallery-06.jpg', alt: 'Samy et les enfants lors du temps de débat collectif' },
 ];
 
@@ -59,7 +59,7 @@ const testimonials = [
     <!-- Texture étoilée subtile (screen sur fond sombre = points blancs discrets) -->
     <div
       class="absolute inset-0 pointer-events-none select-none"
-      style="background-image:url('/images/deco-02.png'); background-size:cover; mix-blend-mode:screen; opacity:0.12;"
+      style="background-image:url('/images/deco-02.webp'); background-size:cover; mix-blend-mode:screen; opacity:0.12;"
       aria-hidden="true"
     ></div>
 
@@ -105,7 +105,6 @@ const testimonials = [
        ============================================================ -->
   <section class="bg-white py-16 sm:py-24" aria-label="Les deux spectacles">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-      <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] bg-accent text-text-main px-3 py-0.5 rounded-sm mb-3">Avec</p>
       <h2 class="font-heading font-black text-3xl sm:text-4xl text-text-main mb-4">
         2 spectacles participatifs
       </h2>
@@ -138,15 +137,14 @@ const testimonials = [
   <!-- ============================================================
        3. VIGNETTES ÉQUIPE — sombre compact
        ============================================================ -->
-  <section class="bg-text-main relative overflow-hidden py-12 sm:py-16" aria-label="L'équipe artistique">
-    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-03.png'); background-size:cover; mix-blend-mode:screen; opacity:0.10;" aria-hidden="true"></div>
+  <section class="bg-text-main relative overflow-hidden py-8 sm:py-12" aria-label="L'équipe artistique">
+    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-03.webp'); background-size:cover; mix-blend-mode:screen; opacity:0.10;" aria-hidden="true"></div>
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 max-w-2xl mx-auto">
+      <div class="grid grid-cols-3 gap-5 sm:gap-8 max-w-3xl mx-auto">
         {[
           { src: '/images/gallery-01.jpg',        name: 'Béatrice',   role: 'Direction artistique · Comédienne', alt: 'Béatrice Herrero animant le débat avec les élèves' },
           { src: '/images/portrait-beatrice.jpg', name: 'Samy',       role: 'Comédien',                          alt: 'Samy, comédien du spectacle Les écrans pas tout le temps' },
           { src: '/images/en-scene.jpg',          name: 'En scène',   role: 'Avec les élèves',                   alt: 'Béatrice et Samy en scène dans une salle de classe' },
-          { src: '/images/sticker.png',           name: 'Le sticker', role: 'Les écrans pas tout le temps !',    alt: 'Sticker Les écrans pas tout le temps' },
         ].map(({ src, name, role, alt }) => (
           <div class="text-center">
             <div class="aspect-square overflow-hidden rounded-sm bg-gray-800 mb-3 ring-2 ring-transparent hover:ring-accent transition-all duration-200">
@@ -197,42 +195,6 @@ const testimonials = [
   </section>
 
   <!-- ============================================================
-       5. GALERIE — sombre, grille serrée
-       ============================================================ -->
-  <section class="bg-text-main relative overflow-hidden py-12 sm:py-16" aria-label="Galerie photos">
-    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-01.png'); background-size:cover; mix-blend-mode:screen; opacity:0.12;" aria-hidden="true"></div>
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-      <h2 class="font-heading font-black text-xl text-white mb-6 text-center">
-        Photos du spectacle
-      </h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
-        {galleryPhotos.map(({ src, alt }, i) => (
-          <a href={`#photo-${i}`} class="aspect-square overflow-hidden bg-gray-800 block cursor-zoom-in">
-            <img
-              src={src}
-              alt={alt}
-              width="400"
-              height="400"
-              loading="lazy"
-              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-            />
-          </a>
-        ))}
-      </div>
-      <!-- Lightbox overlays -->
-      {galleryPhotos.map(({ src, alt }, i) => (
-        <div id={`photo-${i}`} class="lightbox-target pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-[#1C1C1C]/95 opacity-0 transition-opacity duration-200 [&:target]:pointer-events-auto [&:target]:opacity-100">
-          <a href="#" class="absolute inset-0" aria-label="Fermer"></a>
-          <div class="relative max-w-[90vw] max-h-[90vh] p-4">
-            <img src={src} alt={alt} class="max-w-full max-h-[85vh] object-contain" />
-            <a href="#" class="absolute top-2 right-2 w-10 h-10 flex items-center justify-center bg-accent text-text-main font-black text-xl rounded-sm hover:opacity-90 transition-opacity" aria-label="Fermer la galerie">&times;</a>
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- ============================================================
        6. TÉMOIGNAGES — blanc, bulles jaunes style BD
        ============================================================ -->
   <section class="bg-white py-16 sm:py-24" aria-label="Témoignages">
@@ -256,11 +218,9 @@ const testimonials = [
       </div>
     </div>
 
-    <!-- Mention Béatrice + PDF (intégrée à la section blanche) -->
+    <!-- PDF analyse retours -->
     <div class="max-w-6xl mx-auto px-4 sm:px-6 mt-14 pt-10 border-t border-gray-100 text-center">
-      <p class="font-body text-gray-600 text-sm">
-        <strong class="font-heading font-bold text-text-main">Béatrice HERRERO</strong>, autrice et
-        comédienne.{' '}
+      <p class="font-body text-gray-600 text-base sm:text-lg">
         <a
           href="/docs/retours-academie-aix-marseille.pdf"
           class="underline underline-offset-4 decoration-accent hover:decoration-2 text-text-main focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm transition-all"
@@ -279,7 +239,7 @@ const testimonials = [
   <section class="bg-text-main relative overflow-hidden py-16 sm:py-24" aria-label="Contact">
     <div
       class="absolute inset-0 pointer-events-none select-none"
-      style="background-image:url('/images/deco-02.png'); background-size:cover; mix-blend-mode:screen; opacity:0.12;"
+      style="background-image:url('/images/deco-02.webp'); background-size:cover; mix-blend-mode:screen; opacity:0.12;"
       aria-hidden="true"
     ></div>
 
@@ -290,20 +250,6 @@ const testimonials = [
       <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-8">
         Marseille
       </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-10">
-        {[
-          { step: '1', title: 'Vous nous contactez', desc: "Formulaire ou téléphone" },
-          { step: '2', title: 'Devis sous 48h', desc: "Personnalisé à votre structure" },
-          { step: '3', title: 'On vient chez vous', desc: "Marseille et région PACA" },
-        ].map(({ step, title, desc }) => (
-          <div class="flex flex-col items-center text-center gap-1 max-w-[160px]">
-            <span class="font-heading font-black text-3xl text-accent leading-none" aria-hidden="true">{step}</span>
-            <p class="font-heading font-bold text-sm text-white">{title}</p>
-            <p class="font-body text-xs text-gray-500">{desc}</p>
-          </div>
-        ))}
-      </div>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-10 mb-10">
         <a

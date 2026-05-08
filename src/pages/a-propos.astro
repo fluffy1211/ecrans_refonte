@@ -24,11 +24,6 @@ const jsonLd = [
   },
 ];
 
-const galleryPhotos = [
-  { src: '/images/gallery-01.jpg', alt: 'Béatrice et Samy en scène ensemble' },
-  { src: '/images/gallery-06.jpg', alt: 'Samy en interaction avec les élèves' },
-  { src: '/images/gallery-05.jpg', alt: 'Béatrice pendant le rap participatif' },
-];
 ---
 
 <Layout
@@ -39,7 +34,7 @@ const galleryPhotos = [
 
   <!-- HERO -->
   <section class="bg-text-main relative overflow-hidden py-14 sm:py-20" aria-label="Béatrice et Samy">
-    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-03.png'); background-size:cover; mix-blend-mode:screen; opacity:0.10;" aria-hidden="true"></div>
+    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-03.webp'); background-size:cover; mix-blend-mode:screen; opacity:0.10;" aria-hidden="true"></div>
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
       <nav aria-label="Fil d'Ariane" class="mb-8">
         <ol class="flex items-center gap-2 text-xs font-heading text-gray-500 list-none">
@@ -64,7 +59,7 @@ const galleryPhotos = [
       <div>
         <div class="aspect-square overflow-hidden rounded-sm bg-gray-100 mb-4 ring-4 ring-accent ring-offset-4 ring-offset-white">
           <img
-            src="/images/portrait-beatrice.jpg"
+            src="/images/gallery-01.jpg"
             alt="Béatrice Herrero, autrice, direction artistique et comédienne"
             width="280"
             height="280"
@@ -117,7 +112,7 @@ const galleryPhotos = [
       <div class="md:order-2">
         <div class="aspect-square overflow-hidden rounded-sm bg-gray-200 mb-4 ring-4 ring-accent ring-offset-4 ring-offset-gray-50">
           <img
-            src="/images/portrait-samy.jpg"
+            src="/images/portrait-beatrice.jpg"
             alt="Samy, comédien"
             width="280"
             height="280"
@@ -131,30 +126,6 @@ const galleryPhotos = [
     </div>
   </section>
 
-  <!-- EN SCÈNE -->
-  <section class="bg-text-main relative overflow-hidden py-10 sm:py-12" aria-label="Photos en scène">
-    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-01.png'); background-size:cover; mix-blend-mode:screen; opacity:0.10;" aria-hidden="true"></div>
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
-        {galleryPhotos.map(({ src, alt }, i) => (
-          <a href={`#photo-${i}`} class="aspect-square overflow-hidden bg-gray-800 block cursor-zoom-in">
-            <img src={src} alt={alt} width="300" height="300" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
-          </a>
-        ))}
-      </div>
-      <!-- Lightbox overlays -->
-      {galleryPhotos.map(({ src, alt }, i) => (
-        <div id={`photo-${i}`} class="lightbox-target pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-[#1C1C1C]/95 opacity-0 transition-opacity duration-200 [&:target]:pointer-events-auto [&:target]:opacity-100">
-          <a href="#" class="absolute inset-0" aria-label="Fermer"></a>
-          <div class="relative max-w-[90vw] max-h-[90vh] p-4">
-            <img src={src} alt={alt} class="max-w-full max-h-[85vh] object-contain" />
-            <a href="#" class="absolute top-2 right-2 w-10 h-10 flex items-center justify-center bg-accent text-text-main font-black text-xl rounded-sm hover:opacity-90 transition-opacity" aria-label="Fermer la galerie">&times;</a>
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
   <!-- CTA -->
   <section class="bg-accent py-14 sm:py-16 text-center">
     <div class="max-w-2xl mx-auto px-4 sm:px-6">
@@ -165,9 +136,3 @@ const galleryPhotos = [
   </section>
 
 </Layout>
-
-<style>
-  .lightbox-target {
-    scroll-behavior: smooth;
-  }
-</style>

@@ -30,14 +30,6 @@ const villes = [
   'Châteauneuf-les-Martigues', 'Allauch', 'Plan-de-Cuques', 'Les Pennes-Mirabeau',
 ];
 
-const galleryPhotos = [
-  { src: '/images/gallery-01.jpg', alt: 'Béatrice et Samy en scène avec les élèves' },
-  { src: '/images/gallery-02.jpg', alt: 'Les élèves participent au débat après le spectacle' },
-  { src: '/images/gallery-03.jpg', alt: 'Moment de jeu interactif entre comédiens et enfants' },
-  { src: '/images/gallery-04.jpg', alt: "Scène humoristique sur l'usage des écrans" },
-  { src: '/images/gallery-05.jpg', alt: 'Béatrice pendant le rap participatif avec les élèves' },
-  { src: '/images/gallery-06.jpg', alt: 'Samy et les enfants lors du temps de débat collectif' },
-];
 ---
 
 <Layout
@@ -48,7 +40,7 @@ const galleryPhotos = [
 
   <!-- HERO -->
   <section class="bg-text-main relative overflow-hidden py-14 sm:py-20" aria-label="Projet et réalisations">
-    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-01.png'); background-size:cover; mix-blend-mode:screen; opacity:0.10;" aria-hidden="true"></div>
+    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-01.webp'); background-size:cover; mix-blend-mode:screen; opacity:0.10;" aria-hidden="true"></div>
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
       <nav aria-label="Fil d'Ariane" class="mb-8">
         <ol class="flex items-center gap-2 text-xs font-heading text-gray-500 list-none">
@@ -86,9 +78,9 @@ const galleryPhotos = [
     </div>
   </section>
 
-  <!-- LE PROJET -->
+  <!-- LE PROJET + VILLES -->
   <section class="bg-white py-14 sm:py-20" aria-label="Description du projet">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-10">
       <div>
         <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main mb-5">
           On a joué&nbsp;!
@@ -123,60 +115,22 @@ const galleryPhotos = [
         </div>
       </div>
 
-      <div class="overflow-hidden rounded-sm">
-        <img
-          src="/images/projet-hero.jpg"
-          alt="Béatrice et Samy lors d'une représentation du spectacle Les écrans pas tout le temps"
-          width="600"
-          height="400"
-          loading="lazy"
-          class="w-full object-cover"
-        />
-      </div>
-    </div>
-  </section>
-
-  <!-- VILLES -->
-  <section class="bg-gray-50 py-14 sm:py-16" aria-label="Villes et lieux">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <h2 class="font-heading font-black text-2xl text-text-main mb-2">
-        Villes et lieux où nous avons joué
-      </h2>
-      <p class="font-body text-gray-500 text-sm mb-8">Région PACA — et au-delà sur demande.</p>
-      <div class="flex flex-wrap gap-2">
-        {villes.map((ville) => (
-          <span class="font-heading font-semibold text-sm text-text-main border-2 border-text-main rounded-sm px-3 py-1.5">
-            {ville}
+      <div class="border-t border-gray-100 pt-10">
+        <h3 class="font-heading font-black text-lg text-text-main mb-1">
+          Villes et lieux où nous avons joué
+        </h3>
+        <p class="font-body text-gray-500 text-sm mb-5">Région PACA — et au-delà sur demande.</p>
+        <div class="flex flex-wrap gap-2">
+          {villes.map((ville) => (
+            <span class="font-heading font-semibold text-sm text-text-main border-2 border-text-main rounded-sm px-3 py-1.5">
+              {ville}
+            </span>
+          ))}
+          <span class="font-heading font-semibold text-sm text-gray-400 border-2 border-gray-200 rounded-sm px-3 py-1.5">
+            et d'autres…
           </span>
-        ))}
-        <span class="font-heading font-semibold text-sm text-gray-400 border-2 border-gray-200 rounded-sm px-3 py-1.5">
-          et d'autres…
-        </span>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALERIE -->
-  <section class="bg-text-main relative overflow-hidden py-10 sm:py-12" aria-label="Photos des représentations">
-    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-02.png'); background-size:cover; mix-blend-mode:screen; opacity:0.10;" aria-hidden="true"></div>
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
-        {galleryPhotos.map(({ src, alt }, i) => (
-          <a href={`#photo-${i}`} class="aspect-square overflow-hidden bg-gray-800 block cursor-zoom-in">
-            <img src={src} alt={alt} width="300" height="300" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
-          </a>
-        ))}
-      </div>
-      <!-- Lightbox overlays -->
-      {galleryPhotos.map(({ src, alt }, i) => (
-        <div id={`photo-${i}`} class="lightbox-target pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-[#1C1C1C]/95 opacity-0 transition-opacity duration-200 [&:target]:pointer-events-auto [&:target]:opacity-100">
-          <a href="#" class="absolute inset-0" aria-label="Fermer"></a>
-          <div class="relative max-w-[90vw] max-h-[90vh] p-4">
-            <img src={src} alt={alt} class="max-w-full max-h-[85vh] object-contain" />
-            <a href="#" class="absolute top-2 right-2 w-10 h-10 flex items-center justify-center bg-accent text-text-main font-black text-xl rounded-sm hover:opacity-90 transition-opacity" aria-label="Fermer la galerie">&times;</a>
-          </div>
         </div>
-      ))}
+      </div>
     </div>
   </section>
 
@@ -191,9 +145,3 @@ const galleryPhotos = [
   </section>
 
 </Layout>
-
-<style>
-  .lightbox-target {
-    scroll-behavior: smooth;
-  }
-</style>

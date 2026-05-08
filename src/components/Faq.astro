@@ -13,17 +13,45 @@ const { items } = Astro.props;
 
 <div class="space-y-3">
   {items.map(({ q, a }) => (
-    <details class="group border-2 border-text-main rounded-sm shadow-[3px_3px_0_0_#1C1C1C] group-open:shadow-none transition-shadow duration-200">
-      <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none font-heading font-semibold text-sm text-text-main hover:bg-gray-50 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[-2px] rounded-sm">
+    <details class="faq-item border-2 border-text-main rounded-sm shadow-[3px_3px_0_0_#1C1C1C] overflow-hidden">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none font-heading font-semibold text-sm text-text-main hover:bg-gray-50 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[-2px] rounded-sm select-none">
         <span>{q}</span>
         <span
-          class="flex-shrink-0 w-6 h-6 flex items-center justify-center border-2 border-text-main rounded-full text-text-main font-black text-base leading-none group-open:rotate-45 transition-transform duration-200 select-none"
+          class="faq-icon flex-shrink-0 w-6 h-6 flex items-center justify-center border-2 border-text-main rounded-full font-black text-base leading-none select-none transition-transform duration-300"
           aria-hidden="true"
         >+</span>
       </summary>
-      <div class="px-5 pb-4 pt-1 font-body text-sm text-gray-600 leading-relaxed border-t border-gray-100">
-        {a}
+      <div class="faq-body border-t border-gray-100" style="max-height:0;overflow:hidden;transition:max-height 0.3s ease-in-out;">
+        <div class="px-5 pb-4 pt-3 font-body text-sm text-gray-600 leading-relaxed">
+          {a}
+        </div>
       </div>
     </details>
   ))}
 </div>
+
+<script>
+  document.querySelectorAll<HTMLDetailsElement>('.faq-item').forEach((detail) => {
+    const summary = detail.querySelector('summary')!;
+    const body = detail.querySelector<HTMLElement>('.faq-body')!;
+    const icon = detail.querySelector<HTMLElement>('.faq-icon')!;
+
+    summary.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      if (detail.open) {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          body.style.maxHeight = '0';
+        }));
+        body.addEventListener('transitionend', () => { detail.open = false; }, { once: true });
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        detail.open = true;
+        body.style.maxHeight = body.scrollHeight + 'px';
+        body.addEventListener('transitionend', () => { body.style.maxHeight = ''; }, { once: true });
+        icon.style.transform = 'rotate(45deg)';
+      }
+    });
+  });
+</script>

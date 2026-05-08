@@ -78,7 +78,7 @@ function isActive(href: string): boolean {
                 'flex items-center gap-2 px-4 py-2.5 font-heading font-semibold text-xs uppercase tracking-wide rounded-sm transition-colors duration-150',
                 pathname.startsWith('/spectacle-6-9-ans')
                   ? 'bg-accent text-text-main'
-                  : 'text-text-main hover:bg-gray-50',
+                  : 'text-text-main hover:bg-accent',
               ].join(' ')}
               aria-current={pathname.startsWith('/spectacle-6-9-ans') ? 'page' : undefined}
             >
@@ -93,7 +93,7 @@ function isActive(href: string): boolean {
                 'flex items-center gap-2 px-4 py-2.5 font-heading font-semibold text-xs uppercase tracking-wide rounded-sm transition-colors duration-150',
                 pathname.startsWith('/spectacle-9-12-ans')
                   ? 'bg-accent text-text-main'
-                  : 'text-text-main hover:bg-gray-50',
+                  : 'text-text-main hover:bg-accent',
               ].join(' ')}
               aria-current={pathname.startsWith('/spectacle-9-12-ans') ? 'page' : undefined}
             >
