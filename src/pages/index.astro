@@ -16,22 +16,10 @@ const jsonLdPerformingGroup = {
   description:
     'Compagnie de spectacle théâtral participatif sur les écrans pour les enfants de 6 à 12 ans.',
   url: 'https://www.lesecranspastoutletemps.fr',
-  location: {
-    '@type': 'Place',
-    addressLocality: 'Marseille',
-    addressCountry: 'FR',
-  },
+  location: { '@type': 'Place', addressLocality: 'Marseille', addressCountry: 'FR' },
   member: [
-    {
-      '@type': 'Person',
-      name: 'Béatrice Herrero',
-      jobTitle: 'Autrice, direction artistique, comédienne',
-    },
-    {
-      '@type': 'Person',
-      name: 'Samy',
-      jobTitle: 'Comédien',
-    },
+    { '@type': 'Person', name: 'Béatrice Herrero', jobTitle: 'Autrice, direction artistique, comédienne' },
+    { '@type': 'Person', name: 'Samy', jobTitle: 'Comédien' },
   ],
   contactPoint: {
     '@type': 'ContactPoint',
@@ -43,19 +31,29 @@ const jsonLdPerformingGroup = {
 
 const testimonials = [
   {
-    // À VALIDER : pas d'attribution nominative sur le site Wix actuel. Demander à Béatrice.
     quote: "Super pièce ! Simple et efficace ! Les élèves ont accroché et ont été réactifs ! Une belle occasion pour se questionner et interroger son rapport aux écrans !",
+    bg: 'dark',
   },
   {
-    quote: "Spectacle percutant très bien conçu et adapté à l’âge des enfants, et proche de la vie quotidienne des familles.",
+    quote: "Spectacle percutant très bien conçu et adapté à l'âge des enfants, et proche de la vie quotidienne des familles.",
+    bg: 'blue',
   },
   {
-    quote: "Artistes très professionnels. Pièce touchante et pertinente — en lien avec l’EMI & le projet Parcours Petits Explorateurs du Web avec la mairie de Marseille, en cours. Les élèves ont adoré et la maitresse aussi ! Merci.",
+    quote: "Artistes très professionnels. Pièce touchante et pertinente — en lien avec l'EMI & le projet Parcours Petits Explorateurs du Web avec la mairie de Marseille. Les élèves ont adoré et la maitresse aussi ! Merci.",
+    bg: 'yellow',
   },
   {
-    quote: "Le message véhiculé par le spectacle a été jugé pertinent par la grande majorité des enseignants. Ils estiment que le spectacle a su sensibiliser efficacement à la problématique des écrans et susciter une réflexion sur leurs usages. Les élèves se sont montrés actifs et réactifs face aux situations rencontrées dans ces scénettes.",
+    quote: "Le message véhiculé par le spectacle a été jugé pertinent par la grande majorité des enseignants. Les élèves se sont montrés actifs et réactifs face aux situations rencontrées dans ces scénettes.",
+    bg: 'green',
   },
 ];
+
+const bubbleColors: Record<string, { section: string; bubble: string; text: string; quoteText: string }> = {
+  dark:   { section: '#1C1C1C', bubble: '#F8E71C', text: '#1C1C1C', quoteText: '#ffffff' },
+  blue:   { section: '#1B3DA8', bubble: '#1C1C1C', text: '#ffffff',  quoteText: '#ffffff' },
+  yellow: { section: '#F8E71C', bubble: '#1C1C1C', text: '#ffffff',  quoteText: '#1C1C1C' },
+  green:  { section: '#2D6E2D', bubble: '#1C1C1C', text: '#ffffff',  quoteText: '#ffffff' },
+};
 ---
 
 <Layout
@@ -63,32 +61,34 @@ const testimonials = [
   description="Spectacle participatif et humoristique sur les écrans pour les enfants de 6 à 12 ans. Intervention en école, médiathèque, centre social. Béatrice & Samy."
   jsonLd={[jsonLdWebsite, jsonLdPerformingGroup]}
 >
+
   <!-- ============================================================
-       1. HERO
+       1. HERO — jaune + texture noise (style Wix)
        ============================================================ -->
-  <section class="bg-white" aria-label="Présentation">
-    <div
-      class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20 flex flex-col md:flex-row items-center gap-10 md:gap-16"
-    >
+  <section
+    class="relative overflow-hidden py-16 sm:py-24"
+    style="background-color:#F8E71C; background-image:url('/images/deco-02.png'); background-blend-mode:multiply; background-size:cover; background-position:center;"
+    aria-label="Présentation"
+  >
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center gap-10 md:gap-16 relative z-10">
       <!-- Texte -->
       <div class="flex-1 text-center md:text-left">
-        <p class="font-heading font-semibold text-sm uppercase tracking-widest text-accent mb-3">
+        <p class="font-heading font-semibold text-xs uppercase tracking-widest text-accent mb-4">
           Béatrice &amp; Samy
         </p>
-        <h1
-          class="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-text-main leading-tight mb-4"
-        >
+        <h1 class="font-heading font-black text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.05] mb-6">
           Les écrans<br />pas tout<br />le temps&nbsp;!
         </h1>
-        <p class="font-body text-lg text-gray-600 mb-8 max-w-md mx-auto md:mx-0">
-          Spectacle humoristique sur le thème (sérieux) des écrans — 30&nbsp;min de spectacle +
-          30&nbsp;min de débat avec la participation active des élèves.
+        <p class="font-body text-base text-gray-200 mb-8 max-w-sm mx-auto md:mx-0 leading-relaxed">
+          Spectacle humoristique sur le thème (sérieux) des écrans.
+          30&nbsp;min de spectacle + 30&nbsp;min de débat avec la participation active des élèves.
         </p>
         <Cta />
       </div>
 
-      <!-- Image hero -->
-      <div class="flex-1 w-full max-w-lg md:max-w-none">
+      <!-- Image avec cadre jaune décalé -->
+      <div class="flex-1 w-full max-w-lg relative">
+        <div class="absolute -inset-3 bg-accent opacity-30 rounded-sm" aria-hidden="true"></div>
         <img
           src="/images/hero-beatrice-enfants.jpg"
           alt="Béatrice et Samy en scène avec des enfants lors du spectacle Les écrans pas tout le temps"
@@ -96,66 +96,50 @@ const testimonials = [
           height="342"
           loading="eager"
           fetchpriority="high"
-          class="w-full rounded-sm object-cover shadow-md"
+          class="relative w-full rounded-sm object-cover"
         />
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       2. PRÉSENTATION DES 2 SPECTACLES
+       2. PRÉSENTATION DES 2 SPECTACLES — blanc
        ============================================================ -->
-  <section class="bg-gray-50 py-14 sm:py-20" aria-label="Les deux spectacles">
+  <section class="bg-white py-14 sm:py-20" aria-label="Les deux spectacles">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-      <p class="font-heading font-semibold text-sm uppercase tracking-widest text-accent mb-3">
-        Avec
-      </p>
-      <h2 class="font-heading font-black text-3xl sm:text-4xl text-text-main mb-6">
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-accent mb-3">Avec</p>
+      <h2 class="font-heading font-black text-3xl sm:text-4xl text-text-main mb-4">
         2 spectacles participatifs
       </h2>
-      <p class="font-body text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+      <p class="font-body text-gray-600 max-w-xl mx-auto mb-12">
         À destination des enfants de 6 à 9 ans et de 9 à 12 ans.
       </p>
-
-      <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-        <!-- Spectacle 6-9 ans -->
+      <div class="grid sm:grid-cols-2 gap-0 max-w-2xl mx-auto border-2 border-text-main rounded-sm overflow-hidden">
+        <!-- 6-9 ans -->
         <a
           href="/spectacle-6-9-ans"
-          class="group block bg-white border-2 border-gray-100 hover:border-accent rounded-sm p-8 text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4"
+          class="group block bg-white hover:bg-accent border-r border-text-main p-8 text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4"
         >
-          <p
-            class="font-heading font-black text-4xl text-accent mb-2 group-hover:scale-105 transition-transform duration-200 inline-block"
-          >
-            6–9
+          <p class="font-heading font-black text-6xl text-accent group-hover:text-text-main transition-colors duration-200 leading-none mb-2">6–9</p>
+          <p class="font-heading font-bold text-xl text-text-main mb-3">ans</p>
+          <p class="font-body text-gray-500 text-sm group-hover:text-text-main transition-colors duration-200">
+            Cycle 2 — Grande section, CP, CE1, CE2.
           </p>
-          <p class="font-heading font-bold text-lg text-text-main mb-2">ans</p>
-          <p class="font-body text-gray-600 text-sm">
-            Spectacle adapté au cycle 2 — maternelles grande section, CP, CE1, CE2.
-          </p>
-          <p
-            class="font-heading font-semibold text-xs uppercase tracking-wider text-accent mt-4 group-hover:underline"
-          >
+          <p class="font-heading font-bold text-xs uppercase tracking-wider text-accent group-hover:text-text-main mt-4 transition-colors duration-200">
             En savoir plus →
           </p>
         </a>
-
-        <!-- Spectacle 9-12 ans -->
+        <!-- 9-12 ans -->
         <a
           href="/spectacle-9-12-ans"
-          class="group block bg-white border-2 border-gray-100 hover:border-accent rounded-sm p-8 text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4"
+          class="group block bg-white hover:bg-accent p-8 text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4"
         >
-          <p
-            class="font-heading font-black text-4xl text-accent mb-2 group-hover:scale-105 transition-transform duration-200 inline-block"
-          >
-            9–12
+          <p class="font-heading font-black text-6xl text-accent group-hover:text-text-main transition-colors duration-200 leading-none mb-2">9–12</p>
+          <p class="font-heading font-bold text-xl text-text-main mb-3">ans</p>
+          <p class="font-body text-gray-500 text-sm group-hover:text-text-main transition-colors duration-200">
+            Cycle 3 — CM1, CM2 et entrée en 6ème.
           </p>
-          <p class="font-heading font-bold text-lg text-text-main mb-2">ans</p>
-          <p class="font-body text-gray-600 text-sm">
-            Spectacle adapté au cycle 3 — CM1, CM2, et entrée en 6ème.
-          </p>
-          <p
-            class="font-heading font-semibold text-xs uppercase tracking-wider text-accent mt-4 group-hover:underline"
-          >
+          <p class="font-heading font-bold text-xs uppercase tracking-wider text-accent group-hover:text-text-main mt-4 transition-colors duration-200">
             En savoir plus →
           </p>
         </a>
@@ -164,237 +148,235 @@ const testimonials = [
   </section>
 
   <!-- ============================================================
-       3. VIGNETTES ÉQUIPE
+       3. VIGNETTES ÉQUIPE — fond sombre (style galerie Wix)
        ============================================================ -->
-  <section class="bg-white py-14 sm:py-20" aria-label="L'équipe artistique">
+  <section class="bg-text-main py-14 sm:py-20" aria-label="L'équipe artistique">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
         <!-- Béatrice -->
         <div class="text-center">
-          <div class="aspect-square overflow-hidden rounded-sm bg-gray-100 mb-3">
+          <div class="aspect-square overflow-hidden rounded-sm bg-gray-800 mb-3">
             <img
               src="/images/portrait-beatrice.jpg"
               alt="Béatrice Herrero, autrice, direction artistique et comédienne"
-              width="200"
-              height="200"
+              width="200" height="200"
               loading="lazy"
               class="w-full h-full object-cover"
             />
           </div>
-          <p class="font-heading font-bold text-sm text-text-main">Béatrice</p>
-          <p class="font-body text-xs text-gray-500 mt-0.5">Direction artistique · Comédienne</p>
+          <p class="font-heading font-bold text-sm text-white">Béatrice</p>
+          <p class="font-body text-xs text-gray-400 mt-0.5">Direction artistique · Comédienne</p>
         </div>
-
         <!-- Samy -->
         <div class="text-center">
-          <div class="aspect-square overflow-hidden rounded-sm bg-gray-100 mb-3">
+          <div class="aspect-square overflow-hidden rounded-sm bg-gray-800 mb-3">
             <img
               src="/images/portrait-samy.jpg"
               alt="Samy, comédien"
-              width="200"
-              height="200"
+              width="200" height="200"
               loading="lazy"
               class="w-full h-full object-cover"
             />
           </div>
-          <p class="font-heading font-bold text-sm text-text-main">Samy</p>
-          <p class="font-body text-xs text-gray-500 mt-0.5">Comédien</p>
+          <p class="font-heading font-bold text-sm text-white">Samy</p>
+          <p class="font-body text-xs text-gray-400 mt-0.5">Comédien</p>
         </div>
-
         <!-- En scène -->
         <div class="text-center">
-          <div class="aspect-square overflow-hidden rounded-sm bg-gray-100 mb-3">
+          <div class="aspect-square overflow-hidden rounded-sm bg-gray-800 mb-3">
             <img
               src="/images/gallery-01.jpg"
               alt="Béatrice et Samy en scène face aux élèves pendant le spectacle"
-              width="200"
-              height="200"
+              width="200" height="200"
               loading="lazy"
               class="w-full h-full object-cover"
             />
           </div>
-          <p class="font-heading font-bold text-sm text-text-main">En scène</p>
-          <p class="font-body text-xs text-gray-500 mt-0.5">Avec les élèves</p>
+          <p class="font-heading font-bold text-sm text-white">En scène</p>
+          <p class="font-body text-xs text-gray-400 mt-0.5">Avec les élèves</p>
         </div>
-
-        <!-- Sticker / déco -->
+        <!-- Sticker -->
         <div class="text-center">
           <div class="aspect-square overflow-hidden rounded-sm bg-accent mb-3 flex items-center justify-center p-4">
             <img
               src="/images/sticker.png"
               alt="Sticker Les écrans pas tout le temps"
-              width="120"
-              height="120"
+              width="120" height="120"
               loading="lazy"
               class="w-full h-full object-contain"
             />
           </div>
-          <p class="font-heading font-bold text-sm text-text-main">Rap avec les élèves</p>
-          <p class="font-body text-xs text-gray-500 mt-0.5">Participation active</p>
+          <p class="font-heading font-bold text-sm text-white">Rap avec les élèves</p>
+          <p class="font-body text-xs text-gray-400 mt-0.5">Participation active</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       4. DESCRIPTION DU SPECTACLE
+       4. DESCRIPTION DU SPECTACLE — bleu royal
        ============================================================ -->
-  <section class="bg-text-main text-white py-14 sm:py-20" aria-label="Le spectacle">
+  <section class="py-14 sm:py-20" style="background-color:#1B3DA8;" aria-label="Le spectacle">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="font-heading font-black text-3xl sm:text-4xl text-accent mb-6">
+      <h2 class="font-heading font-black text-3xl sm:text-4xl text-accent mb-4">
         Les écrans pas tout le temps&nbsp;!
       </h2>
-      <p class="font-body text-lg text-gray-300 mb-4">
+      <p class="font-body text-lg text-blue-200 mb-10">
         Spectacle humoristique sur le thème (sérieux) des écrans
       </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-12 mt-8">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16">
         <div class="text-center">
-          <p class="font-heading font-black text-5xl text-accent">30</p>
-          <p class="font-heading font-semibold text-sm uppercase tracking-wider text-gray-400 mt-1">
+          <p class="font-heading font-black text-7xl text-white leading-none">30</p>
+          <p class="font-heading font-semibold text-xs uppercase tracking-widest text-accent mt-2">
             min de spectacle
           </p>
         </div>
-        <div
-          class="hidden sm:block w-px h-16 bg-gray-700"
-          aria-hidden="true"
-        ></div>
+        <div class="hidden sm:block text-blue-400 text-5xl font-thin" aria-hidden="true">+</div>
         <div class="text-center">
-          <p class="font-heading font-black text-5xl text-accent">30</p>
-          <p class="font-heading font-semibold text-sm uppercase tracking-wider text-gray-400 mt-1">
+          <p class="font-heading font-black text-7xl text-white leading-none">30</p>
+          <p class="font-heading font-semibold text-xs uppercase tracking-widest text-accent mt-2">
             min de débat
           </p>
         </div>
       </div>
-      <p class="font-body text-gray-400 mt-6">avec la participation active des élèves</p>
-      <div class="mt-10">
-        <Cta />
-      </div>
+      <p class="font-body text-blue-300 mt-8 mb-10">avec la participation active des élèves</p>
+      <Cta />
     </div>
   </section>
 
   <!-- ============================================================
-       5. GALERIE PHOTOS
+       5. GALERIE PHOTOS — fond sombre
        ============================================================ -->
-  <section class="bg-white py-14 sm:py-20" aria-label="Galerie photos">
+  <section class="bg-text-main py-14 sm:py-20" aria-label="Galerie photos">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main text-center mb-8">
+      <h2 class="font-heading font-black text-2xl text-white text-center mb-8">
         Photos du spectacle
       </h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-        {
-          [
-            {
-              src: '/images/gallery-01.jpg',
-              alt: 'Béatrice et Samy en scène pendant le spectacle Les écrans pas tout le temps',
-            },
-            {
-              src: '/images/gallery-02.jpg',
-              alt: 'Les élèves participent activement au débat après le spectacle',
-            },
-            {
-              src: '/images/gallery-03.jpg',
-              alt: 'Moment de jeu interactif entre les comédiens et les enfants',
-            },
-            {
-              src: '/images/gallery-04.jpg',
-              alt: "Scène humoristique sur l'usage des écrans en famille",
-            },
-            {
-              src: '/images/gallery-05.jpg',
-              alt: 'Béatrice en scène pendant le rap participatif avec les élèves',
-            },
-            {
-              src: '/images/gallery-06.jpg',
-              alt: 'Samy et les enfants lors du temps de débat collectif',
-            },
-          ].map(({ src, alt }) => (
-            <div class="aspect-square overflow-hidden rounded-sm bg-gray-100">
-              <img
-                src={src}
-                alt={alt}
-                width="400"
-                height="400"
-                loading="lazy"
-                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          ))
-        }
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
+        {[
+          { src: '/images/gallery-01.jpg', alt: 'Béatrice et Samy en scène pendant le spectacle Les écrans pas tout le temps' },
+          { src: '/images/gallery-02.jpg', alt: 'Les élèves participent activement au débat après le spectacle' },
+          { src: '/images/gallery-03.jpg', alt: 'Moment de jeu interactif entre les comédiens et les enfants' },
+          { src: '/images/gallery-04.jpg', alt: "Scène humoristique sur l'usage des écrans en famille" },
+          { src: '/images/gallery-05.jpg', alt: 'Béatrice en scène pendant le rap participatif avec les élèves' },
+          { src: '/images/gallery-06.jpg', alt: 'Samy et les enfants lors du temps de débat collectif' },
+        ].map(({ src, alt }) => (
+          <div class="aspect-square overflow-hidden bg-gray-800">
+            <img
+              src={src}
+              alt={alt}
+              width="400" height="400"
+              loading="lazy"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       6. TÉMOIGNAGES
+       6. TÉMOIGNAGES — 4 blocs colorés style BD (inspiré Wix)
        ============================================================ -->
-  <section class="bg-gray-50 py-14 sm:py-20" aria-label="Témoignages">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main text-center mb-10">
-        Ils ont aimé
-      </h2>
-      <div class="grid sm:grid-cols-2 gap-6">
-        {
-          testimonials.map(({ quote }) => (
-            <blockquote class="bg-white rounded-sm p-6 border-l-4 border-accent shadow-sm">
-              <p class="font-body text-gray-700 leading-relaxed italic">&laquo;&nbsp;{quote}&nbsp;&raquo;</p>
-              {/* À VALIDER : ajouter attribution (nom, école, ville) si Béatrice peut fournir */}
+  <section aria-label="Témoignages">
+    <div class="grid grid-cols-1 sm:grid-cols-2">
+      {testimonials.map(({ quote, bg }, i) => {
+        const c = bubbleColors[bg];
+        return (
+          <div
+            class="testimonial-block relative p-8 sm:p-10 flex flex-col justify-between min-h-64"
+            style={`background-color:${c.section};`}
+          >
+            {i === 0 && (
+              <h2 class="font-heading font-black text-2xl sm:text-3xl mb-6" style={`color:${c.bubble};`}>
+                Ils ont aimé
+              </h2>
+            )}
+            <blockquote class="speech-bubble" style={`--bubble:${c.bubble}; color:${c.text};`}>
+              <p class="font-body text-sm leading-relaxed italic">
+                &laquo;&nbsp;{quote}&nbsp;&raquo;
+              </p>
             </blockquote>
-          ))
-        }
-      </div>
+          </div>
+        );
+      })}
     </div>
   </section>
 
   <!-- ============================================================
-       7. MENTION BÉATRICE + PDF ACADÉMIE
+       7. MENTION BÉATRICE + PDF
        ============================================================ -->
-  <section class="bg-white py-12" aria-label="Références">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <p class="font-body text-gray-700 mb-3">
-        <strong class="font-heading font-bold text-text-main">Béatrice HERRERO</strong>, autrice et
-        comédienne.
+  <section class="bg-white py-12 border-t border-gray-100" aria-label="Références">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <p class="font-body text-gray-700 mb-2">
+        <strong class="font-heading font-bold text-text-main">Béatrice HERRERO</strong>, autrice et comédienne.
       </p>
-      <p class="font-body text-gray-600 text-sm">
+      <p class="font-body text-sm text-gray-500">
         <a
           href="/docs/retours-academie-aix-marseille.pdf"
-          class="text-text-main underline underline-offset-4 decoration-accent hover:decoration-2 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm transition-all duration-150"
+          class="underline underline-offset-4 decoration-accent hover:decoration-2 text-text-main focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm"
           target="_blank"
           rel="noopener noreferrer"
         >
           Lire l'analyse
-        </a>{' '}
-        des retours du spectacle — Académie d'Aix-Marseille
+        </a>
+        {' '}des retours du spectacle — Académie d'Aix-Marseille
       </p>
     </div>
   </section>
 
   <!-- ============================================================
-       8. BLOC CONTACT
+       8. BLOC CONTACT — jaune + texture
        ============================================================ -->
-  <section class="bg-accent py-14 sm:py-20" aria-label="Contact">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="font-heading font-black text-3xl sm:text-4xl text-text-main mb-4">
+  <section
+    class="py-14 sm:py-20"
+    style="background-color:#F8E71C; background-image:url('/images/deco-02.png'); background-blend-mode:multiply; background-size:cover;"
+    aria-label="Contact"
+  >
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <h2 class="font-heading font-black text-3xl sm:text-4xl text-white mb-3">
         Contactez-nous
       </h2>
-      <p class="font-heading font-semibold text-sm uppercase tracking-widest text-text-main mb-8">
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-accent mb-8">
         Marseille
       </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-10">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10 mb-10">
         <a
           href="tel:+33673158508"
-          class="font-heading font-bold text-lg text-text-main hover:underline focus-visible:outline-2 focus-visible:outline-text-main focus-visible:outline-offset-4 rounded-sm"
+          class="font-heading font-bold text-lg text-white hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm"
         >
           06 73 15 85 08
         </a>
-        <span class="hidden sm:block text-text-main opacity-30" aria-hidden="true">|</span>
+        <span class="hidden sm:block text-white opacity-30" aria-hidden="true">|</span>
         <a
           href="mailto:lesecranspastoutletemps@gmail.com"
-          class="font-body text-base text-text-main hover:underline focus-visible:outline-2 focus-visible:outline-text-main focus-visible:outline-offset-4 rounded-sm break-all"
+          class="font-body text-sm text-white hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm break-all"
         >
           lesecranspastoutletemps@gmail.com
         </a>
       </div>
-      <Cta text="Faire une demande de réservation" href="/contact" variant="dark" />
+      <Cta text="Faire une demande de réservation" href="/contact" />
     </div>
   </section>
+
 </Layout>
+
+<style>
+  .speech-bubble {
+    background: var(--bubble);
+    border-radius: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -0.875rem;
+    left: 1.75rem;
+    border: 0.875rem solid transparent;
+    border-top-color: var(--bubble);
+  }
+</style>
