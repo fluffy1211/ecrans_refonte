@@ -1,0 +1,73 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.lesecranspastoutletemps.fr' },
+    { '@type': 'ListItem', position: 2, name: 'Mentions légales', item: 'https://www.lesecranspastoutletemps.fr/mentions-legales' },
+  ],
+};
+---
+
+<Layout
+  title="Mentions légales – Les écrans pas tout le temps"
+  description="Mentions légales du site lesecranspastoutletemps.fr — éditeur, hébergeur, données personnelles."
+  noindex={true}
+  jsonLd={jsonLd}
+>
+
+  <section class="bg-text-main py-10 sm:py-14">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <nav aria-label="Fil d'Ariane" class="mb-6">
+        <ol class="flex items-center gap-2 text-xs font-heading text-gray-500 list-none">
+          <li><a href="/" class="hover:text-accent transition-colors">Accueil</a></li>
+          <li class="text-gray-700" aria-hidden="true">›</li>
+          <li class="text-accent" aria-current="page">Mentions légales</li>
+        </ol>
+      </nav>
+      <h1 class="font-heading font-black text-3xl text-white">Mentions légales</h1>
+    </div>
+  </section>
+
+  <section class="bg-white py-14 sm:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 font-body text-gray-600 leading-relaxed space-y-10">
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-text-main mb-3">Éditeur du site</h2>
+        <!-- CONTENU À VALIDER : statut juridique exact de la compagnie -->
+        <p>Béatrice Herrero<br />
+        Marseille, France<br />
+        Email : <a href="mailto:lesecranspastoutletemps@gmail.com" class="underline underline-offset-2 decoration-accent hover:decoration-2">lesecranspastoutletemps@gmail.com</a><br />
+        Tél. : <a href="tel:+33673158508" class="underline underline-offset-2 decoration-accent hover:decoration-2">06 73 15 85 08</a></p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-text-main mb-3">Hébergement</h2>
+        <p>Cloudflare Pages<br />
+        Cloudflare, Inc.<br />
+        101 Townsend St, San Francisco, CA 94107, États-Unis<br />
+        <a href="https://www.cloudflare.com" class="underline underline-offset-2 decoration-accent hover:decoration-2" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a></p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-text-main mb-3">Propriété intellectuelle</h2>
+        <p>L'ensemble du contenu de ce site (textes, images, spectacles) est la propriété de Béatrice Herrero, sauf mention contraire. Toute reproduction, même partielle, est interdite sans autorisation préalable écrite.</p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-text-main mb-3">Données personnelles</h2>
+        <p>Ce site ne collecte aucune donnée personnelle via des cookies de traçage ou des outils d'analyse. Les données transmises via le formulaire de contact (nom, email, message) sont utilisées uniquement pour répondre à votre demande et ne sont pas cédées à des tiers.</p>
+        <p class="mt-3">Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ce droit, contactez-nous à <a href="mailto:lesecranspastoutletemps@gmail.com" class="underline underline-offset-2 decoration-accent hover:decoration-2">lesecranspastoutletemps@gmail.com</a>.</p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-text-main mb-3">Liens externes</h2>
+        <p>Ce site peut contenir des liens vers des sites tiers. Nous déclinons toute responsabilité quant au contenu de ces sites.</p>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

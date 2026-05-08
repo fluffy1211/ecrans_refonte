@@ -1,0 +1,207 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Cta from '@components/Cta.astro';
+import Faq from '@components/Faq.astro';
+import type { FaqItem } from '@components/Faq.astro';
+
+const faqItems: FaqItem[] = [
+  { q: "Quelle est la durée totale de l'intervention ?", a: "Le spectacle dure 30 minutes, suivi d'un temps de débat participatif de 30 minutes avec les élèves. Comptez environ 1 heure au total pour l'intervention." },
+  { q: "À quel public s'adresse ce spectacle ?", a: "Ce spectacle est conçu pour les enfants de 9 à 12 ans (CM1, CM2, entrée en 6ème). Les situations abordées — réseaux sociaux, jeux vidéo, cyberharcèlement — correspondent aux usages numériques de cette tranche d'âge." },
+  { q: "Quel espace est nécessaire ?", a: "Le spectacle s'adapte à n'importe quel espace : amphithéâtre, gymnase, salle polyvalente, salle de classe... Aucune scène ni équipement technique n'est requis." },
+  { q: "Quel matériel faut-il prévoir ?", a: "Béatrice et Samy apportent tout le matériel nécessaire. Il suffit de disposer d'un espace dégagé d'environ 20 à 30 m²." },
+  { q: "Combien d'élèves peuvent assister à une représentation ?", a: "Le spectacle peut accueillir jusqu'à une ou deux classes par représentation. Plusieurs représentations peuvent être organisées dans la même journée." },
+  { q: "Quels sont les tarifs ?", a: "Les tarifs sont établis sur devis, selon votre type de structure et le nombre de représentations. Contactez-nous pour recevoir un devis personnalisé sous 48h." },
+  { q: "Dans quelles zones intervenez-vous ?", a: "Nous intervenons principalement en région PACA (Marseille, Aix-en-Provence, Toulon et communes avoisinantes). Contactez-nous pour toute demande hors de cette zone." },
+  { q: "Comment réserver ?", a: "Envoyez-nous un message via le formulaire de contact en précisant votre structure, vos dates souhaitées et le nombre d'élèves. Nous vous répondons sous 48h." },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: 'Les écrans pas tout le temps — Spectacle 9-12 ans',
+    description: "Spectacle théâtral participatif et humoristique sur les écrans pour les enfants de 9 à 12 ans, suivi d'un débat de 30 minutes.",
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: { '@type': 'Place', name: 'À définir selon la structure', addressLocality: 'Marseille', addressCountry: 'FR' },
+    organizer: { '@type': 'Organization', name: 'Les écrans pas tout le temps', url: 'https://www.lesecranspastoutletemps.fr' },
+    performer: [
+      { '@type': 'Person', name: 'Béatrice Herrero' },
+      { '@type': 'Person', name: 'Samy' },
+    ],
+    audience: { '@type': 'Audience', audienceType: 'Enfants de 9 à 12 ans', suggestedMinAge: 9, suggestedMaxAge: 12 },
+    typicalAgeRange: '9-12',
+    duration: 'PT60M',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.lesecranspastoutletemps.fr' },
+      { '@type': 'ListItem', position: 2, name: 'Spectacle 9-12 ans', item: 'https://www.lesecranspastoutletemps.fr/spectacle-9-12-ans' },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Spectacle 9-12 ans sur les écrans – Théâtre participatif en collège"
+  description="Un spectacle pédagogique participatif pour aborder le numérique avec les CM1-6e. 30 min de théâtre + 30 min de débat avec les élèves."
+  jsonLd={jsonLd}
+>
+
+  <!-- HERO -->
+  <section class="bg-text-main relative overflow-hidden py-14 sm:py-20" aria-label="Présentation du spectacle">
+    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-02.png'); background-size:cover; mix-blend-mode:screen; opacity:0.1;" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+      <nav aria-label="Fil d'Ariane" class="mb-8">
+        <ol class="flex items-center gap-2 text-xs font-heading text-gray-500 list-none">
+          <li><a href="/" class="hover:text-accent transition-colors">Accueil</a></li>
+          <li class="text-gray-700" aria-hidden="true">›</li>
+          <li class="text-accent" aria-current="page">Spectacle 9-12 ans</li>
+        </ol>
+      </nav>
+      <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-4">Cycle 3 — 9 à 12 ans</p>
+      <h1 class="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] mb-6 max-w-2xl">
+        Spectacle sur les écrans pour les <span class="text-accent">9-12 ans</span>
+      </h1>
+      <p class="font-body text-gray-400 text-base leading-relaxed max-w-lg mb-8">
+        30 minutes de théâtre participatif + 30 minutes de débat avec les élèves.
+        Ancré dans les usages numériques réels de cette tranche d'âge.
+      </p>
+      <Cta />
+    </div>
+  </section>
+
+  <!-- LE SPECTACLE -->
+  <section class="bg-white py-14 sm:py-20" aria-label="Description du spectacle">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+        <div>
+          <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main mb-5">
+            Le spectacle
+          </h2>
+          <!-- CONTENU À VALIDER : synopsis à confirmer avec Béatrice -->
+          <div class="font-body text-gray-600 leading-relaxed space-y-4">
+            <p>
+              Samy doit faire un exposé sur les écrans. Il passe de longues heures sur sa tablette
+              pour ses recherches — mais pas seulement. Réseaux sociaux, vidéos, jeux en ligne…
+              les écrans envahissent peu à peu tous ses moments de vie.
+            </p>
+            <p>
+              À l'heure du dîner, sa mère a du mal à le faire venir. Ses amis ne le voient plus.
+              Grâce à la participation active des élèves, Samy va brillamment réussir son exposé —
+              mais surtout comprendre quelque chose d'essentiel sur son rapport aux écrans.
+            </p>
+            <p>
+              La deuxième partie est entièrement dédiée à l'échange : les comédiens animent un
+              débat où les élèves réagissent, posent des questions et partagent leurs propres
+              expériences du numérique.
+            </p>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-accent p-6 rounded-sm">
+            <p class="font-heading font-black text-4xl text-text-main mb-1">30 + 30</p>
+            <p class="font-heading font-semibold text-xs uppercase tracking-wider text-text-main opacity-60">min spectacle + débat</p>
+          </div>
+          <div class="border-2 border-text-main p-5 rounded-sm space-y-3">
+            {[
+              ['Public', 'CM1, CM2, entrée en 6ème (9-12 ans)'],
+              ['Format', 'Spectacle + débat participatif'],
+              ['Espace', 'Toute salle disponible dans votre structure'],
+              ['Effectif', "Jusqu'à 2 classes par représentation"],
+              ['Tarif', 'Sur devis — réponse sous 48h'],
+            ].map(([label, value]) => (
+              <div class="flex gap-3">
+                <span class="font-heading font-bold text-xs uppercase tracking-wider text-accent flex-shrink-0 w-20">{label}</span>
+                <span class="font-body text-sm text-gray-600">{value}</span>
+              </div>
+            ))}
+          </div>
+          <div class="overflow-hidden rounded-sm">
+            <img
+              src="/images/gallery-03.jpg"
+              alt="Moment de jeu interactif entre les comédiens et les enfants"
+              width="600"
+              height="400"
+              loading="lazy"
+              class="w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE COMPACTE -->
+  <section class="bg-text-main py-10 sm:py-12" aria-label="Photos du spectacle">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-3 gap-1.5">
+        {[
+          { src: '/images/gallery-06.jpg', alt: 'Samy et les enfants lors du temps de débat collectif' },
+          { src: '/images/gallery-02.jpg', alt: 'Les élèves lèvent la main pour participer au débat' },
+          { src: '/images/gallery-05.jpg', alt: 'Béatrice pendant le rap participatif avec les élèves' },
+        ].map(({ src, alt }) => (
+          <div class="aspect-square overflow-hidden bg-gray-800">
+            <img src={src} alt={alt} width="300" height="300" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- POUR QUELLES STRUCTURES -->
+  <section class="bg-white py-14 sm:py-20" aria-label="Structures concernées">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main mb-8 text-center">
+        Pour quelles structures ?
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-4">
+        {[
+          { label: 'Écoles primaires', desc: 'Idéal pour les classes de CM1 et CM2, en classe ou en salle polyvalente.' },
+          { label: 'Collèges & périscolaire', desc: "Adapté à l'entrée en 6ème, en lien avec les parcours EMI (Éducation aux Médias et à l'Information)." },
+          { label: 'Médiathèques & centres sociaux', desc: "Animation prévention numérique dans le cadre d'actions partenariales." },
+        ].map(({ label, desc }) => (
+          <div class="border-l-4 border-accent pl-4 py-1">
+            <p class="font-heading font-bold text-sm text-text-main mb-1">{label}</p>
+            <p class="font-body text-xs text-gray-500 leading-relaxed">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-gray-50 py-14 sm:py-20" aria-label="Questions fréquentes">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main mb-8 text-center">
+        Questions fréquentes
+      </h2>
+      <Faq items={faqItems} />
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="bg-accent py-14 sm:py-20" aria-label="Réservation">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main mb-3">
+        Réserver le spectacle 9-12 ans
+      </h2>
+      <p class="font-body text-text-main opacity-60 mb-8 text-sm">
+        Devis personnalisé sous 48h — intervention à Marseille et en région PACA.
+      </p>
+      <Cta variant="dark" text="Faire une demande de réservation" href="/contact" />
+    </div>
+  </section>
+
+</Layout>

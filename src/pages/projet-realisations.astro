@@ -1,0 +1,168 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Cta from '@components/Cta.astro';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.lesecranspastoutletemps.fr' },
+      { '@type': 'ListItem', position: 2, name: 'Projet & réalisations', item: 'https://www.lesecranspastoutletemps.fr/projet-realisations' },
+    ],
+  },
+];
+
+const villes = [
+  'Marseille', 'La Ciotat', 'Aubagne', 'Vitrolles', 'Martigues',
+  'Châteauneuf-les-Martigues', 'Allauch', 'Plan-de-Cuques', 'Les Pennes-Mirabeau',
+];
+---
+
+<Layout
+  title="Projet & réalisations – Les écrans pas tout le temps"
+  description="Découvrez le projet pédagogique du spectacle, ses réalisations et les retours de l'Académie d'Aix-Marseille."
+  jsonLd={jsonLd}
+>
+
+  <!-- HERO -->
+  <section class="bg-text-main relative overflow-hidden py-14 sm:py-20" aria-label="Projet et réalisations">
+    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-02.png'); background-size:cover; mix-blend-mode:screen; opacity:0.1;" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+      <nav aria-label="Fil d'Ariane" class="mb-8">
+        <ol class="flex items-center gap-2 text-xs font-heading text-gray-500 list-none">
+          <li><a href="/" class="hover:text-accent transition-colors">Accueil</a></li>
+          <li class="text-gray-700" aria-hidden="true">›</li>
+          <li class="text-accent" aria-current="page">Projet &amp; réalisations</li>
+        </ol>
+      </nav>
+      <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-4">Le projet</p>
+      <h1 class="font-heading font-black text-4xl sm:text-5xl text-white leading-tight mb-6 max-w-xl">
+        Projet &amp; réalisations
+      </h1>
+      <p class="font-body text-gray-400 text-base max-w-lg">
+        Depuis sa création, « Les écrans pas tout le temps ! » a tourné dans de nombreuses villes
+        de la région PACA, touchant des milliers d'élèves.
+      </p>
+    </div>
+  </section>
+
+  <!-- CHIFFRES CLÉS -->
+  <section class="bg-accent py-14 sm:py-16" aria-label="Chiffres clés">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-3 gap-4 sm:gap-8 text-center">
+        {[
+          { n: '+90', label: 'représentations' },
+          { n: '3', label: 'par jour' },
+          { n: '4 000', label: 'élèves touchés' },
+        ].map(({ n, label }) => (
+          <div>
+            <p class="font-heading font-black text-4xl sm:text-6xl text-text-main leading-none">{n}</p>
+            <p class="font-heading font-semibold text-xs uppercase tracking-wider text-text-main opacity-60 mt-2">{label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- LE PROJET -->
+  <section class="bg-white py-14 sm:py-20" aria-label="Description du projet">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+      <div>
+        <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main mb-5">
+          On a joué&nbsp;!
+        </h2>
+        <!-- CONTENU À VALIDER : texte de présentation du projet à enrichir avec Béatrice -->
+        <div class="font-body text-gray-600 leading-relaxed space-y-4">
+          <p>
+            Béatrice et Samy se produisent dans tous types d'espaces, sans contrainte technique :
+            amphithéâtre, salle de motricité, gymnase, salle de classe, salle polyvalente,
+            auditorium…
+          </p>
+          <p>
+            Le spectacle s'adapte aux contraintes de chaque structure, ce qui lui permet d'être
+            accessible à des établissements aux configurations très différentes.
+          </p>
+          <p>
+            Leurs interventions ont été reconnues et soutenues par l'Académie d'Aix-Marseille,
+            qui a réalisé une analyse approfondie des retours enseignants et élèves.
+          </p>
+        </div>
+
+        <div class="mt-6">
+          <a
+            href="/docs/retours-academie-aix-marseille.pdf"
+            class="inline-flex items-center gap-2 font-heading font-bold text-sm text-text-main underline underline-offset-4 decoration-accent hover:decoration-2 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm transition-all"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Lire l'analyse des retours — Académie d'Aix-Marseille
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="overflow-hidden rounded-sm">
+        <img
+          src="/images/projet-hero.jpg"
+          alt="Béatrice et Samy lors d'une représentation du spectacle Les écrans pas tout le temps"
+          width="600"
+          height="400"
+          loading="lazy"
+          class="w-full object-cover"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- VILLES -->
+  <section class="bg-gray-50 py-14 sm:py-16" aria-label="Villes et lieux">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading font-black text-2xl text-text-main mb-2">
+        Villes et lieux où nous avons joué
+      </h2>
+      <p class="font-body text-gray-500 text-sm mb-8">Région PACA — et au-delà sur demande.</p>
+      <div class="flex flex-wrap gap-2">
+        {villes.map((ville) => (
+          <span class="font-heading font-semibold text-sm text-text-main border-2 border-text-main rounded-sm px-3 py-1.5">
+            {ville}
+          </span>
+        ))}
+        <span class="font-heading font-semibold text-sm text-gray-400 border-2 border-gray-200 rounded-sm px-3 py-1.5">
+          et d'autres…
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="bg-text-main py-10 sm:py-12" aria-label="Photos des représentations">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+        {[
+          { src: '/images/gallery-01.jpg', alt: 'Béatrice et Samy en scène avec les élèves' },
+          { src: '/images/gallery-02.jpg', alt: 'Les élèves participent au débat après le spectacle' },
+          { src: '/images/gallery-03.jpg', alt: 'Moment de jeu interactif entre comédiens et enfants' },
+          { src: '/images/gallery-04.jpg', alt: "Scène humoristique sur l'usage des écrans" },
+          { src: '/images/gallery-05.jpg', alt: 'Béatrice pendant le rap participatif avec les élèves' },
+          { src: '/images/gallery-06.jpg', alt: 'Samy et les enfants lors du temps de débat collectif' },
+        ].map(({ src, alt }) => (
+          <div class="aspect-square overflow-hidden bg-gray-800">
+            <img src={src} alt={alt} width="300" height="300" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-white py-14 sm:py-16 border-t border-gray-100 text-center">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
+      <p class="font-body text-gray-600 mb-6">
+        Vous souhaitez programmer le spectacle dans votre structure ?
+      </p>
+      <Cta text="Réserver le spectacle" href="/contact" />
+    </div>
+  </section>
+
+</Layout>

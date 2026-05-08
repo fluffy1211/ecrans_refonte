@@ -1,0 +1,212 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Les écrans pas tout le temps',
+    description: 'Compagnie de spectacle participatif sur les écrans pour les enfants de 6 à 12 ans.',
+    url: 'https://www.lesecranspastoutletemps.fr',
+    telephone: '+33673158508',
+    email: 'lesecranspastoutletemps@gmail.com',
+    address: { '@type': 'PostalAddress', addressLocality: 'Marseille', addressCountry: 'FR' },
+    areaServed: 'Provence-Alpes-Côte d\'Azur',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.lesecranspastoutletemps.fr' },
+      { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://www.lesecranspastoutletemps.fr/contact' },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Réserver le spectacle Les écrans pas tout le temps – Contact"
+  description="Réservez le spectacle pour votre école, médiathèque, ville ou comité d'entreprise. Devis sous 48h."
+  jsonLd={jsonLd}
+>
+
+  <!-- HERO -->
+  <section class="bg-text-main relative overflow-hidden py-14 sm:py-20" aria-label="Contact">
+    <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-02.png'); background-size:cover; mix-blend-mode:screen; opacity:0.1;" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+      <nav aria-label="Fil d'Ariane" class="mb-8">
+        <ol class="flex items-center gap-2 text-xs font-heading text-gray-500 list-none">
+          <li><a href="/" class="hover:text-accent transition-colors">Accueil</a></li>
+          <li class="text-gray-700" aria-hidden="true">›</li>
+          <li class="text-accent" aria-current="page">Contact</li>
+        </ol>
+      </nav>
+      <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-4">Marseille · PACA</p>
+      <h1 class="font-heading font-black text-4xl sm:text-5xl text-white leading-tight mb-4">
+        Réserver le spectacle
+      </h1>
+      <p class="font-body text-gray-400 text-base max-w-md">
+        Remplissez le formulaire ci-dessous — nous vous répondons sous 48h avec un devis personnalisé.
+      </p>
+    </div>
+  </section>
+
+  <!-- FORMULAIRE + COORDONNÉES -->
+  <section class="bg-white py-14 sm:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 grid md:grid-cols-[1fr_320px] gap-10 md:gap-16 items-start">
+
+      <!-- Formulaire Web3Forms -->
+      <!-- À CONFIGURER : remplacer YOUR_ACCESS_KEY par la clé obtenue sur web3forms.com -->
+      <div>
+        <h2 class="font-heading font-black text-2xl text-text-main mb-6">Formulaire de contact</h2>
+
+        <form
+          id="contact-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          class="space-y-5"
+          novalidate
+        >
+          <!-- Clé Web3Forms — À REMPLACER -->
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY" />
+          <input type="hidden" name="subject" value="Demande de réservation — Les écrans pas tout le temps" />
+          <input type="hidden" name="from_name" value="Site lesecranspastoutletemps.fr" />
+          <!-- Honeypot anti-spam -->
+          <input type="checkbox" name="botcheck" class="hidden" aria-hidden="true" tabindex="-1" />
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="nom" class="form-label">Nom <span class="text-red-500" aria-hidden="true">*</span></label>
+              <input id="nom" name="name" type="text" required autocomplete="name" class="form-input" placeholder="Votre nom" />
+            </div>
+            <div>
+              <label for="email" class="form-label">Email <span class="text-red-500" aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" required autocomplete="email" class="form-input" placeholder="votre@email.fr" />
+            </div>
+          </div>
+
+          <div>
+            <label for="structure" class="form-label">Type de structure <span class="text-red-500" aria-hidden="true">*</span></label>
+            <select id="structure" name="structure" required class="form-input">
+              <option value="" disabled selected>Sélectionnez votre structure</option>
+              <option>École primaire</option>
+              <option>Médiathèque / bibliothèque</option>
+              <option>Mairie / collectivité</option>
+              <option>Centre social</option>
+              <option>Comité d'entreprise</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="ville" class="form-label">Ville <span class="text-red-500" aria-hidden="true">*</span></label>
+              <input id="ville" name="ville" type="text" required class="form-input" placeholder="Marseille" />
+            </div>
+            <div>
+              <label for="effectif" class="form-label">Effectif estimé</label>
+              <input id="effectif" name="effectif" type="text" class="form-input" placeholder="Ex. 2 classes, 50 élèves" />
+            </div>
+          </div>
+
+          <div>
+            <label for="dates" class="form-label">Date(s) souhaitée(s)</label>
+            <input id="dates" name="dates" type="text" class="form-input" placeholder="Ex. mars 2026, ou une date précise" />
+          </div>
+
+          <div>
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" name="message" rows="4" class="form-input resize-none" placeholder="Vos questions, contraintes, contexte…"></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full sm:w-auto bg-accent text-text-main font-heading font-bold text-sm uppercase tracking-widest px-10 py-3 rounded-sm hover:opacity-90 transition-opacity duration-150 focus-visible:outline-2 focus-visible:outline-text-main focus-visible:outline-offset-4"
+          >
+            Envoyer ma demande
+          </button>
+        </form>
+
+        <!-- Message de confirmation -->
+        <div id="form-success" class="hidden mt-6 p-5 bg-accent rounded-sm">
+          <p class="font-heading font-bold text-text-main">Message envoyé !</p>
+          <p class="font-body text-sm text-text-main opacity-70 mt-1">Nous vous répondrons sous 48h avec un devis personnalisé.</p>
+        </div>
+        <div id="form-error" class="hidden mt-6 p-5 border-2 border-red-400 rounded-sm">
+          <p class="font-body text-sm text-red-700">Une erreur est survenue. Veuillez réessayer ou nous contacter directement par email.</p>
+        </div>
+      </div>
+
+      <!-- Coordonnées -->
+      <div class="space-y-6">
+        <div>
+          <h2 class="font-heading font-black text-xl text-text-main mb-4">Coordonnées</h2>
+          <div class="space-y-3">
+            <p class="font-heading font-semibold text-xs uppercase tracking-wider text-accent">Marseille</p>
+            <a href="tel:+33673158508" class="block font-heading font-bold text-lg text-text-main hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent rounded-sm">
+              06 73 15 85 08
+            </a>
+            <a href="mailto:lesecranspastoutletemps@gmail.com" class="block font-body text-sm text-gray-600 hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent rounded-sm break-all">
+              lesecranspastoutletemps@gmail.com
+            </a>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-100 pt-6">
+          <p class="font-heading font-bold text-xs uppercase tracking-wider text-text-main mb-3">Nos spectacles</p>
+          <ul class="space-y-2">
+            <li>
+              <a href="/spectacle-6-9-ans" class="font-body text-sm text-gray-600 hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent rounded-sm">
+                → Spectacle 6-9 ans
+              </a>
+            </li>
+            <li>
+              <a href="/spectacle-9-12-ans" class="font-body text-sm text-gray-600 hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent rounded-sm">
+                → Spectacle 9-12 ans
+              </a>
+            </li>
+            <li>
+              <a href="/projet-realisations" class="font-body text-sm text-gray-600 hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent rounded-sm">
+                → Projet &amp; réalisations
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const success = document.getElementById('form-success');
+  const error = document.getElementById('form-error');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+      const json = await res.json();
+      if (json.success) {
+        form.classList.add('hidden');
+        success?.classList.remove('hidden');
+      } else {
+        error?.classList.remove('hidden');
+      }
+    } catch {
+      error?.classList.remove('hidden');
+    }
+  });
+</script>
+
+<style>
+  .form-label {
+    @apply block font-heading font-semibold text-xs uppercase tracking-wider text-text-main mb-1.5;
+  }
+  .form-input {
+    @apply block w-full border-2 border-gray-200 rounded-sm px-4 py-2.5 font-body text-sm text-text-main bg-white focus:border-accent focus:outline-none transition-colors duration-150;
+  }
+</style>
