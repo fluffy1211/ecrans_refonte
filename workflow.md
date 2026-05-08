@@ -42,40 +42,42 @@ Estimation totale : ~3-4 sessions de travail avec Claude Code.
 ### Phase 0 — Préparation (avant de coder)
 **Durée estimée :** 15-20 min
 **Objectif :** avoir tout ce qu'il faut pour démarrer sans interruption
+**✅ TERMINÉE — 2026-05-08**
 
 Checklist :
-- [ ] Lister et lire les skills disponibles (frontend, SEO, perf, etc.)
-- [ ] Aller sur https://www.lesecranspastoutletemps.fr/ via WebFetch
-- [ ] Aller sur https://www.lesecranspastoutletemps.fr/projet-réalisations via WebFetch
-- [ ] Relever la palette exacte (hex de chaque couleur : fond, texte, accent, surfaces, hover)
-- [ ] Relever les typos (familles, graisses, tailles) — proposer à Gabriel les équivalents Google Fonts les plus proches
-- [ ] Télécharger toutes les images du site Wix (galerie, portraits, affiche, icônes, décorations)
-- [ ] Télécharger le PDF de retours Académie Aix-Marseille
-- [ ] Présenter à Gabriel un récap : « voici ce que j'ai relevé, voici les équivalents typo que je propose, voici les images récupérées — on valide ? »
+- [x] Lister et lire les skills disponibles (frontend, SEO, perf, etc.)
+- [x] Aller sur https://www.lesecranspastoutletemps.fr/ via WebFetch
+- [x] Aller sur https://www.lesecranspastoutletemps.fr/projet-réalisations via WebFetch
+- [x] Relever la palette exacte — accent `#F8E71C`, texte `#1C1C1C` (fond et typos : placeholder)
+- [~] Relever les typos — **placeholder Raleway/Nunito** (Wix ne les expose pas via WebFetch — à confirmer en DevTools)
+- [x] Télécharger toutes les images du site Wix → `public/images/` (15 fichiers)
+- [x] Télécharger le PDF de retours Académie Aix-Marseille → `public/docs/`
+- [x] Contenu textuel extrait → `content-inventory.md`
 
-**Livrable :** design-tokens documentés (couleurs, typos, espacements) + dossier `/public/images/` + `/public/docs/`
-**Gate :** Gabriel valide les tokens et les assets avant de passer à P1.
+**Livrable :** ✅ design-tokens partiels + `public/images/` + `public/docs/`
+**Gate :** ✅ validé — Gabriel a dit « Met des placeholders, tu peux commencer »
 
 ---
 
 ### Phase 1 — Scaffolding technique
 **Durée estimée :** 15-20 min
 **Objectif :** projet Astro fonctionnel, buildable, déployable (même vide)
+**✅ TERMINÉE — 2026-05-08 — commit `35fbe56`**
 
 Actions :
-- [ ] `npm create astro@latest` avec TypeScript strict
-- [ ] Installer et configurer Tailwind CSS
-- [ ] Installer `@astrojs/sitemap`
-- [ ] Créer le `tailwind.config.mjs` avec les design tokens de P0
-- [ ] Créer `Layout.astro` (HTML minimal, `<head>` propre, slot)
-- [ ] Créer `SEO.astro` (composant props : title, description, og, jsonLd, canonical)
-- [ ] Créer `robots.txt` et configurer le sitemap
-- [ ] Configurer les fonts (auto-hébergement ou Fontsource, font-display: swap)
-- [ ] Vérifier que `npm run build` passe sans erreur
-- [ ] Vérifier que `npm run dev` affiche une page blanche propre
+- [x] Astro 5 + TypeScript strict (initialisé manuellement, dossier non-vide bloquait le CLI)
+- [x] Installer et configurer Tailwind CSS (`@astrojs/tailwind`)
+- [x] Installer `@astrojs/sitemap`
+- [x] Créer le `tailwind.config.mjs` avec les design tokens de P0
+- [x] Créer `Layout.astro` (HTML minimal, `<head>` propre, fonts Google, slot)
+- [x] Créer `SEO.astro` (title, meta, OG, JSON-LD, canonical)
+- [x] Créer `robots.txt` et configurer le sitemap
+- [~] Fonts : placeholder Google Fonts (Raleway + Nunito) — **à remplacer quand typos Wix confirmées**
+- [x] `npm run build` ✓
+- [x] `astro check` : 0 erreurs, 0 warnings
 
-**Livrable :** projet buildable avec `Layout.astro`, `SEO.astro`, design tokens, fonts chargées
-**Gate :** `npm run build` OK.
+**Livrable :** ✅ projet buildable
+**Gate :** ✅ `npm run build` OK
 
 ---
 
