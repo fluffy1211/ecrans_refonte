@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        accent: '#F8E71C',       // jaune principal — validé depuis le SVG Wix
+        accent: '#F8E71C',       // jaune vif — identité visuelle originale
         'text-main': '#1C1C1C',  // texte principal
         // TYPO À VALIDER — couleurs de fond des sections à relever via DevTools
       },

@@ -163,25 +163,33 @@ Actions :
 ---
 
 ### Phase 6 — Déploiement + post-migration
-**Durée estimée :** 15-20 min (hors DNS qui dépend de Béatrice)
-**Objectif :** mettre en ligne
+**✅ PARTIELLEMENT TERMINÉE — 2026-05-08**
 
 Actions :
-- [ ] Déployer sur Cloudflare Pages ou Vercel (selon choix Gabriel)
-- [ ] Configurer le domaine custom `lesecranspastoutletemps.fr` (instructions à fournir à Béatrice pour le changement de NS / transfert depuis Wix)
-- [ ] Vérifier HTTPS + redirections www → non-www (ou l'inverse)
-- [ ] Soumettre le nouveau sitemap dans Google Search Console
-- [ ] Vérifier l'indexation (demander l'inspection d'URL sur les pages principales)
-- [ ] Écrire le README.md : comment éditer le contenu, ajouter une image, déployer, structure du projet
-- [ ] Créer le workflow GitHub Actions : build + check liens cassés
+- [x] Déployé sur **Cloudflare Pages** — auto-deploy sur push `main` (commit bot `6a3e414`)
+- [x] Clé Web3Forms configurée : `587e8bb5-1715-4a5f-87e5-20512bd2566c`
+- [ ] **Domaine custom `lesecranspastoutletemps.fr`** — EN ATTENTE de coupure Wix
+  - Cloudflare Pages exige que le domaine soit une zone Cloudflare (changement de NS obligatoire)
+  - Gabriel n'est pas encore prêt à couper Wix
+  - Site accessible sur `ecransrefonte.pages.dev` en attendant
+  - ⚠️ Ne pas soumettre à Search Console avant d'avoir le vrai domaine
+- [ ] Vérifier HTTPS + redirections (après bascule domaine)
+- [ ] Soumettre le sitemap dans Google Search Console (après bascule domaine)
+- [ ] README.md : comment éditer le contenu, ajouter une image, déployer
+- [ ] Workflow GitHub Actions : build + check liens cassés
 
-**Post-déploiement (à faire par Gabriel après mise en ligne) :**
+**Pour basculer le domaine quand Gabriel est prêt :**
+1. Cloudflare dashboard → Workers & Pages → `ecransrefonte` → Custom domains → `lesecranspastoutletemps.fr`
+2. Cloudflare donne des nameservers → les coller dans Wix (Domains → Advanced → external NS)
+3. Propagation ~24h — site Wix coupé, site Astro en ligne
+
+**Post-déploiement (après bascule domaine) :**
 - [ ] Soumettre sur les annuaires culturels : Offi.fr, Spectable, Agendaculturel.fr, Billetreduc, Que Faire à Paris
 - [ ] Mettre à jour le lien du site sur les réseaux sociaux / signatures email de Béatrice & Samy
 - [ ] Surveiller Search Console pendant 2-4 semaines (indexation, erreurs, requêtes)
 - [ ] Résilier le forfait Wix Premium une fois le transfert de domaine confirmé
 
-**Livrable :** site en ligne, README, CI
+**Livrable :** site en ligne sur le vrai domaine, README, CI
 **Gate :** le site est accessible sur `lesecranspastoutletemps.fr` avec HTTPS.
 
 ---

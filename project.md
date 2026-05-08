@@ -27,7 +27,7 @@ Refaire **from scratch** le site `lesecranspastoutletemps.fr`, actuellement héb
 - **Framework :** Astro (statique par défaut, parfait pour SEO + perf, faible empreinte JS)
 - **Styling :** Tailwind CSS
 - **Langue :** Français uniquement
-- **Hébergement cible :** Cloudflare Pages ou Vercel (à décider, gratuit prioritaire)
+- **Hébergement cible :** Cloudflare Pages ✅ (déployé, auto-deploy sur push main)
 - **Domaine :** `lesecranspastoutletemps.fr` (récupération depuis Wix prévue ultérieurement, hors scope dev)
 - **Pas de CMS :** contenu en Markdown (`/src/content/`) ou en dur dans les composants. Les propriétaires ne modifient pas le site eux-mêmes.
 - **Pas de framework JS lourd :** pas de React, pas de Next, pas de Vue. Astro + îlots minimaux uniquement si nécessaire.
@@ -52,24 +52,9 @@ Refaire **from scratch** le site `lesecranspastoutletemps.fr`, actuellement héb
 
 ---
 
-## Identité visuelle — fidélité maximale au site actuel
+## Identité visuelle
 
-⚠️ **Contrainte forte : le design doit rester quasi-identique au site Wix actuel.** Les propriétaires (Béatrice & Samy) ne doivent pas être dépaysés. La refonte est **technique et SEO**, pas une refonte graphique. Toute amélioration visuelle est tolérée uniquement si elle reste invisible pour un œil non-averti.
-
-### Méthode obligatoire avant de coder le moindre composant
-
-1. **Aller sur https://www.lesecranspastoutletemps.fr/ et `/projet-réalisations`** via WebFetch (ou navigateur si dispo)
-2. **Extraire et reproduire à l'identique** :
-   - Palette de couleurs exacte (relever les hex via DevTools — fond, texte, accent jaune, surfaces, boutons, états hover/focus)
-   - Familles de polices utilisées par Wix (relever via DevTools `computed style`) et trouver les équivalents libres les plus proches sur Google Fonts / Fontsource. Si l'équivalent exact n'existe pas, **demander à Gabriel** avant de trancher.
-   - Tailles de police, line-height, letter-spacing des titres et du corps
-   - Espacements verticaux entre sections, paddings, gouttières
-   - Style et radius des boutons, des cartes, des séparateurs
-   - Ratios d'images, layouts en grille, ordre exact des sections
-   - Comportement responsive (où ça passe en colonne sur mobile)
-3. **Ne RIEN inventer** sur la direction artistique. Si une décision est ambiguë, **demander à Gabriel** plutôt que choisir.
-
-### Repères visuels déjà relevés du site actuel
+### Repères visuels
 
 - **Accent principal :** jaune `#F8E71C` (présent dans le code SVG Wix — à valider en DevTools, certaines variantes peuvent exister)
 - **Texte principal :** `#1C1C1C`
