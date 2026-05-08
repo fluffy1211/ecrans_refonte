@@ -1,0 +1,20 @@
+---
+interface Props {
+  text?: string;
+  href?: string;
+  class?: string;
+}
+
+const {
+  text = 'Réserver le spectacle',
+  href = '/contact',
+  class: className = '',
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class={`inline-block bg-accent text-text-main font-heading font-bold text-sm uppercase tracking-widest px-8 py-3 rounded-sm hover:opacity-90 active:opacity-75 transition-opacity duration-150 focus-visible:outline-2 focus-visible:outline-text-main focus-visible:outline-offset-4 ${className}`}
+>
+  {text}
+</a>

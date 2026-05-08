@@ -1,0 +1,136 @@
+---
+const pathname = Astro.url.pathname;
+
+// À VALIDER : "THÉÂTRE" dans le menu Wix est ambigu (lien ou label parent ?).
+// Provisoire : lien vers la page 6-9 ans. Clarifier avec Gabriel avant P3.
+const navLinks = [
+  { href: '/spectacle-6-9-ans', label: 'Théâtre' },
+  { href: '/projet-realisations', label: 'Projet & réalisations' },
+  { href: '/contact', label: 'Contact' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return pathname === '/';
+  return pathname.startsWith(href);
+}
+---
+
+<a
+  href="#main-content"
+  class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-accent focus:text-text-main focus:px-4 focus:py-2 focus:rounded-sm focus:font-heading focus:font-bold focus:text-sm focus:uppercase"
+>
+  Aller au contenu principal
+</a>
+
+<header class="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
+  <nav
+    class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between"
+    aria-label="Navigation principale"
+  >
+    <!-- Wordmark -->
+    <a
+      href="/"
+      class="font-heading font-black text-xs sm:text-sm tracking-widest text-text-main uppercase leading-tight hover:text-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent rounded-sm"
+      aria-label="Les écrans pas tout le temps — Accueil"
+    >
+      LES ECRANS<br class="hidden xs:block sm:hidden" /> PAS TOUT LE TEMPS !
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex items-center gap-6 list-none m-0 p-0" role="list">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class={[
+              'font-heading font-semibold text-sm uppercase tracking-wide transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm pb-0.5',
+              isActive(href)
+                ? 'text-text-main border-b-2 border-accent'
+                : 'text-text-main hover:text-accent',
+            ].join(' ')}
+            aria-current={isActive(href) ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Burger mobile -->
+    <button
+      id="menu-toggle"
+      class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 rounded focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Ouvrir le menu de navigation"
+    >
+      <span class="burger-line block w-6 h-0.5 bg-text-main transition-all duration-200 origin-center"></span>
+      <span class="burger-line block w-6 h-0.5 bg-text-main transition-all duration-200"></span>
+      <span class="burger-line block w-6 h-0.5 bg-text-main transition-all duration-200 origin-center"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-nav"
+    class="hidden md:hidden bg-white border-t border-gray-100"
+    role="dialog"
+    aria-label="Menu de navigation mobile"
+  >
+    <ul class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-1 list-none m-0" role="list">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class={[
+              'block font-heading font-semibold text-sm uppercase tracking-wide py-3 border-b border-gray-100 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent',
+              isActive(href) ? 'text-accent' : 'text-text-main hover:text-accent',
+            ].join(' ')}
+            aria-current={isActive(href) ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('mobile-nav');
+  const lines = document.querySelectorAll<HTMLElement>('.burger-line');
+
+  if (toggle && nav) {
+    const open = () => {
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Fermer le menu de navigation');
+      nav.classList.remove('hidden');
+      lines[0]?.classList.add('translate-y-2', 'rotate-45');
+      lines[1]?.classList.add('opacity-0');
+      lines[2]?.classList.add('-translate-y-2', '-rotate-45');
+    };
+
+    const close = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+      nav.classList.add('hidden');
+      lines[0]?.classList.remove('translate-y-2', 'rotate-45');
+      lines[1]?.classList.remove('opacity-0');
+      lines[2]?.classList.remove('-translate-y-2', '-rotate-45');
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      isOpen ? close() : open();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') close();
+    });
+
+    nav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', close);
+    });
+  }
+</script>
