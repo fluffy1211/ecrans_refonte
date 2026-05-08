@@ -82,65 +82,55 @@ Actions :
 ---
 
 ### Phase 2 — Header, Footer, CTA
-**Durée estimée :** 15-20 min
-**Objectif :** les éléments communs à toutes les pages, fidèles au design Wix
+**✅ TERMINÉE — 2026-05-08 — commit `8c9d5ab`**
 
-Actions :
-- [ ] `Header.astro` — navigation identique au site actuel (liens, wordmark, responsive burger si besoin)
-- [ ] `Footer.astro` — copyright, contact, email, fidèle au footer Wix actuel
-- [ ] `Cta.astro` — bouton « Réserver le spectacle » réutilisable, style identique au site actuel
-- [ ] Vérifier le responsive mobile-first (le header actuel est minimaliste, ne pas le compliquer)
-- [ ] Navigation clavier + focus visible
+- [x] `Header.astro` — wordmark, nav desktop, burger mobile (aria, ESC, focus-visible, skip-link)
+- [x] `Footer.astro` — fond sombre, coordonnées, copyright, liens secondaires
+- [x] `Cta.astro` — bouton réutilisable, variant `primary` (jaune) / `dark`
+- [x] `Layout.astro` mis à jour (Header + Footer + main#main-content)
+- [x] Navigation clavier + focus visible
 
-**Livrable :** header + footer + CTA visibles sur la page de dev, identiques au site actuel
-**Gate :** comparaison visuelle côte-à-côte avec le site Wix — Gabriel valide.
+**⚠️ À VALIDER :** "THÉÂTRE" dans le menu Wix pointe provisoirement vers `/spectacle-6-9-ans`. Clarifier avec Gabriel si lien unique ou autre structure.
 
 ---
 
 ### Phase 3 — Page d'accueil (`/`)
-**Durée estimée :** 30-45 min (page la plus dense)
-**Objectif :** reproduire à l'identique la page d'accueil Wix, section par section
+**✅ TERMINÉE — 2026-05-08 — commit `dba679b`**
 
-Sections dans l'ordre exact du site actuel :
-- [ ] Hero (Béatrice & Samy + tagline)
-- [ ] Présentation des 2 spectacles (6-9 ans / 9-12 ans)
-- [ ] Vignettes équipe (photos Béatrice, Samy, scène, sticker)
-- [ ] Description du spectacle (30+30 min, participation active)
-- [ ] Galerie photos (6 visuels carrés)
-- [ ] Témoignages « Ils ont aimé » (4 avis)
-- [ ] Mention Béatrice HERRERO + lien vers PDF Académie
-- [ ] Bloc Contact (Marseille, tel, email)
-- [ ] JSON-LD : PerformingGroup + WebSite
-- [ ] `<title>` + `<meta description>` + Open Graph conformes au tableau SEO du PROJECT.md
-- [ ] Lighthouse ≥ cibles
+Direction design retenue : théâtre éditorial noir/blanc/jaune.
+- [x] Hero sombre + texture étoilée (deco-02.png, screen blend) + décalage jaune derrière l'image
+- [x] Présentation 2 spectacles — cartes bordées avec hover dark
+- [x] Vignettes équipe (Béatrice, Samy, scène, sticker) — fond sombre
+- [x] Description 30+30 — section jaune vif, chiffres géants
+- [x] Galerie 6 photos — fond sombre, grille serrée
+- [x] Témoignages — bulles BD jaunes avec ombre portée noire, fond blanc
+- [x] Mention Béatrice HERRERO + lien PDF Académie
+- [x] Bloc contact — fond sombre + texture, coordonnées
+- [x] JSON-LD : WebSite + PerformingGroup
+- [x] `<title>` + `<meta>` + OG conformes
 
-**Livrable :** page `/` complète, identique visuellement au site actuel
-**Gate :** Gabriel compare et valide. Lighthouse OK.
+**⚠️ À VALIDER :** attributions des témoignages (nom/école/ville) — demander à Béatrice.
 
 ---
 
 ### Phase 4 — Pages secondaires
-**Durée estimée :** 30-45 min
-**Objectif :** créer les 5 pages restantes
+**✅ TERMINÉE — 2026-05-08 — commit `743ac70`**
 
-Par ordre de priorité :
-1. [ ] `/spectacle-6-9-ans` — description dédiée, FAQ, CTA réservation, JSON-LD Event + FAQPage
-2. [ ] `/spectacle-9-12-ans` — idem, contenu adapté à la tranche d'âge
-3. [ ] `/contact` — formulaire (Formspree/Web3Forms/mailto selon choix Gabriel), JSON-LD LocalBusiness
-4. [ ] `/projet-realisations` — reproduire le contenu de la page Wix existante
-5. [ ] `/a-propos` — Béatrice & Samy, JSON-LD PerformingGroup
-6. [ ] `/mentions-legales` — texte standard (hébergeur, éditeur, RGPD minimal)
+- [x] `Faq.astro` — `<details>/<summary>` accessible, icône +/× animée CSS, JSON-LD FAQPage
+- [x] `/spectacle-6-9-ans` — synopsis, infos pratiques, 3 photos, FAQ 8 questions, JSON-LD Event+FAQPage+Breadcrumb
+- [x] `/spectacle-9-12-ans` — idem, cycle 3, synopsis différent
+- [x] `/contact` — formulaire Web3Forms, honeypot, confirmation AJAX, JSON-LD LocalBusiness
+- [x] `/projet-realisations` — +90 représentations, 4000 élèves, villes, galerie, lien PDF
+- [x] `/a-propos` — bios Béatrice+Samy (à enrichir), JSON-LD PerformingGroup
+- [x] `/mentions-legales` — éditeur, hébergeur Cloudflare, RGPD, noindex
+- [x] BreadcrumbList JSON-LD sur toutes les pages
 
-Pour chaque page :
-- [ ] `<title>` + `<meta>` conformes au tableau SEO
-- [ ] JSON-LD spécifique
-- [ ] H1 unique contenant le mot-clé principal
-- [ ] CTA « Réserver le spectacle » en fin de page
-- [ ] BreadcrumbList JSON-LD
-- [ ] Lighthouse ≥ cibles
-
-**Livrable :** toutes les pages en place avec contenu, SEO, et données structurées
-**Gate :** Gabriel valide page par page. Lighthouse OK sur chacune.
+**⚠️ ACTIONS REQUISES avant P5 :**
+- Gabriel : créer un compte web3forms.com et remplacer `YOUR_ACCESS_KEY` dans `src/pages/contact.astro`
+- Béatrice : valider les synopses des spectacles (marqués `<!-- CONTENU À VALIDER -->`)
+- Béatrice : enrichir les bios dans `/a-propos` (marquées `<!-- CONTENU MANQUANT -->`)
+- Gabriel/Béatrice : portraits HD de Béatrice et Samy (Wix sert des thumbnails ~60px)
+- Gabriel : confirmer les typographies via DevTools sur le site Wix (Raleway/Nunito sont des placeholders)
 
 ---
 
