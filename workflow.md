@@ -164,6 +164,7 @@ Actions :
 
 ### Phase 6 — Déploiement + post-migration
 **✅ PARTIELLEMENT TERMINÉE — 2026-05-08**
+**✅ Audit post-P6 — 2026-05-09** : bug photo Samy (`portrait-beatrice.jpg` 404) corrigé, page `/zone-intervention` ajoutée à la nav principale + FAQ spectacles + projet-realisations, dropdown « Théâtre » → « Spectacles », section « Pour quelles structures ? » ajoutée sur la home (avec angle CE), `« 3 par jour »` clarifié en `« 3 représentations / jour »`, doublon « À propos » retiré du footer, FAQ étendue pour rendu HTML, tous les commentaires `<!-- À VALIDER / CONTENU MANQUANT -->` purgés du HTML servi (suivi reste dans CLAUDE.md).
 
 Actions :
 - [x] Déployé sur **Cloudflare Pages** — auto-deploy sur push `main` (commit bot `6a3e414`)

@@ -8,7 +8,10 @@
     "preview": "npm run build && wrangler dev",
     "astro": "astro",
     "deploy": "npm run build && wrangler deploy",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+    "lint": "eslint src --ext .ts,.astro",
+    "lint:fix": "eslint src --ext .ts,.astro --fix",
+    "format": "prettier --write src"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -20,6 +23,15 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/parser": "^8.21.0",
+    "astro-eslint-parser": "^1.3.2",
+    "eslint": "^9.21.0",
+    "eslint-plugin-astro": "^1.4.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript-eslint": "^8.21.0",
     "wrangler": "^4.90.0"
   }
 }

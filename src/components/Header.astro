@@ -1,7 +1,7 @@
 ---
 const pathname = Astro.url.pathname;
 
-const isTheatreActive = pathname.startsWith('/spectacle-6-9-ans') || pathname.startsWith('/spectacle-9-12-ans');
+const isSpectaclesActive = pathname.startsWith('/spectacle-6-9-ans') || pathname.startsWith('/spectacle-9-12-ans');
 
 const navLinks = [
   { href: '/projet-realisations', label: 'Projet & réalisations' },
@@ -39,23 +39,23 @@ function isActive(href: string): boolean {
     <!-- Desktop nav -->
     <ul class="hidden md:flex items-center gap-6 list-none m-0 p-0" role="list">
 
-      <!-- Dropdown Théâtre -->
-      <li class="relative" id="theatre-li">
+      <!-- Dropdown Spectacles -->
+      <li class="relative" id="spectacles-li">
         <button
-          id="theatre-btn"
+          id="spectacles-btn"
           aria-expanded="false"
           aria-haspopup="true"
-          aria-controls="theatre-dropdown"
+          aria-controls="spectacles-dropdown"
           class={[
             'flex items-center gap-1 font-heading font-semibold text-sm uppercase tracking-wide transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm pb-0.5 cursor-pointer',
-            isTheatreActive
+            isSpectaclesActive
               ? 'text-text-main border-b-2 border-accent'
               : 'text-text-main hover:text-accent',
           ].join(' ')}
         >
-          Théâtre
+          Spectacles
           <svg
-            id="theatre-chevron"
+            id="spectacles-chevron"
             width="12" height="12" viewBox="0 0 12 12" fill="none"
             aria-hidden="true"
             class="transition-transform duration-200 opacity-60"
@@ -65,7 +65,7 @@ function isActive(href: string): boolean {
         </button>
 
         <ul
-          id="theatre-dropdown"
+          id="spectacles-dropdown"
           role="menu"
           aria-label="Nos spectacles"
           class="hidden absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52 bg-white border-2 border-text-main rounded-sm shadow-[4px_4px_0_0_#1C1C1C] list-none p-1"
@@ -146,7 +146,7 @@ function isActive(href: string): boolean {
       <!-- Spectacles directement dans le menu mobile (pas de sous-menu) -->
       <li>
         <p class="font-heading font-semibold text-[10px] uppercase tracking-wider text-gray-400 px-0 pt-1 pb-1.5">
-          Théâtre
+          Spectacles
         </p>
       </li>
       <li>
@@ -223,10 +223,10 @@ function isActive(href: string): boolean {
     nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeBurger));
   }
 
-  // Dropdown Théâtre (desktop)
-  const btn = document.getElementById('theatre-btn');
-  const dropdown = document.getElementById('theatre-dropdown');
-  const chevron = document.getElementById('theatre-chevron');
+  // Dropdown Spectacles (desktop)
+  const btn = document.getElementById('spectacles-btn');
+  const dropdown = document.getElementById('spectacles-dropdown');
+  const chevron = document.getElementById('spectacles-chevron');
 
   if (btn && dropdown) {
     const openDropdown = () => {
