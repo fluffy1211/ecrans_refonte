@@ -10,6 +10,12 @@ const jsonLd = [
     description: 'Compagnie de spectacle théâtral participatif sur les écrans pour les enfants de 6 à 12 ans.',
     url: 'https://www.lesecranspastoutletemps.fr/',
     location: { '@type': 'Place', addressLocality: 'Marseille', addressCountry: 'FR' },
+    areaServed: [
+      { '@type': 'AdministrativeArea', name: 'Bouches-du-Rhône' },
+      { '@type': 'AdministrativeArea', name: 'Var' },
+      { '@type': 'AdministrativeArea', name: 'Vaucluse' },
+      { '@type': 'AdministrativeArea', name: "Provence-Alpes-Côte d'Azur" },
+    ],
     member: [
       { '@type': 'Person', name: 'Béatrice Herrero', jobTitle: 'Autrice, direction artistique, comédienne' },
       { '@type': 'Person', name: 'Samy', jobTitle: 'Comédien' },
@@ -25,11 +31,24 @@ const jsonLd = [
   },
 ];
 
-const villes = [
-  'Marseille', 'La Ciotat', 'Aubagne', 'Vitrolles', 'Martigues',
-  'Châteauneuf-les-Martigues', 'Allauch', 'Plan-de-Cuques', 'Les Pennes-Mirabeau',
+const photos = [
+  { src: '/images/gallery-01.jpg', alt: 'Béatrice et Samy en scène pendant le spectacle Les écrans pas tout le temps' },
+  { src: '/images/gallery-02.jpg', alt: 'Les élèves participent activement au débat après le spectacle' },
+  { src: '/images/gallery-03.jpg', alt: 'Moment de jeu interactif entre les comédiens et les enfants' },
+  { src: '/images/gallery-04.jpg', alt: "Scène humoristique sur l'usage des écrans en famille" },
+  { src: '/images/gallery-05.webp', alt: 'Béatrice en scène pendant le rap participatif avec les élèves' },
+  { src: '/images/gallery-06.jpg', alt: 'Samy et les enfants lors du temps de débat collectif' },
 ];
 
+const villesParZone = [
+  {
+    zone: 'Bouches-du-Rhône (13)',
+    villes: [
+      'Marseille', 'Aix-en-Provence', 'La Ciotat', 'Aubagne', 'Vitrolles',
+      'Martigues', 'Châteauneuf-les-Martigues', 'Allauch', 'Plan-de-Cuques', 'Les Pennes-Mirabeau',
+    ],
+  },
+];
 ---
 
 <Layout
@@ -66,7 +85,7 @@ const villes = [
       <div class="grid grid-cols-3 gap-4 sm:gap-8 text-center">
         {[
           { n: '+90', label: 'représentations' },
-          { n: '3', label: 'par jour' },
+          { n: '3', label: 'représentations / jour' },
           { n: '4 000', label: 'élèves touchés' },
         ].map(({ n, label }) => (
           <div>
@@ -78,58 +97,137 @@ const villes = [
     </div>
   </section>
 
+  <!-- PARTENAIRES & SOUTIENS -->
+  <section class="bg-gray-50 border-t-4 border-accent py-14 sm:py-20" aria-label="Partenaires et soutiens">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main mb-2">
+        Ils nous font confiance
+      </h2>
+      <p class="font-body text-gray-500 text-sm mb-10">
+        Le spectacle s'inscrit dans des cadres institutionnels reconnus et a été soutenu par des partenaires locaux.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-5">
+        <div class="bg-white border-2 border-text-main p-5 rounded-sm flex flex-col">
+          <span class="w-2.5 h-2.5 bg-accent rounded-sm mb-3 flex-shrink-0" aria-hidden="true"></span>
+          <p class="font-heading font-black text-base text-text-main mb-2">Académie d'Aix-Marseille</p>
+          <p class="font-body text-xs text-gray-500 leading-relaxed mb-4 flex-1">
+            Analyse approfondie des retours enseignants et élèves après intervention.
+            Pertinence pédagogique validée.
+          </p>
+          <a
+            href="/docs/retours-academie-aix-marseille.pdf"
+            class="font-heading font-bold text-xs text-text-main underline underline-offset-4 decoration-accent hover:decoration-2 transition-all focus-visible:outline-2 focus-visible:outline-accent rounded-sm"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Lire l'analyse (PDF) ↗
+          </a>
+        </div>
+        <div class="bg-white border-2 border-text-main p-5 rounded-sm flex flex-col">
+          <span class="w-2.5 h-2.5 bg-accent rounded-sm mb-3 flex-shrink-0" aria-hidden="true"></span>
+          <p class="font-heading font-black text-base text-text-main mb-2">Mairie de Marseille</p>
+          <p class="font-body text-xs text-gray-500 leading-relaxed flex-1">
+            Partenaire du programme « Parcours Petits Explorateurs du Web », dispositif d'éducation
+            au numérique pour les 6–12 ans, déployé dans les écoles marseillaises.
+          </p>
+        </div>
+        <div class="bg-white border-2 border-text-main p-5 rounded-sm flex flex-col">
+          <span class="w-2.5 h-2.5 bg-accent rounded-sm mb-3 flex-shrink-0" aria-hidden="true"></span>
+          <p class="font-heading font-black text-base text-text-main mb-2">Parcours EMI</p>
+          <p class="font-body text-xs text-gray-500 leading-relaxed flex-1">
+            Inscrit dans l'Éducation aux Médias et à l'Information, parcours transversal obligatoire
+            de l'école au lycée (circulaire 2015, renforcée 2022). Compatible avec le volet
+            « parcours citoyen » du projet d'école.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="bg-text-main py-14 sm:py-20" aria-label="Galerie photos du spectacle">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading font-black text-2xl sm:text-3xl text-white mb-2">
+        Le spectacle en photos
+      </h2>
+      <p class="font-body text-gray-400 text-sm mb-8">
+        Quelques moments de représentation avec les élèves.
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        {photos.map((photo, i) => (
+          <a
+            href={`#photo-${i}`}
+            class="group block aspect-[4/3] overflow-hidden rounded-sm ring-2 ring-transparent hover:ring-accent focus-visible:ring-accent transition-all duration-200"
+            aria-label={`Agrandir : ${photo.alt}`}
+          >
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              width="400"
+              height="300"
+              loading="lazy"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+
+    {photos.map((photo, i) => (
+      <div id={`photo-${i}`} class="lightbox-overlay" role="dialog" aria-modal="true" aria-label={photo.alt}>
+        <a href="#" class="lightbox-bg" aria-label="Fermer la photo"></a>
+        <div class="lightbox-content">
+          <a href="#" class="lightbox-close" aria-label="Fermer">✕</a>
+          <img src={photo.src} alt={photo.alt} class="lightbox-img" />
+        </div>
+      </div>
+    ))}
+  </section>
+
   <!-- LE PROJET + VILLES -->
   <section class="bg-white py-14 sm:py-20" aria-label="Description du projet">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-10">
       <div>
         <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main mb-5">
-          On a joué&nbsp;!
+          Villes et lieux où nous avons joué
         </h2>
-        <!-- CONTENU À VALIDER : texte de présentation du projet à enrichir avec Béatrice -->
-        <div class="font-body text-gray-600 leading-relaxed space-y-4">
+        <div class="font-body text-gray-600 leading-relaxed space-y-4 mb-6">
           <p>
-            Béatrice et Samy se produisent dans tous types d'espaces, sans contrainte technique :
+            Nous nous produisons dans tous types d'espaces, sans contrainte technique :
             amphithéâtre, salle de motricité, gymnase, salle de classe, salle polyvalente,
             auditorium…
           </p>
           <p>
-            Le spectacle s'adapte aux contraintes de chaque structure, ce qui lui permet d'être
-            accessible à des établissements aux configurations très différentes.
-          </p>
-          <p>
-            Leurs interventions ont été reconnues et soutenues par l'Académie d'Aix-Marseille,
+            Nos interventions ont été reconnues et soutenues par l'Académie d'Aix-Marseille,
             qui a réalisé une analyse approfondie des retours enseignants et élèves.
           </p>
         </div>
-
-        <div class="mt-6">
-          <a
-            href="/docs/retours-academie-aix-marseille.pdf"
-            class="inline-flex items-center gap-2 font-heading font-bold text-sm text-text-main underline underline-offset-4 decoration-accent hover:decoration-2 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm transition-all"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Lire l'analyse des retours — Académie d'Aix-Marseille
-            <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="border-t border-gray-100 pt-10">
-        <h3 class="font-heading font-black text-lg text-text-main mb-1">
-          Villes et lieux où nous avons joué
-        </h3>
-        <p class="font-body text-gray-500 text-sm mb-5">Région PACA — et au-delà sur demande.</p>
-        <div class="flex flex-wrap gap-2">
-          {villes.map((ville) => (
-            <span class="font-heading font-semibold text-sm text-text-main border-2 border-text-main rounded-sm px-3 py-1.5">
-              {ville}
-            </span>
+        <a
+          href="/docs/retours-academie-aix-marseille.pdf"
+          class="inline-flex items-center gap-2 font-heading font-bold text-sm text-text-main underline underline-offset-4 decoration-accent hover:decoration-2 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm transition-all mb-10"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Lire l'analyse des retours, Académie d'Aix-Marseille
+          <span aria-hidden="true">↗</span>
+        </a>
+        <div class="space-y-6 mb-8">
+          {villesParZone.map(({ zone, villes }) => (
+            <div>
+              <p class="font-heading font-semibold text-xs uppercase tracking-widest text-gray-400 mb-3">{zone}</p>
+              <div class="flex flex-wrap gap-2">
+                {villes.map((ville) => (
+                  <span class="font-heading font-semibold text-sm text-text-main border-2 border-text-main rounded-sm px-3 py-1.5">
+                    {ville}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
-          <span class="font-heading font-semibold text-sm text-gray-400 border-2 border-gray-200 rounded-sm px-3 py-1.5">
-            et d'autres…
-          </span>
         </div>
+        <p class="font-body text-gray-500 text-sm">
+          Des déplacements hors PACA sont possibles selon les conditions logistiques. Contactez-nous en précisant votre localisation, la date souhaitée et le type de structure.
+        </p>
       </div>
     </div>
   </section>
@@ -145,3 +243,52 @@ const villes = [
   </section>
 
 </Layout>
+
+<style>
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .lightbox-overlay:target {
+    display: flex;
+  }
+  .lightbox-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(28, 28, 28, 0.93);
+  }
+  .lightbox-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+  .lightbox-img {
+    max-width: 90vw;
+    max-height: 82vh;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  }
+  .lightbox-close {
+    color: white;
+    font-size: 1.125rem;
+    line-height: 1;
+    text-decoration: none;
+    opacity: 0.65;
+    transition: opacity 0.15s;
+    padding: 0.25rem 0.5rem;
+  }
+  .lightbox-close:hover {
+    opacity: 1;
+  }
+</style>

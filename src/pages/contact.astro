@@ -26,7 +26,7 @@ const jsonLd = [
 
 <Layout
   title="Réserver le spectacle Les écrans pas tout le temps – Contact"
-  description="Réservez le spectacle pour votre école, médiathèque, ville ou comité d'entreprise. Devis sous 48h."
+  description="Réservez le spectacle pour votre école, médiathèque ou centre social."
   jsonLd={jsonLd}
 >
 
@@ -41,12 +41,12 @@ const jsonLd = [
           <li class="text-accent" aria-current="page">Contact</li>
         </ol>
       </nav>
-      <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-4">Marseille · PACA</p>
+      <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-4">Région PACA</p>
       <h1 class="font-heading font-black text-4xl sm:text-5xl text-white leading-tight mb-4">
         Réserver le spectacle
       </h1>
       <p class="font-body text-gray-400 text-base max-w-md">
-        Remplissez le formulaire ci-dessous — nous vous répondons sous 48h avec un devis personnalisé.
+        Remplissez le formulaire ci-dessous et nous prendrons contact avec vous.
       </p>
     </div>
   </section>
@@ -91,7 +91,6 @@ const jsonLd = [
               <option>Médiathèque / bibliothèque</option>
               <option>Mairie / collectivité</option>
               <option>Centre social</option>
-              <option>Comité d'entreprise</option>
               <option>Autre</option>
             </select>
           </div>
@@ -99,7 +98,7 @@ const jsonLd = [
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label for="ville" class="form-label">Ville <span class="text-red-500" aria-hidden="true">*</span></label>
-              <input id="ville" name="ville" type="text" required class="form-input" placeholder="Marseille" />
+              <input id="ville" name="ville" type="text" required class="form-input" placeholder="Votre ville" />
             </div>
             <div>
               <label for="effectif" class="form-label">Effectif estimé</label>
@@ -140,7 +139,6 @@ const jsonLd = [
         <div>
           <h2 class="font-heading font-black text-xl text-text-main mb-4">Coordonnées</h2>
           <div class="space-y-3">
-            <p class="font-heading font-semibold text-xs uppercase tracking-wider bg-accent text-text-main px-2 py-0.5 rounded-sm inline-block">Marseille</p>
             <a href="tel:+33673158508" class="block font-heading font-bold text-lg text-text-main hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent rounded-sm">
               06 73 15 85 08
             </a>

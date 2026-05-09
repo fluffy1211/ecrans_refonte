@@ -28,15 +28,6 @@ const jsonLdPerformingGroup = {
   },
 };
 
-const galleryPhotos = [
-  { src: '/images/gallery-01.jpg', alt: 'Béatrice et Samy en scène pendant le spectacle Les écrans pas tout le temps' },
-  { src: '/images/gallery-02.jpg', alt: 'Les élèves participent activement au débat après le spectacle' },
-  { src: '/images/gallery-03.jpg', alt: 'Moment de jeu interactif entre les comédiens et les enfants' },
-  { src: '/images/gallery-04.jpg', alt: "Scène humoristique sur l'usage des écrans en famille" },
-  { src: '/images/gallery-05.webp', alt: 'Béatrice en scène pendant le rap participatif avec les élèves' },
-  { src: '/images/gallery-06.jpg', alt: 'Samy et les enfants lors du temps de débat collectif' },
-];
-
 const testimonials = [
   "Super pièce ! Simple et efficace ! Les élèves ont accroché et ont été réactifs ! Une belle occasion pour se questionner et interroger son rapport aux écrans !",
   "Spectacle percutant très bien conçu et adapté à l'âge des enfants, et proche de la vie quotidienne des familles.",
@@ -75,7 +66,7 @@ const testimonials = [
           le temps&nbsp;!
         </h1>
         <p class="font-body text-gray-400 text-base leading-relaxed mb-8 max-w-sm mx-auto md:mx-0">
-          Spectacle humoristique sur les écrans pour les enfants —
+          Spectacle humoristique sur les écrans pour les enfants
           30&nbsp;min de spectacle + 30&nbsp;min de débat avec leur participation active.
         </p>
         <Cta />
@@ -97,6 +88,29 @@ const testimonials = [
           class="relative w-full object-contain"
         />
       </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       1b. SOCIAL PROOF STRIP — validation institutionnelle
+       ============================================================ -->
+  <section class="bg-gray-50 border-t-4 border-accent" aria-label="Validation pédagogique et chiffres clés">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-5 sm:py-6 flex flex-col sm:flex-row items-center sm:justify-between gap-3 sm:gap-8 text-center sm:text-left">
+      <a
+        href="/docs/retours-academie-aix-marseille.pdf"
+        class="group flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="w-2.5 h-2.5 bg-accent rounded-sm flex-shrink-0" aria-hidden="true"></span>
+        <span class="font-heading font-bold text-sm text-text-main group-hover:text-accent transition-colors">
+          Pertinence pédagogique validée par l'Académie d'Aix-Marseille
+          <span class="font-normal text-gray-500 ml-1 whitespace-nowrap">— analyse des retours (PDF)</span>
+        </span>
+      </a>
+      <p class="font-heading font-semibold text-xs uppercase tracking-widest text-gray-500 whitespace-nowrap">
+        +90 représentations · 4&nbsp;000 élèves · Région PACA
+      </p>
     </div>
   </section>
 
@@ -143,7 +157,7 @@ const testimonials = [
       <div class="grid grid-cols-3 gap-5 sm:gap-8 max-w-3xl mx-auto">
         {[
           { src: '/images/gallery-01.jpg',        name: 'Béatrice',   role: 'Direction artistique · Comédienne', alt: 'Béatrice Herrero animant le débat avec les élèves' },
-          { src: '/images/portrait-beatrice.jpg', name: 'Samy',       role: 'Comédien',                          alt: 'Samy, comédien du spectacle Les écrans pas tout le temps' },
+          { src: '/images/portrait-samy.jpg',     name: 'Samy',       role: 'Comédien',                          alt: 'Samy, comédien du spectacle Les écrans pas tout le temps' },
           { src: '/images/en-scene.jpg',          name: 'En scène',   role: 'Avec les élèves',                   alt: 'Béatrice et Samy en scène dans une salle de classe' },
         ].map(({ src, name, role, alt }) => (
           <div class="text-center">
@@ -195,6 +209,41 @@ const testimonials = [
   </section>
 
   <!-- ============================================================
+       5. POUR QUELLES STRUCTURES — gris clair, cartes blanches
+       ============================================================ -->
+  <section class="bg-gray-50 py-16 sm:py-24" aria-label="Pour quelles structures">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-text-main mb-3">
+          Pour quelles structures&nbsp;?
+        </h2>
+        <p class="font-body text-gray-500 max-w-xl mx-auto">
+          Nous intervenons partout où des enfants de 6 à 12 ans sont accueillis.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-5 max-w-3xl mx-auto">
+        {[
+          { label: 'Écoles primaires',         desc: "Intervention en classe ou salle polyvalente, en lien avec le parcours EMI et le volet citoyen du projet d'école." },
+          { label: 'Médiathèques & bibliothèques', desc: "Animation jeune public sur les temps de vacances ou en partenariat avec les écoles du territoire." },
+          { label: 'Mairies & centres sociaux',  desc: "Action de prévention numérique dans le cadre d'un programme municipal ou d'éducation populaire." },
+        ].map(({ label, desc }) => (
+          <div class="border-l-4 border-accent bg-white pl-5 pr-4 py-5 rounded-sm">
+            <p class="font-heading font-bold text-sm text-text-main mb-2">{label}</p>
+            <p class="font-body text-xs text-gray-600 leading-relaxed">{desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center mt-10 font-body text-sm text-gray-500">
+        Basés à Marseille, interventions dans toute la
+        <a href="/projet-realisations" class="font-heading font-semibold text-text-main underline underline-offset-4 decoration-accent hover:decoration-2 transition-all">région PACA</a>
+        et au-delà sur demande.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
        6. TÉMOIGNAGES — blanc, bulles jaunes style BD
        ============================================================ -->
   <section class="bg-white py-16 sm:py-24" aria-label="Témoignages">
@@ -204,13 +253,12 @@ const testimonials = [
           Ils ont aimé
           <span class="absolute -bottom-1.5 left-0 right-0 h-2 bg-accent" aria-hidden="true"></span>
         </h2>
-        <!-- À VALIDER : pas d'attribution nominative sur le site Wix actuel. Demander à Béatrice. -->
       </div>
 
       <div class="grid sm:grid-cols-2 gap-8 sm:gap-10">
         {testimonials.map((quote) => (
           <blockquote class="speech-bubble">
-            <p class="font-body text-sm leading-relaxed italic text-text-main">
+            <p class="font-body text-sm leading-relaxed italic text-text-main text-center text-balance">
               &laquo;&nbsp;{quote}&nbsp;&raquo;
             </p>
           </blockquote>
@@ -227,7 +275,7 @@ const testimonials = [
           target="_blank"
           rel="noopener noreferrer"
         >
-          Lire l'analyse des retours du spectacle — Académie d'Aix-Marseille
+          Lire l'analyse des retours du spectacle, Académie d'Aix-Marseille
         </a>
       </p>
     </div>
@@ -282,19 +330,7 @@ const testimonials = [
   .speech-bubble {
     background: #F8E71C;
     border-radius: 1.25rem;
-    padding: 1.5rem 1.75rem 2rem;
-    position: relative;
+    padding: 1.5rem 1.75rem;
     box-shadow: 5px 5px 0 0 #1C1C1C;
-  }
-
-  .speech-bubble::after {
-    content: '';
-    position: absolute;
-    bottom: -1.25rem;
-    left: 2rem;
-    border: 1.25rem solid transparent;
-    border-top-color: #F8E71C;
-    /* Ombre portée sur la queue */
-    filter: drop-shadow(4px 3px 0 #1C1C1C);
   }
 </style>

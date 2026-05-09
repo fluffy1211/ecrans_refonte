@@ -8,11 +8,11 @@ const faqItems: FaqItem[] = [
   { q: "Quelle est la durée totale de l'intervention ?", a: "Le spectacle dure 30 minutes, suivi d'un temps de débat participatif de 30 minutes avec les élèves. Comptez environ 1 heure au total pour l'intervention." },
   { q: "À quel public s'adresse ce spectacle ?", a: "Ce spectacle est conçu pour les enfants de 6 à 9 ans (Grande section de maternelle, CP, CE1, CE2). Le propos et les situations sont adaptés à leur niveau de compréhension et à leur rapport quotidien aux écrans." },
   { q: "Quel espace est nécessaire ?", a: "Le spectacle s'adapte à n'importe quel espace disponible dans votre établissement : salle de motricité, gymnase, salle polyvalente, amphithéâtre, salle de classe... Aucune scène ni équipement technique n'est requis." },
-  { q: "Quel matériel faut-il prévoir ?", a: "Béatrice et Samy apportent tout le matériel nécessaire. Il suffit de disposer d'un espace dégagé d'environ 20 à 30 m² pour le jeu des comédiens." },
+  { q: "Quel matériel faut-il prévoir ?", a: "Nous apportons tout le matériel nécessaire. Il suffit de disposer d'un espace dégagé d'environ 20 à 30 m²." },
   { q: "Combien d'élèves peuvent assister à une représentation ?", a: "Le spectacle peut accueillir jusqu'à une ou deux classes par représentation (30 à 60 élèves). Plusieurs représentations peuvent être organisées dans la même journée." },
-  { q: "Quels sont les tarifs ?", a: "Les tarifs sont établis sur devis, selon votre type de structure et le nombre de représentations souhaitées. Contactez-nous pour recevoir un devis personnalisé sous 48h." },
-  { q: "Dans quelles zones intervenez-vous ?", a: "Nous intervenons principalement en région PACA (Marseille, Aix-en-Provence, Toulon et communes avoisinantes). Contactez-nous pour toute demande en dehors de cette zone." },
-  { q: "Comment réserver ?", a: "Envoyez-nous un message via le formulaire de contact en précisant votre structure, vos dates souhaitées et le nombre d'élèves. Nous vous répondons sous 48h." },
+  { q: "Quels sont les tarifs ?", a: "Les tarifs sont établis sur devis, selon votre type de structure et le nombre de représentations souhaitées. Contactez-nous pour recevoir un devis personnalisé." },
+  { q: "Dans quelles zones intervenez-vous ?", a: 'Nous intervenons principalement en région PACA (Marseille, Aix-en-Provence, Toulon et communes avoisinantes). <a href="/projet-realisations" class="font-semibold text-text-main underline underline-offset-4 decoration-accent hover:decoration-2">Voir les villes où nous avons joué</a>. Contactez-nous pour toute demande hors PACA.' },
+  { q: "Comment réserver ?", a: "Envoyez-nous un message via le formulaire de contact en précisant votre structure, vos dates souhaitées et le nombre d'élèves. Nous vous répondons rapidement." },
 ];
 
 const jsonLd = [
@@ -70,7 +70,7 @@ const jsonLd = [
           <li class="text-accent" aria-current="page">Spectacle 6-9 ans</li>
         </ol>
       </nav>
-      <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-4">Cycle 2 — 6 à 9 ans</p>
+      <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-4">Cycle 2 · 6 à 9 ans</p>
       <h1 class="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] mb-6 max-w-2xl">
         Spectacle sur les écrans pour les <span class="text-accent">6-9 ans</span>
       </h1>
@@ -90,11 +90,10 @@ const jsonLd = [
           <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main mb-5">
             Le spectacle
           </h2>
-          <!-- CONTENU À VALIDER : synopsis à confirmer avec Béatrice -->
           <div class="font-body text-gray-600 leading-relaxed space-y-4">
             <p>
               Béa et Samy sont deux amis proches. Les parents de Samy lui offrent une tablette pour
-              son anniversaire. Petit à petit, Samy s'isole avec son écran — il ne sort plus,
+              son anniversaire. Petit à petit, Samy s'isole avec son écran : il ne sort plus,
               regarde des vidéos jusqu'à très tard, et ne répond plus à ses amis.
             </p>
             <p>
@@ -119,7 +118,7 @@ const jsonLd = [
               ['Format', 'Spectacle + débat participatif'],
               ['Espace', 'Toute salle disponible dans votre structure'],
               ['Effectif', "Jusqu'à 2 classes par représentation"],
-              ['Tarif', 'Sur devis — réponse sous 48h'],
+              ['Tarif', 'Sur devis'],
             ].map(([label, value]) => (
               <div class="flex gap-3">
                 <span class="font-heading font-bold text-xs uppercase tracking-wider bg-accent text-text-main px-2 py-0.5 rounded-sm flex-shrink-0 w-20 text-center">{label}</span>
@@ -127,6 +126,67 @@ const jsonLd = [
               </div>
             ))}
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMI -->
+  <section class="bg-gray-50 py-14 sm:py-20" aria-label="Cadre EMI — Cycle 2">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div>
+          <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-text-main mb-3">Cadre institutionnel</p>
+          <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main mb-5">
+            Un spectacle inscrit dans le parcours EMI
+          </h2>
+          <div class="font-body text-gray-600 leading-relaxed space-y-4">
+            <p>
+              L'Éducation aux Médias et à l'Information (EMI) est un parcours transversal obligatoire
+              de l'école au lycée, instauré par circulaire en 2015 et renforcé en 2022. Il structure
+              l'acquisition progressive de compétences critiques face aux médias et aux outils numériques.
+            </p>
+            <p>
+              Le spectacle <em>Les écrans pas tout le temps</em> s'inscrit directement dans les
+              compétences EMI du cycle 2 : identifier les usages des écrans dans le quotidien,
+              développer un premier regard critique face aux contenus, et amorcer des pratiques
+              numériques équilibrées et responsables.
+            </p>
+            <p>
+              L'intervention peut être intégrée au volet « parcours citoyen » du projet d'école,
+              ce qui facilite sa validation par l'IEN et ouvre l'accès aux financements dédiés aux
+              actions de prévention et d'éducation au numérique.
+            </p>
+          </div>
+          <a
+            href="/docs/retours-academie-aix-marseille.pdf"
+            class="inline-flex items-center gap-2 mt-6 font-heading font-semibold text-sm text-text-main underline underline-offset-4 hover:text-accent transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Retours de l'Académie d'Aix-Marseille, analyse pédagogique (PDF)
+          </a>
+        </div>
+        <div class="bg-white border-2 border-text-main p-6 rounded-sm">
+          <p class="font-heading font-bold text-xs uppercase tracking-wider text-text-main mb-4">Compétences EMI · Cycle 2</p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-2.5 h-2.5 bg-accent rounded-sm flex-shrink-0"></span>
+              <span class="font-body text-sm text-gray-600 leading-snug">Identifier les usages des écrans dans la vie quotidienne</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-2.5 h-2.5 bg-accent rounded-sm flex-shrink-0"></span>
+              <span class="font-body text-sm text-gray-600 leading-snug">Prendre conscience des effets des usages numériques sur soi et les autres</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-2.5 h-2.5 bg-accent rounded-sm flex-shrink-0"></span>
+              <span class="font-body text-sm text-gray-600 leading-snug">Amorcer une posture critique face aux contenus médiatiques</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-2.5 h-2.5 bg-accent rounded-sm flex-shrink-0"></span>
+              <span class="font-body text-sm text-gray-600 leading-snug">S'initier à des pratiques numériques équilibrées et responsables</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -170,7 +230,7 @@ const jsonLd = [
         Réserver le spectacle 6-9 ans
       </h2>
       <p class="font-body text-text-main opacity-60 mb-8 text-sm">
-        Devis personnalisé sous 48h — intervention à Marseille et en région PACA.
+        Devis personnalisé, intervention à Marseille et en région PACA.
       </p>
       <Cta variant="dark" text="Faire une demande de réservation" href="/contact" />
     </div>

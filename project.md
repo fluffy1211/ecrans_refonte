@@ -17,7 +17,7 @@ Refaire **from scratch** le site `lesecranspastoutletemps.fr`, actuellement héb
 - **Deux versions :** 6-9 ans / 9-12 ans
 - **Artistes :** Béatrice (autrice, direction artistique, comédienne) & Samy (comédien)
 - **Localisation :** Marseille (06 73 15 85 08, lesecranspastoutletemps@gmail.com)
-- **Cibles commerciales :** Écoles, médiathèques, mairies, centres sociaux, comités d'entreprise, académies
+- **Cibles commerciales :** Écoles, médiathèques, mairies, centres sociaux, académies
 - **Référence existante :** Académie d'Aix-Marseille (analyse PDF disponible)
 
 ---
@@ -43,12 +43,15 @@ Refaire **from scratch** le site `lesecranspastoutletemps.fr`, actuellement héb
 /spectacle-6-9-ans          (Page dédiée 6-9 ans)
 /spectacle-9-12-ans         (Page dédiée 9-12 ans)
 /projet-realisations        (Projet & réalisations — existe déjà sur Wix)
+/zone-intervention          (Détail PACA — ajouté post-audit)
 /contact                    (Réservation / devis)
 /a-propos                   (Béatrice & Samy)
 /mentions-legales
 ```
 
 **Important :** ne PAS créer plus de pages que ça. Garder une structure simple.
+
+> `/zone-intervention` a été ajoutée après l'arborescence initiale, lors de l'audit post-P6 (cible géographique mieux adressée, lien dans la nav + footer + FAQ + projet-realisations).
 
 ---
 
@@ -91,7 +94,7 @@ Le site Wix actuel est invisible sur Google. La refonte doit corriger ça dès l
 | `/spectacle-6-9-ans` | Spectacle 6-9 ans sur les écrans – Théâtre participatif en école | Un spectacle pédagogique de 30+30 min pour sensibiliser les 6-9 ans aux écrans, avec leur participation active. |
 | `/spectacle-9-12-ans` | Spectacle 9-12 ans sur les écrans – Théâtre participatif en collège | Un spectacle pédagogique participatif pour aborder le numérique avec les CM1-6e. |
 | `/projet-realisations` | Projet & réalisations – Les écrans pas tout le temps | Découvrez le projet pédagogique du spectacle, ses réalisations et les retours de l'Académie d'Aix-Marseille. |
-| `/contact` | Réserver le spectacle Les écrans pas tout le temps – Contact | Réservez le spectacle pour votre école, médiathèque, ville ou comité d'entreprise. Devis sous 48h. |
+| `/contact` | Réserver le spectacle Les écrans pas tout le temps – Contact | Réservez le spectacle pour votre école, médiathèque ou centre social. |
 | `/a-propos` | Béatrice & Samy – La compagnie derrière Les écrans pas tout le temps | Béatrice et Samy, le duo de théâtre à l'origine du spectacle participatif sur les écrans. |
 
 ### Mots-clés cibles prioritaires
@@ -143,7 +146,7 @@ Implémenter dans `<head>` via un composant Astro réutilisable :
 Le site Wix actuel a plusieurs faiblesses à corriger :
 
 1. **CTA quasi inexistant.** Ajouter un CTA principal **« Réserver le spectacle »** visible dès le hero, puis répété en fin de chaque page, qui pointe vers `/contact`.
-2. **Public cible peu adressé.** Créer des sections explicites pour chaque type de client (écoles, médiathèques, mairies, comités d'entreprise) avec leur vocabulaire métier.
+2. **Public cible peu adressé.** Créer des sections explicites pour chaque type de client (écoles, médiathèques, mairies, centres sociaux) avec leur vocabulaire métier.
 3. **Pas de FAQ.** Ajouter une section FAQ sur `/spectacle-6-9-ans` et `/spectacle-9-12-ans` avec les questions évidentes : durée, âge, matériel requis, espace nécessaire, tarifs (ou « sur devis »), zones de tournée, modalités de réservation. Marquer la FAQ avec **JSON-LD `FAQPage`**.
 4. **Avis dispersés.** Regrouper les témoignages dans une section dédiée avec citation propre, attribution si possible (« Enseignante CM2, Marseille »), et marquage **JSON-LD `Review`** ou **`AggregateRating`** uniquement si les sources sont vérifiables.
 5. **Mobile.** Le site doit être pensé **mobile-first**. Beaucoup d'enseignants consultent depuis leur téléphone.
@@ -153,7 +156,7 @@ Le site Wix actuel a plusieurs faiblesses à corriger :
 
 ## Formulaire de contact
 
-- Champs : Nom, Email, Type de structure (école / médiathèque / mairie / centre social / comité d'entreprise / autre), Ville, Date(s) souhaitée(s), Effectif estimé, Message
+- Champs : Nom, Email, Type de structure (école / médiathèque / mairie / centre social / autre), Ville, Date(s) souhaitée(s), Effectif estimé, Message
 - **Pas de backend custom.** Utiliser **Formspree**, **Web3Forms**, ou un `mailto:` propre comme fallback. Demander à Gabriel sa préférence.
 - Anti-spam : honeypot, pas de reCAPTCHA si possible (RGPD)
 - Confirmation après envoi sur la même page, sans redirection externe

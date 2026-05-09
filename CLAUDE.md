@@ -25,7 +25,9 @@ Astro + Tailwind CSS + TypeScript strict. Pas de React/Next/Vue. Pas de CMS.
 
 ## Arborescence (toutes les pages existent)
 
-`/` · `/spectacle-6-9-ans` · `/spectacle-9-12-ans` · `/projet-realisations` · `/contact` · `/a-propos` · `/mentions-legales`
+`/` · `/spectacle-6-9-ans` · `/spectacle-9-12-ans` · `/projet-realisations` · `/zone-intervention` · `/contact` · `/a-propos` · `/mentions-legales`
+
+> Note : `/zone-intervention` ajoutée hors arborescence initiale (ajout assumé après audit pour mieux adresser la cible géographique). Liée dans la nav principale, le footer, depuis `/projet-realisations` et la FAQ des pages spectacle.
 
 ## État d'avancement
 
@@ -38,6 +40,8 @@ Astro + Tailwind CSS + TypeScript strict. Pas de React/Next/Vue. Pas de CMS.
 | P4 Pages secondaires | ✅ | Toutes pages + FAQ + formulaire + JSON-LD |
 | P5 SEO final | ✅ | Canonical, OG, sitemap, a11y |
 | P6 Déploiement | 🔄 | Live sur staging, bascule domaine en attente |
+| Audit post-P6 | ✅ | Bug photo Samy corrigé, nav enrichie, section structures ajoutée sur la home, commentaires `À VALIDER` purgés du HTML servi |
+| Polish contenu | ✅ | Tirets LLM supprimés, bulles témoignages simplifiées, fusion sections projet-realisations, suppression comités d'entreprise, répétitions "48h" allégées |
 
 ## Actions en attente (bloquants Gabriel/Béatrice)
 
@@ -52,6 +56,7 @@ Astro + Tailwind CSS + TypeScript strict. Pas de React/Next/Vue. Pas de CMS.
 
 - [ ] `README.md` — comment éditer le contenu, ajouter une image, déployer
 - [ ] GitHub Actions CI — build + check liens cassés
+- [ ] Lightbox `/projet-realisations` : remplacer le pattern `:target` par une vraie modale (focus trap, pas de pollution de l'historique) — dette acceptable post-MVP
 
 ## Règles absolues
 
