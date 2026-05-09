@@ -5,8 +5,26 @@ import Cta from '@components/Cta.astro';
 const jsonLd = [
   {
     '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Béatrice Herrero',
+    givenName: 'Béatrice',
+    familyName: 'Herrero',
+    jobTitle: 'Autrice, direction artistique, comédienne',
+    description: 'Autrice et comédienne basée à Marseille, Béatrice Herrero est à l\'origine du spectacle participatif Les écrans pas tout le temps — sensibilisation à la prévention numérique pour les enfants de 6 à 12 ans.',
+    worksFor: { '@type': 'Organization', name: 'Les écrans pas tout le temps', url: 'https://www.lesecranspastoutletemps.fr' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Samy',
+    jobTitle: 'Comédien',
+    worksFor: { '@type': 'Organization', name: 'Les écrans pas tout le temps', url: 'https://www.lesecranspastoutletemps.fr' },
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'PerformingGroup',
     name: 'Les écrans pas tout le temps',
+    description: 'Compagnie de spectacle théâtral participatif sur la prévention numérique pour les enfants de 6 à 12 ans.',
     url: 'https://www.lesecranspastoutletemps.fr',
     location: { '@type': 'Place', addressLocality: 'Marseille', addressCountry: 'FR' },
     member: [
@@ -27,8 +45,8 @@ const jsonLd = [
 ---
 
 <Layout
-  title="Béatrice & Samy – La compagnie derrière Les écrans pas tout le temps"
-  description="Béatrice et Samy, le duo de théâtre à l'origine du spectacle participatif sur les écrans."
+  title="Béatrice Herrero & Samy – Compagnie Les écrans pas tout le temps"
+  description="Béatrice Herrero et Samy, duo de théâtre à l'origine du spectacle Les écrans pas tout le temps — prévention numérique jeune public, Marseille et région PACA."
   jsonLd={jsonLd}
 >
 
@@ -45,7 +63,7 @@ const jsonLd = [
       </nav>
       <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-4">Le duo</p>
       <h1 class="font-heading font-black text-4xl sm:text-5xl text-white leading-tight mb-6">
-        Béatrice &amp; Samy
+        Béatrice Herrero &amp; Samy
       </h1>
       <p class="font-body text-gray-400 text-base max-w-md">
         La compagnie basée à Marseille derrière « Les écrans pas tout le temps ! ».
@@ -71,17 +89,18 @@ const jsonLd = [
         <p class="font-body text-xs text-gray-500 mt-0.5">Autrice · Direction artistique · Comédienne</p>
       </div>
       <div>
-        <h2 class="font-heading font-black text-2xl text-text-main mb-5">Béatrice</h2>
+        <h2 class="font-heading font-black text-2xl text-text-main mb-5">Béatrice Herrero</h2>
         <div class="font-body text-gray-600 leading-relaxed space-y-4">
           <p>
             Béatrice Herrero est l'autrice et la comédienne à l'origine du projet « Les écrans
-            pas tout le temps ! ». Comédienne de formation, elle a conçu ce spectacle à partir
-            d'un constat simple : les enfants d'aujourd'hui grandissent entourés d'écrans, souvent
-            sans recul ni espace de parole pour en discuter.
+            pas tout le temps ! ». Basée à Marseille, comédienne de formation, elle a conçu ce
+            spectacle à partir d'un constat simple : les enfants d'aujourd'hui grandissent entourés
+            d'écrans, souvent sans recul ni espace de parole pour en discuter.
           </p>
           <p>
-            Son écriture mêle humour et questionnements sérieux, pour créer un théâtre qui parle
-            vraiment aux enfants, qui leur donne les outils pour penser par eux-mêmes.
+            Son écriture mêle humour et questionnements sérieux, pour créer un spectacle de
+            sensibilisation qui parle vraiment aux enfants et leur donne les outils pour penser
+            par eux-mêmes.
           </p>
         </div>
       </div>

@@ -6,6 +6,7 @@ const jsonLdWebsite = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Les écrans pas tout le temps',
+  description: 'Spectacle participatif sur la prévention numérique pour les enfants de 6 à 12 ans. Interventions en école primaire, médiathèque, centre social. Marseille et région PACA.',
   url: 'https://www.lesecranspastoutletemps.fr',
 };
 
@@ -17,7 +18,7 @@ const jsonLdPerformingGroup = {
   url: 'https://www.lesecranspastoutletemps.fr',
   location: { '@type': 'Place', addressLocality: 'Marseille', addressCountry: 'FR' },
   member: [
-    { '@type': 'Person', name: 'Béatrice Herrero', jobTitle: 'Autrice, direction artistique, comédienne' },
+    { '@type': 'Person', name: 'Béatrice Herrero', jobTitle: 'Autrice, direction artistique, comédienne', description: 'Autrice et comédienne basée à Marseille, à l\'origine du spectacle Les écrans pas tout le temps sur la sensibilisation aux écrans pour les enfants.' },
     { '@type': 'Person', name: 'Samy', jobTitle: 'Comédien' },
   ],
   contactPoint: {
@@ -38,7 +39,7 @@ const testimonials = [
 
 <Layout
   title="Les écrans pas tout le temps – Spectacle écrans pour enfants 6-12 ans"
-  description="Spectacle participatif et humoristique sur les écrans pour les enfants de 6 à 12 ans. Intervention en école, médiathèque, centre social. Béatrice & Samy."
+  description="Les écrans pas tout le temps — spectacle participatif pour sensibiliser les enfants de 6 à 12 ans. Interventions en école primaire, médiathèque, centre social. Béatrice Herrero & Samy, Marseille et région PACA."
   jsonLd={[jsonLdWebsite, jsonLdPerformingGroup]}
   preloadImage="/images/hero-illustration.png"
 >
@@ -66,8 +67,8 @@ const testimonials = [
           le temps&nbsp;!
         </h1>
         <p class="font-body text-gray-400 text-base leading-relaxed mb-8 max-w-sm mx-auto md:mx-0">
-          Spectacle humoristique sur les écrans pour les enfants
-          30&nbsp;min de spectacle + 30&nbsp;min de débat avec leur participation active.
+          Spectacle participatif de sensibilisation aux écrans pour les enfants.
+          30&nbsp;min de théâtre + 30&nbsp;min de débat avec leur participation active.
         </p>
         <Cta />
       </div>
@@ -224,8 +225,8 @@ const testimonials = [
 
       <div class="grid sm:grid-cols-3 gap-5 max-w-3xl mx-auto">
         {[
-          { label: 'Écoles primaires',         desc: "Intervention en classe ou salle polyvalente, en lien avec le parcours EMI et le volet citoyen du projet d'école." },
-          { label: 'Médiathèques & bibliothèques', desc: "Animation jeune public sur les temps de vacances ou en partenariat avec les écoles du territoire." },
+          { label: 'Écoles primaires',         desc: "Intervention scolaire en classe ou salle polyvalente, en lien avec le parcours EMI et le volet citoyen du projet d'école." },
+          { label: 'Médiathèques & bibliothèques', desc: "Animation jeune public et sensibilisation aux écrans sur les temps de vacances ou en partenariat avec les écoles du territoire." },
           { label: 'Mairies & centres sociaux',  desc: "Action de prévention numérique dans le cadre d'un programme municipal ou d'éducation populaire." },
         ].map(({ label, desc }) => (
           <div class="border-l-4 border-accent bg-white pl-5 pr-4 py-5 rounded-sm">
