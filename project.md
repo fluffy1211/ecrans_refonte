@@ -230,3 +230,127 @@ Si un skill et le présent document se contredisent, **le présent document fait
 ## Note sur le pivot par rapport au plan SEO initial
 
 Un kit SEO complet avait été préparé pour optimiser le site **dans Wix** (titles, meta, JSON-LD, alt text, annuaires culturels, sitemaps, etc.). Le travail pertinent (titles, meta, JSON-LD, mots-clés cibles, hiérarchie Hn, alt text) est **réutilisé tel quel dans cette refonte** ; ce qui devient caduc est uniquement la partie « comment cliquer dans Wix ». Les annuaires culturels (Offi.fr, Spectable, Agendaculturel.fr, Billetreduc, Que Faire à Paris) restent à soumettre **après** la mise en ligne du nouveau site.
+
+---
+
+## Bonnes pratiques — Audit skills du 10/05/2026
+
+Audit réalisé avec 6 skills installés (`astro-seo`, `astro`, `perf-astro`, `tailwindcss`, `web-accessibility`, `form-cro`) + skills built-in (`seo-audit`, `schema-markup`, `page-cro`). Ce qui suit doit être respecté pour toute modification future du site.
+
+### Stack de performance (installée)
+
+```js
+// astro.config.mjs
+import critters from 'astro-critters';
+import compress from '@playform/compress';
+
+integrations: [
+  critters(),      // inline critical CSS → réduit LCP
+  compress({       // minification HTML/CSS/JS du build final
+    CSS: true,
+    HTML: true,
+    JavaScript: true,
+    Image: false,
+    SVG: false,
+  }),
+]
+```
+
+- `astro-critters` inline le CSS critique dans chaque page → supprime le flash blanc
+- `@playform/compress` minifie tout le build
+- **Attention** : les pages avec FAQ HTML inline (balises `<a>` dans les réponses) peuvent faire échouer `compress` sur ces pages. Non bloquant.
+- `fetchpriority="high"` sur le preload de l'image hero → LCP prioritaire
+- Google Fonts chargées avec `media="print" onload="this.media='all'"` → non-bloquant
+- `@font-face` avec `font-display: swap` en fallback → évite FOIT si Google Fonts tarde
+
+### SEO head (SEO.astro)
+
+```astro
+<meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1'} />
+```
+
+- Le `robots` meta est **toujours présent** (soit `noindex,nofollow`, soit la version complète)
+- `max-snippet:-1` → pas de limite de longueur d'extrait Google
+- `max-image-preview:large` → grandes images dans les résultats
+- **Pas de Twitter tags** — Twitter retombe automatiquement sur Open Graph, les dupliquer est redondant
+- Canonical toujours dérivé de `Astro.site` + `Astro.url.pathname`
+- `site:` dans `astro.config.mjs` obligatoire → `https://www.lesecranspastoutletemps.fr`
+
+### Fichiers de découverte (public/)
+
+Fichiers à maintenir :
+
+| Fichier | Rôle |
+|---------|------|
+| `robots.txt` | `Sitemap:` + `Content-Signal: ai-train=yes, search=yes, ai-input=yes` |
+| `llms.txt` | Liste des pages (titre + description) pour les LLMs |
+| `_headers` | `Link:` headers pour sitemap + llms.txt ; `Cache-Control: immutable` sur `/_astro/*` |
+| `_redirects` | À remplir si des URLs changent un jour |
+
+### Page 404
+
+- `src/pages/404.astro` → `Astro.response.status = 404` + `noindex` dans Layout
+- Cloudflare Pages sert automatiquement `404.html` pour les pages inexistantes
+- La page contient un CTA clair vers l'accueil et le contact
+
+### Formulaire de contact (form-cro)
+
+Règles à conserver :
+- **7 champs** max (nom, email, structure, ville, téléphone, effectif, dates, message)
+- Téléphone **optionnel** — utile pour relance mais pas obligatoire
+- Honeypot anti-spam (`botcheck` caché)
+- États succès/erreur visibles après soumission
+- Mention vie privée près du bouton submit : « Vos informations ne sont jamais partagées »
+- Labels toujours visibles, pas de placeholder-only
+- `autocomplete` sur nom, email, tel
+- Bouton submit avec verbe d'action : « Envoyer ma demande »
+
+### Accessibilité (a11y) — règles invariantes
+
+- Skip-link « Aller au contenu principal » en premier élément du `<body>`
+- `focus-visible:outline-*` sur **tous** les éléments interactifs (liens, boutons, inputs)
+- Menu dropdown desktop : `aria-expanded`, `aria-haspopup`, `aria-controls`, flèches clavier (ArrowDown/Up)
+- Menu mobile : `aria-expanded` sur le toggle, Escape pour fermer, click outside
+- **Jamais** de `outline: none` sans alternative `:focus-visible`
+- Images décoratives : `aria-hidden="true"` + `alt=""` ou `role="presentation"`
+- Images informatives : `alt` descriptif obligatoire
+
+### Schema JSON-LD — conventions
+
+- Format array `[ {...}, {...} ]` plutôt que `@graph` (suffisant pour 6 pages)
+- Types utilisés : `WebSite`, `PerformingGroup`, `Event`, `LocalBusiness`, `FAQPage`, `BreadcrumbList`
+- BreadcrumbList sur toutes les pages internes
+- FAQPage sur les pages spectacle (généré depuis le tableau `faqItems`)
+
+### Tailwind — conventions
+
+- **Pas de `@apply`** dans les feuilles globales (règle Tailwind)
+- `@apply` dans `<style>` scopé Astro toléré (ex: `.form-label`, `.form-input`)
+- Mobile-first : classes de base = mobile, `sm:` = tablette, `md:` = desktop
+- Espacement cohérent avec l'échelle de Tailwind
+- Couleurs custom dans `tailwind.config.mjs` : `accent: #F8E71C`, `text-main: #1C1C1C`
+
+### À faire plus tard (non urgent)
+
+- [ ] OG image 1200×675 pour les réseaux sociaux (actuelle trop petite)
+- [ ] `@jdevalk/astro-seo-graph` — surqualifié pour 6 pages, à considérer si le site grossit
+- [ ] IndexNow — soumission automatique aux moteurs à chaque build
+- [ ] GitHub Action lychee pour vérifier les liens cassés en CI
+- [ ] `google-site-verification` — décommenter dans Layout.astro quand Gabriel fournit le code
+- [ ] Analytics Plausible/Umami — quand Gabriel décide
+
+### Skills disponibles pour ce projet
+
+| Skill | Source | Usage |
+|-------|--------|-------|
+| `seo-audit` | built-in | Audit SEO complet |
+| `schema-markup` | built-in | JSON-LD structured data |
+| `page-cro` | built-in | Optimisation conversion par page |
+| `form-cro` | built-in + installé (sickn33) | Optimisation formulaire |
+| `copywriting` | built-in | Rédaction marketing |
+| `image` | built-in | Génération/optimisation images |
+| `astro-seo` | jdevalk (Yoast) | SEO spécifique Astro |
+| `astro` | mindrally | Patterns Astro |
+| `perf-astro` | tech-leads-club | Performance Astro |
+| `tailwindcss` | mindrally | Tailwind best practices |
+| `web-accessibility` | akillness | Audit a11y structuré |

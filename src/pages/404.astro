@@ -1,0 +1,45 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+Astro.response.status = 404;
+---
+
+<Layout
+  title="Page introuvable — Les écrans pas tout le temps"
+  description="La page que vous cherchez n'existe pas. Retournez à l'accueil ou contactez-nous."
+  noindex
+>
+
+  <section class="bg-text-main relative overflow-hidden py-24 sm:py-32" aria-label="Page introuvable">
+    <div
+      class="absolute inset-0 pointer-events-none select-none"
+      style="background-image:url('/images/deco-02.webp'); background-size:cover; mix-blend-mode:screen; opacity:0.10;"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 text-center">
+      <p class="font-heading font-black text-[8rem] sm:text-[10rem] text-accent leading-none">404</p>
+      <h1 class="font-heading font-black text-3xl sm:text-4xl text-white mb-4">
+        Page introuvable
+      </h1>
+      <p class="font-body text-gray-400 text-base mb-8 max-w-md mx-auto">
+        La page que vous cherchez n'existe pas ou a été déplacée.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a
+          href="/"
+          class="bg-accent text-text-main font-heading font-bold text-sm uppercase tracking-widest px-8 py-3 rounded-sm border-2 border-text-main shadow-[4px_4px_0_0_#1C1C1C] hover:shadow-[2px_2px_0_0_#1C1C1C] hover:translate-x-0.5 hover:translate-y-0.5 transition-all focus-visible:outline-2 focus-visible:outline-text-main focus-visible:outline-offset-4"
+        >
+          Retour à l'accueil
+        </a>
+        <a
+          href="/contact/"
+          class="font-heading font-bold text-sm text-white hover:text-accent transition-colors underline underline-offset-4 decoration-accent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm"
+        >
+          Nous contacter
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

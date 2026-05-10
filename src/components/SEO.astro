@@ -12,7 +12,7 @@ const {
   title,
   description,
   canonical,
-  ogImage = '/images/hero-beatrice-enfants.jpg',
+  ogImage = '/images/og-image.jpg',
   jsonLd,
   noindex = false,
 } = Astro.props;
@@ -25,7 +25,7 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
 
-{noindex && <meta name="robots" content="noindex,nofollow" />}
+<meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1'} />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
@@ -33,17 +33,11 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
-<meta property="og:image:width" content="478" />
-<meta property="og:image:height" content="534" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="675" />
 <meta property="og:image:alt" content={title} />
 <meta property="og:locale" content="fr_FR" />
 <meta property="og:site_name" content="Les écrans pas tout le temps" />
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={new URL(ogImage, Astro.site).toString()} />
 
 <!-- JSON-LD -->
 {jsonLdArray.map((schema) => (

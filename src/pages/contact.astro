@@ -101,20 +101,30 @@ const jsonLd = [
               <input id="ville" name="ville" type="text" required class="form-input" placeholder="Votre ville" />
             </div>
             <div>
-              <label for="effectif" class="form-label">Effectif estimé</label>
-              <input id="effectif" name="effectif" type="text" class="form-input" placeholder="Ex. 2 classes, 50 élèves" />
+              <label for="telephone" class="form-label">Téléphone</label>
+              <input id="telephone" name="telephone" type="tel" autocomplete="tel" class="form-input" placeholder="06 XX XX XX XX" />
             </div>
           </div>
 
-          <div>
-            <label for="dates" class="form-label">Date(s) souhaitée(s)</label>
-            <input id="dates" name="dates" type="text" class="form-input" placeholder="Ex. mars 2026, ou une date précise" />
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="effectif" class="form-label">Effectif estimé</label>
+              <input id="effectif" name="effectif" type="text" class="form-input" placeholder="Ex. 2 classes, 50 élèves" />
+            </div>
+            <div>
+              <label for="dates" class="form-label">Date(s) souhaitée(s)</label>
+              <input id="dates" name="dates" type="text" class="form-input" placeholder="Ex. mars 2026, ou une date précise" />
+            </div>
           </div>
 
           <div>
             <label for="message" class="form-label">Message</label>
             <textarea id="message" name="message" rows="4" class="form-input resize-none" placeholder="Vos questions, contraintes, contexte…"></textarea>
           </div>
+
+          <p class="font-body text-xs text-gray-400 mb-1">
+            Vos informations ne sont jamais partagées. Nous vous répondons sous 48h avec un devis personnalisé.
+          </p>
 
           <button
             type="submit"
@@ -152,17 +162,17 @@ const jsonLd = [
           <p class="font-heading font-bold text-xs uppercase tracking-wider text-text-main mb-3">Nos spectacles</p>
           <ul class="space-y-2">
             <li>
-              <a href="/spectacle-6-9-ans" class="font-body text-sm text-gray-600 hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent rounded-sm">
+              <a href="/spectacle-6-9-ans/" class="font-body text-sm text-gray-600 hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent rounded-sm">
                 → Spectacle 6-9 ans
               </a>
             </li>
             <li>
-              <a href="/spectacle-9-12-ans" class="font-body text-sm text-gray-600 hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent rounded-sm">
+              <a href="/spectacle-9-12-ans/" class="font-body text-sm text-gray-600 hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent rounded-sm">
                 → Spectacle 9-12 ans
               </a>
             </li>
             <li>
-              <a href="/projet-realisations" class="font-body text-sm text-gray-600 hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent rounded-sm">
+              <a href="/projet-realisations/" class="font-body text-sm text-gray-600 hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent rounded-sm">
                 → Projet &amp; réalisations
               </a>
             </li>

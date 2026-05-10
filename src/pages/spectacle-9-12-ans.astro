@@ -11,7 +11,7 @@ const faqItems: FaqItem[] = [
   { q: "Quel matériel faut-il prévoir ?", a: "Nous apportons tout le matériel nécessaire. Il suffit de disposer d'un espace dégagé d'environ 20 à 30 m²." },
   { q: "Combien d'élèves peuvent assister à une représentation ?", a: "Le spectacle peut accueillir jusqu'à une ou deux classes par représentation. Plusieurs représentations peuvent être organisées dans la même journée." },
   { q: "Quels sont les tarifs ?", a: "Les tarifs sont établis sur devis, selon votre type de structure et le nombre de représentations. Contactez-nous pour recevoir un devis personnalisé." },
-  { q: "Dans quelles zones intervenez-vous ?", a: 'Nous intervenons principalement en région PACA (Marseille, Aix-en-Provence, Toulon et communes avoisinantes). <a href="/projet-realisations" class="font-semibold text-text-main underline underline-offset-4 decoration-accent hover:decoration-2">Voir les villes où nous avons joué</a>. Contactez-nous pour toute demande hors PACA.' },
+  { q: "Dans quelles zones intervenez-vous ?", a: 'Nous intervenons principalement en région PACA (Marseille, Aix-en-Provence, Toulon et communes avoisinantes). <a href="/projet-realisations/" class="font-semibold text-text-main underline underline-offset-4 decoration-accent hover:decoration-2">Voir les villes où nous avons joué</a>. Contactez-nous pour toute demande hors PACA.' },
   { q: "Comment réserver ?", a: "Envoyez-nous un message via le formulaire de contact en précisant votre structure, vos dates souhaitées et le nombre d'élèves. Nous vous répondons rapidement." },
 ];
 
@@ -23,6 +23,7 @@ const jsonLd = [
     description: "Spectacle théâtral participatif et humoristique sur les écrans pour les enfants de 9 à 12 ans, suivi d'un débat de 30 minutes.",
     eventStatus: 'https://schema.org/EventScheduled',
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    image: 'https://www.lesecranspastoutletemps.fr/images/og-image.jpg',
     location: { '@type': 'Place', name: 'À définir selon la structure', addressLocality: 'Marseille', addressCountry: 'FR' },
     organizer: { '@type': 'Organization', name: 'Les écrans pas tout le temps', url: 'https://www.lesecranspastoutletemps.fr' },
     performer: [
@@ -233,7 +234,7 @@ const jsonLd = [
       <p class="font-body text-text-main opacity-60 mb-8 text-sm">
         Devis personnalisé. Spectacle jeune public à Marseille et en région PACA.
       </p>
-      <Cta variant="dark" text="Faire une demande de réservation" href="/contact" />
+      <Cta variant="dark" text="Faire une demande de réservation" href="/contact/" />
     </div>
   </section>
 

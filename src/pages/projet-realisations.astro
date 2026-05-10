@@ -9,6 +9,7 @@ const jsonLd = [
     name: 'Les écrans pas tout le temps',
     description: 'Compagnie de spectacle théâtral participatif sur les écrans pour les enfants de 6 à 12 ans.',
     url: 'https://www.lesecranspastoutletemps.fr/',
+    image: 'https://www.lesecranspastoutletemps.fr/images/og-image.jpg',
     location: { '@type': 'Place', addressLocality: 'Marseille', addressCountry: 'FR' },
     areaServed: [
       { '@type': 'AdministrativeArea', name: 'Bouches-du-Rhône' },
@@ -29,15 +30,6 @@ const jsonLd = [
       { '@type': 'ListItem', position: 2, name: 'Projet & réalisations', item: 'https://www.lesecranspastoutletemps.fr/projet-realisations/' },
     ],
   },
-];
-
-const photos = [
-  { src: '/images/gallery-01.jpg', alt: 'Béatrice et Samy en scène pendant le spectacle Les écrans pas tout le temps' },
-  { src: '/images/gallery-02.jpg', alt: 'Les élèves participent activement au débat après le spectacle' },
-  { src: '/images/gallery-03.jpg', alt: 'Moment de jeu interactif entre les comédiens et les enfants' },
-  { src: '/images/gallery-04.jpg', alt: "Scène humoristique sur l'usage des écrans en famille" },
-  { src: '/images/gallery-05.webp', alt: 'Béatrice en scène pendant le rap participatif avec les élèves' },
-  { src: '/images/gallery-06.jpg', alt: 'Samy et les enfants lors du temps de débat collectif' },
 ];
 
 const villesParZone = [
@@ -144,46 +136,6 @@ const villesParZone = [
     </div>
   </section>
 
-  <!-- GALERIE -->
-  <section class="bg-text-main py-14 sm:py-20" aria-label="Galerie photos du spectacle">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <h2 class="font-heading font-black text-2xl sm:text-3xl text-white mb-2">
-        Le spectacle en photos
-      </h2>
-      <p class="font-body text-gray-400 text-sm mb-8">
-        Quelques moments de représentation avec les élèves.
-      </p>
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        {photos.map((photo, i) => (
-          <a
-            href={`#photo-${i}`}
-            class="group block aspect-[4/3] overflow-hidden rounded-sm ring-2 ring-transparent hover:ring-accent focus-visible:ring-accent transition-all duration-200"
-            aria-label={`Agrandir : ${photo.alt}`}
-          >
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              width="400"
-              height="300"
-              loading="lazy"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          </a>
-        ))}
-      </div>
-    </div>
-
-    {photos.map((photo, i) => (
-      <div id={`photo-${i}`} class="lightbox-overlay" role="dialog" aria-modal="true" aria-label={photo.alt}>
-        <a href="#" class="lightbox-bg" aria-label="Fermer la photo"></a>
-        <div class="lightbox-content">
-          <a href="#" class="lightbox-close" aria-label="Fermer">✕</a>
-          <img src={photo.src} alt={photo.alt} class="lightbox-img" />
-        </div>
-      </div>
-    ))}
-  </section>
-
   <!-- LE PROJET + VILLES -->
   <section class="bg-white py-14 sm:py-20" aria-label="Description du projet">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-10">
@@ -238,7 +190,7 @@ const villesParZone = [
       <p class="font-body text-gray-600 mb-6">
         Vous souhaitez programmer le spectacle dans votre structure ?
       </p>
-      <Cta text="Réserver le spectacle" href="/contact" />
+      <Cta text="Réserver le spectacle" href="/contact/" />
     </div>
   </section>
 

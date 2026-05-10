@@ -1,5 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import OptimizedImage from '@components/OptimizedImage.astro';
 import Cta from '@components/Cta.astro';
 
 const jsonLdWebsite = {
@@ -16,6 +17,7 @@ const jsonLdPerformingGroup = {
   name: 'Les écrans pas tout le temps',
   description: 'Compagnie de spectacle théâtral participatif sur les écrans pour les enfants de 6 à 12 ans.',
   url: 'https://www.lesecranspastoutletemps.fr',
+  image: 'https://www.lesecranspastoutletemps.fr/images/og-image.jpg',
   location: { '@type': 'Place', addressLocality: 'Marseille', addressCountry: 'FR' },
   member: [
     { '@type': 'Person', name: 'Béatrice Herrero', jobTitle: 'Autrice, direction artistique, comédienne', description: 'Autrice et comédienne basée à Marseille, à l\'origine du spectacle Les écrans pas tout le temps sur la sensibilisation aux écrans pour les enfants.' },
@@ -41,7 +43,7 @@ const testimonials = [
   title="Les écrans pas tout le temps – Spectacle écrans pour enfants 6-12 ans"
   description="Les écrans pas tout le temps — spectacle participatif pour sensibiliser les enfants de 6 à 12 ans. Interventions en école primaire, médiathèque, centre social. Béatrice Herrero & Samy, Marseille et région PACA."
   jsonLd={[jsonLdWebsite, jsonLdPerformingGroup]}
-  preloadImage="/images/hero-illustration.png"
+  preloadImage="/images/hero-illustration.webp"
 >
 
   <!-- ============================================================
@@ -70,7 +72,6 @@ const testimonials = [
           Spectacle participatif de sensibilisation aux écrans pour les enfants.
           30&nbsp;min de théâtre + 30&nbsp;min de débat avec leur participation active.
         </p>
-        <Cta />
       </div>
 
       <!-- Image avec décalage jaune -->
@@ -79,7 +80,7 @@ const testimonials = [
           class="absolute inset-0 translate-x-4 translate-y-4 bg-accent rounded-sm"
           aria-hidden="true"
         ></div>
-        <img
+        <OptimizedImage
           src="/images/hero-illustration.png"
           alt="Illustration Les écrans pas tout le temps — personnages d'enfants entourés d'écrans"
           width="768"
@@ -129,8 +130,8 @@ const testimonials = [
 
       <div class="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
         {[
-          { href: '/spectacle-6-9-ans',  age: '6–9',  desc: 'Grande section, CP, CE1, CE2.' },
-          { href: '/spectacle-9-12-ans', age: '9–12', desc: 'CM1, CM2 et entrée en 6ème.' },
+          { href: '/spectacle-6-9-ans/',  age: '6–9',  desc: 'Grande section, CP, CE1, CE2.' },
+          { href: '/spectacle-9-12-ans/', age: '9–12', desc: 'CM1, CM2 et entrée en 6ème.' },
         ].map(({ href, age, desc }) => (
           <a
             href={href}
@@ -163,7 +164,7 @@ const testimonials = [
         ].map(({ src, name, role, alt }) => (
           <div class="text-center">
             <div class="aspect-square overflow-hidden rounded-sm bg-gray-800 mb-3 ring-2 ring-transparent hover:ring-accent transition-all duration-200">
-              <img src={src} alt={alt} width="200" height="200" loading="lazy" class="w-full h-full object-cover" />
+              <OptimizedImage src={src} alt={alt} width="200" height="200" loading="lazy" class="w-full h-full object-cover" />
             </div>
             <p class="font-heading font-bold text-sm text-white">{name}</p>
             <p class="font-body text-xs text-gray-500 mt-0.5">{role}</p>
@@ -205,7 +206,6 @@ const testimonials = [
       <p class="font-body text-text-main opacity-50 mb-10 text-sm">
         avec la participation active des élèves
       </p>
-      <Cta variant="dark" />
     </div>
   </section>
 
@@ -238,7 +238,7 @@ const testimonials = [
 
       <p class="text-center mt-10 font-body text-sm text-gray-500">
         Basés à Marseille, interventions dans toute la
-        <a href="/projet-realisations" class="font-heading font-semibold text-text-main underline underline-offset-4 decoration-accent hover:decoration-2 transition-all">région PACA</a>
+        <a href="/projet-realisations/" class="font-heading font-semibold text-text-main underline underline-offset-4 decoration-accent hover:decoration-2 transition-all">région PACA</a>
         et au-delà sur demande.
       </p>
     </div>
@@ -300,23 +300,7 @@ const testimonials = [
         Marseille
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-10 mb-10">
-        <a
-          href="tel:+33673158508"
-          class="font-heading font-bold text-xl text-white hover:text-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm"
-        >
-          06 73 15 85 08
-        </a>
-        <span class="hidden sm:block text-gray-700 text-2xl select-none" aria-hidden="true">·</span>
-        <a
-          href="mailto:lesecranspastoutletemps@gmail.com"
-          class="font-body text-sm text-gray-400 hover:text-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm break-all"
-        >
-          lesecranspastoutletemps@gmail.com
-        </a>
-      </div>
-
-      <Cta text="Faire une demande de réservation" href="/contact" />
+      <Cta text="Faire une demande de réservation" href="/contact/" />
     </div>
   </section>
 

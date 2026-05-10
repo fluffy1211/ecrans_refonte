@@ -1,0 +1,6 @@
+/*
+  Link: <https://www.lesecranspastoutletemps.fr/sitemap-index.xml>; rel="sitemap"
+  Link: <https://www.lesecranspastoutletemps.fr/llms.txt>; rel="llms.txt"
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable

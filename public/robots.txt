@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.lesecranspastoutletemps.fr/sitemap-index.xml
+Content-Signal: ai-train=yes, search=yes, ai-input=yes

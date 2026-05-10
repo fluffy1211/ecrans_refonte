@@ -23,17 +23,30 @@ const { preloadImage, ...seoProps } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
+    <style>
+      @font-face {
+        font-family: 'Raleway Fallback';
+        font-display: swap;
+        src: local('Raleway');
+      }
+      @font-face {
+        font-family: 'Nunito Fallback';
+        font-display: swap;
+        src: local('Nunito');
+      }
+    </style>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&family=Nunito:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;900&family=Nunito:wght@400;600;700&display=swap"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&family=Nunito:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;900&family=Nunito:wght@400;600;700&display=swap"
         rel="stylesheet"
       />
     </noscript>
@@ -41,7 +54,7 @@ const { preloadImage, ...seoProps } = Astro.props;
     <!-- google-site-verification — À REMPLACER : coller la valeur depuis Search Console -->
     <!-- <meta name="google-site-verification" content="VOTRE_CODE_SEARCH_CONSOLE" /> -->
 
-    {preloadImage && <link rel="preload" as="image" href={preloadImage} />}
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 
     <SEO {...seoProps} />
   </head>
