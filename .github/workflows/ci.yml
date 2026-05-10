@@ -30,5 +30,12 @@ jobs:
       - name: Check links
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --base dist --no-progress dist/**/*.html
+          args: >
+            --base dist
+            --no-progress
+            --exclude "fonts.googleapis.com"
+            --exclude "fonts.gstatic.com"
+            --exclude "api.web3forms.com"
+            --exclude "lesecranspastoutletemps.fr"
+            dist/**/*.html
           fail: true
