@@ -12,7 +12,9 @@ export default defineConfig({
 
   integrations: [
     tailwind(),
-    sitemap(),
+    sitemap({
+      lastmod: new Date(),
+    }),
     critters(),
     compress({
       CSS: true,

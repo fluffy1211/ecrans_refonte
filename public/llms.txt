@@ -1,21 +1,19 @@
 # Les écrans pas tout le temps
 
-Spectacle participatif de sensibilisation aux écrans pour les enfants de 6 à 12 ans.
-Béatrice Herrero & Samy — Marseille, région PACA.
+> Spectacle participatif de sensibilisation aux écrans pour les enfants de 6 à 12 ans. Interventions en école primaire, médiathèque, centre social. Béatrice Herrero & Samy, Marseille et région PACA.
 
 ## Pages
 
-- [Accueil](https://www.lesecranspastoutletemps.fr/) : Présentation du duo, les deux spectacles, témoignages, contact.
-- [Spectacle 6-9 ans](https://www.lesecranspastoutletemps.fr/spectacle-6-9-ans/) : Synopsis, déroulé, public CP-CE1-CE2, FAQ.
-- [Spectacle 9-12 ans](https://www.lesecranspastoutletemps.fr/spectacle-9-12-ans/) : Synopsis, déroulé, public CM1-CM2-6ème, FAQ.
-- [Projet & réalisations](https://www.lesecranspastoutletemps.fr/projet-realisations/) : Genèse du projet, carte des interventions, retours Académie d'Aix-Marseille.
-- [À propos](https://www.lesecranspastoutletemps.fr/a-propos/) : Bios de Béatrice Herrero et Samy, la compagnie.
-- [Zone d'intervention](https://www.lesecranspastoutletemps.fr/zone-intervention/) : Détail géographique, région PACA et au-delà.
-- [Contact](https://www.lesecranspastoutletemps.fr/contact/) : Formulaire de réservation, coordonnées.
-- [Mentions légales](https://www.lesecranspastoutletemps.fr/mentions-legales/) : Informations légales.
+- [Accueil](https://www.lesecranspastoutletemps.fr/): Les écrans pas tout le temps — spectacle participatif pour sensibiliser les enfants de 6 à 12 ans.
+- [Spectacle 6-9 ans](https://www.lesecranspastoutletemps.fr/spectacle-6-9-ans/): Spectacle participatif de sensibilisation aux écrans pour les CP, CE1, CE2 (6-9 ans). 30 min de théâtre + 30 min de débat.
+- [Spectacle 9-12 ans](https://www.lesecranspastoutletemps.fr/spectacle-9-12-ans/): Spectacle sur le temps d'écran pour les CM1, CM2, 6e (9-12 ans) — prévention numérique et débat participatif.
+- [Projet & réalisations](https://www.lesecranspastoutletemps.fr/projet-realisations/): +90 interventions scolaires, 4 000 élèves sensibilisés. Réalisations et partenaires du spectacle.
+- [À propos](https://www.lesecranspastoutletemps.fr/a-propos/): Béatrice Herrero et Samy, duo de théâtre à l'origine du spectacle Les écrans pas tout le temps.
+- [Contact](https://www.lesecranspastoutletemps.fr/contact/): Réservez le spectacle — intervention scolaire prévention écrans, Marseille et région PACA. Devis personnalisé sous 48h.
+- [Mentions légales](https://www.lesecranspastoutletemps.fr/mentions-legales/): Mentions légales du site lesecranspastoutletemps.fr — éditeur, hébergeur, données personnelles.
 
 ## Contact
 
-- Téléphone : 06 73 15 85 08
-- Email : lesecranspastoutletemps@gmail.com
-- Adresse : Marseille, France
+- Email: lesecranspastoutletemps@gmail.com
+- Téléphone: +33673158508
+- Zone d'intervention: Marseille et région PACA

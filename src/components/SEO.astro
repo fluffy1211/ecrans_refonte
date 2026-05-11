@@ -19,6 +19,22 @@ const {
 
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
 const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+// Fusionner plusieurs schemas en un seul @graph
+const processedLd = (() => {
+  if (jsonLdArray.length === 0) return null;
+  if (jsonLdArray.length === 1) return jsonLdArray[0];
+  const contexts = jsonLdArray.map((s: any) => s['@context']).filter(Boolean);
+  const uniqueContext = contexts.length > 0 ? contexts[0] : 'https://schema.org';
+  const graph = jsonLdArray.map((s: any) => {
+    const { '@context': _, ...rest } = s;
+    return rest;
+  });
+  return {
+    '@context': uniqueContext,
+    '@graph': graph,
+  };
+})();
 ---
 
 <title>{title}</title>
@@ -39,7 +55,14 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 <meta property="og:locale" content="fr_FR" />
 <meta property="og:site_name" content="Les écrans pas tout le temps" />
 
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(ogImage, Astro.site).toString()} />
+
 <!-- JSON-LD -->
-{jsonLdArray.map((schema) => (
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
-))}
+{processedLd && (
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(processedLd)} />
+)}

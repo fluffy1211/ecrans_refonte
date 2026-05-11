@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "apis": [
+    {
+      "api": {
+        "id": "sitemap",
+        "name": "Sitemap Index",
+        "type": "sitemap",
+        "url": "https://www.lesecranspastoutletemps.fr/sitemap-index.xml"
+      }
+    },
+    {
+      "api": {
+        "id": "llms-txt",
+        "name": "LLMs.txt",
+        "type": "llms.txt",
+        "url": "https://www.lesecranspastoutletemps.fr/llms.txt"
+      }
+    }
+  ]
+}
