@@ -31,6 +31,37 @@ const jsonLdPerformingGroup = {
   },
 };
 
+const jsonLdFaq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Quel est le public cible du spectacle ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Les enfants de 6 à 12 ans, en priorité les classes de CP à 6e. Nous intervenons en école primaire, médiathèque, centre social et mairie.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Comment se déroule une intervention ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '30 minutes de spectacle participatif suivies de 30 minutes de débat avec les élèves. La pièce aborde le temps d\'écran, les réseaux sociaux et le cyberharcèlement de manière adaptée à l\'âge.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Dans quelle zone géographique intervenez-vous ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Basés à Marseille, nous intervenons dans toute la région PACA et au-delà sur demande.',
+      },
+    },
+  ],
+};
+
 const testimonials = [
   "Super pièce ! Simple et efficace ! Les élèves ont accroché et ont été réactifs ! Une belle occasion pour se questionner et interroger son rapport aux écrans !",
   "Spectacle percutant très bien conçu et adapté à l'âge des enfants, et proche de la vie quotidienne des familles.",
@@ -41,8 +72,8 @@ const testimonials = [
 
 <Layout
   title="Les écrans pas tout le temps — Spectacle enfants 6-12 ans"
-  description="Les écrans pas tout le temps — spectacle participatif pour sensibiliser les enfants de 6 à 12 ans. Interventions en école primaire, médiathèque, centre social. Béatrice Herrero & Samy, Marseille et région PACA."
-  jsonLd={[jsonLdWebsite, jsonLdPerformingGroup]}
+  description="Spectacle participatif de sensibilisation aux écrans pour les enfants de 6 à 12 ans. 30 min de théâtre + 30 min de débat. +90 interventions, 4 000 élèves sensibilisés. Devis gratuit sous 48h — Marseille PACA."
+  jsonLd={[jsonLdWebsite, jsonLdPerformingGroup, jsonLdFaq]}
   preloadImage="/images/hero-illustration.webp"
 >
 
@@ -166,8 +197,8 @@ const testimonials = [
       <h2 class="font-heading font-black text-3xl sm:text-4xl text-text-main mb-3">
         Les écrans pas tout le temps&nbsp;!
       </h2>
-      <p class="font-body text-text-main opacity-60 mb-12">
-        Spectacle humoristique sur le thème (sérieux) des écrans
+      <p class="font-body text-text-main opacity-60 mb-12 max-w-2xl mx-auto">
+        Spectacle participatif et humoristique sur les écrans pour les enfants de 6 à 12 ans. 30 min de théâtre + 30 min de débat avec les élèves.
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-0 mb-12">
