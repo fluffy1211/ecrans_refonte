@@ -15,7 +15,7 @@ Astro + Tailwind CSS + TypeScript strict. Pas de React/Next/Vue. Pas de CMS.
 
 ## Décisions techniques arrêtées
 
-- **Hébergeur :** Cloudflare Pages (auto-deploy sur push `main`)
+- **Hébergeur :** Cloudflare Workers (auto-deploy sur push `main` via GitHub Actions + wrangler)
 - **URL de staging :** `ecransrefonte.pages.dev`
 - **Formulaire contact :** Web3Forms (clé : `587e8bb5-1715-4a5f-87e5-20512bd2566c`)
 - **Analytics :** aucun pour l'instant
@@ -39,23 +39,23 @@ Astro + Tailwind CSS + TypeScript strict. Pas de React/Next/Vue. Pas de CMS.
 | P3 Page d'accueil | ✅ | Toutes sections + JSON-LD |
 | P4 Pages secondaires | ✅ | Toutes pages + FAQ + formulaire + JSON-LD |
 | P5 SEO final | ✅ | Canonical, OG, sitemap, a11y |
-| P6 Déploiement | 🔄 | Live sur staging (`ecransrefonte.pages.dev`), domaine ajouté dans Cloudflare DNS, attente changement nameservers OVH (en attente credentials OVH) |
+| P6 Déploiement | ✅ | Workers + DNS configuré, nameservers OVH→Cloudflare migrés, DNSSEC désactivé, SSL Full actif, Always Use HTTPS ON, apex + www attachés au Worker |
 | Audit post-P6 | ✅ | Bug photo Samy corrigé, nav enrichie, section structures ajoutée sur la home, commentaires `À VALIDER` purgés du HTML servi |
 | Polish contenu | ✅ | Tirets LLM supprimés, bulles témoignages simplifiées, fusion sections projet-realisations, suppression comités d'entreprise, répétitions "48h" allégées |
 
 ## Actions en attente (bloquants Gabriel/Béatrice)
 
-- [ ] **Gabriel** : fournir le code `google-site-verification` (Search Console) → décommenter dans `Layout.astro`
+- [x] **Gabriel** : bascule domaine OVH → Cloudflare (nameservers + DNSSEC désactivé + apex/www attachés) — ~~fait 2026-05-11~~
+- [x] **Gabriel** : fournir le code `google-site-verification` (Search Console) → décommenté dans `Layout.astro`
 - [ ] **Gabriel** : décider analytics (Plausible / Umami / rien)
-- [ ] **Gabriel** : obtenir credentials OVH → changer nameservers (`dns20.ovh.net`/`ns20.ovh.net` → `evangeline.ns.cloudflare.com`/`yichun.ns.cloudflare.com`) + désactiver DNSSEC chez OVH
-- [ ] **Béatrice** : valider les synopses des spectacles (`<!-- CONTENU À VALIDER -->`)
-- [ ] **Béatrice** : enrichir les bios dans `/a-propos` (`<!-- CONTENU MANQUANT -->`)
+- [ ] **Béatrice** : valider les synopses des spectacles
+- [ ] **Béatrice** : enrichir les bios dans `/a-propos`
 - [ ] **Gabriel/Béatrice** : portraits HD (Wix ne sert que des thumbnails ~60px)
 
 ## Ce qui reste à coder (P6)
 
-- [ ] `README.md` — comment éditer le contenu, ajouter une image, déployer
-- [ ] GitHub Actions CI — build + check liens cassés
+- [x] `README.md` — comment éditer le contenu, ajouter une image, déployer
+- [x] GitHub Actions CI — build + check liens cassés
 - [ ] Lightbox `/projet-realisations` : remplacer le pattern `:target` par une vraie modale (focus trap, pas de pollution de l'historique) — dette acceptable post-MVP
 
 ## Règles absolues

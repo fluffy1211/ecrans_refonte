@@ -1,8 +1,8 @@
 # Mémoire de session — 10 mai 2026
 
 ## Contexte
-Audit post-session des améliorations perf/SEO réalisées sur le site `lesecranspastoutletemps.fr`.
-L'utilisateur a demandé une review complète et le traitement de tous les points.
+Session de reprise : transfert domaine OVH → Cloudflare.
+L'utilisateur est connecté chez OVH.
 
 ## Actions réalisées
 
@@ -56,6 +56,12 @@ L'utilisateur a demandé une review complète et le traitement de tous les point
 - Build Astro vérifié, aucune erreur
 - Sitemap généré avec trailing slashes
 - `_redirects` copié dans `dist/`
+
+## Avancement transfert domaine OVH → Cloudflare (11 mai 2026)
+- ✅ Domaine `lesecranspastoutletemps.fr` déjà ajouté dans Cloudflare DNS
+- ✅ Connecté chez OVH
+- ❌ DNSSEC désactivation demandée (délai 24h annoncé par OVH)
+- ⏳ Revenir dans 24h pour : vérifier DNSSEC désactivé → appliquer nameservers Cloudflare (`evangeline.ns.cloudflare.com` / `yichun.ns.cloudflare.com`) → attendre propagation
 
 ## Commit
 - `[P6] Audit perf/SEO — WebP, OG, JSON-LD, trailingSlash, README, CI`
