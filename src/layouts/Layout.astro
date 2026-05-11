@@ -55,6 +55,10 @@ const { preloadImage, ...seoProps } = Astro.props;
 
     {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
     <SEO {...seoProps} />
   </head>
   <body class="font-body text-text-main bg-white flex flex-col min-h-screen">
