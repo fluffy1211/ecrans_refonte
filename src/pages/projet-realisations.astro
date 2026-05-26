@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Cta from '@components/Cta.astro';
+import OptimizedImage from '@components/OptimizedImage.astro';
 
 const jsonLd = [
   {
@@ -53,21 +54,36 @@ const villesParZone = [
   <section class="bg-text-main relative overflow-hidden py-14 sm:py-20" aria-label="Projet et réalisations">
     <div class="absolute inset-0 pointer-events-none select-none" style="background-image:url('/images/deco-01.webp'); background-size:cover; mix-blend-mode:screen; opacity:0.10;" aria-hidden="true"></div>
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
-      <nav aria-label="Fil d'Ariane" class="mb-8">
-        <ol class="flex items-center gap-2 text-xs font-heading text-gray-500 list-none">
-          <li><a href="/" class="hover:text-accent transition-colors">Accueil</a></li>
-          <li class="text-gray-700" aria-hidden="true">›</li>
-          <li class="text-accent" aria-current="page">Projet &amp; réalisations</li>
-        </ol>
-      </nav>
-      <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-4">Le projet</p>
-      <h1 class="font-heading font-black text-4xl sm:text-5xl text-white leading-tight mb-6 max-w-xl">
-        Réalisations — Spectacle écrans en région PACA
-      </h1>
-      <p class="font-body text-gray-400 text-base max-w-lg">
-        Depuis sa création, « Les écrans pas tout le temps ! » a réalisé des interventions scolaires
-        dans de nombreuses villes de la région PACA, touchant des milliers d'élèves.
-      </p>
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div>
+          <nav aria-label="Fil d'Ariane" class="mb-8">
+            <ol class="flex items-center gap-2 text-xs font-heading text-gray-500 list-none">
+              <li><a href="/" class="hover:text-accent transition-colors">Accueil</a></li>
+              <li class="text-gray-700" aria-hidden="true">›</li>
+              <li class="text-accent" aria-current="page">Projet &amp; réalisations</li>
+            </ol>
+          </nav>
+          <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-4">Le projet</p>
+          <h1 class="font-heading font-black text-4xl sm:text-5xl text-white leading-tight mb-6 max-w-xl">
+            Réalisations — Spectacle écrans en région PACA
+          </h1>
+          <p class="font-body text-gray-400 text-base max-w-lg">
+            Depuis sa création, « Les écrans pas tout le temps ! » a réalisé des interventions scolaires
+            dans de nombreuses villes de la région PACA, touchant des milliers d'élèves.
+          </p>
+        </div>
+        <div class="hidden md:block">
+          <OptimizedImage
+            src="/images/salle-dos-scene.jpg"
+            alt="Vue de scène — Béatrice et Samy face au public d'enfants lors d'une représentation"
+            width={600}
+            height={400}
+            loading="eager"
+            fetchpriority="high"
+            class="w-full rounded-sm object-cover"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
@@ -143,6 +159,16 @@ const villesParZone = [
         <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main mb-5">
           Villes et lieux où nous avons joué
         </h2>
+        <div class="mb-8">
+          <OptimizedImage
+            src="/images/salle-vue-large.jpg"
+            alt="Samy et Béatrice sur scène devant une salle remplie d'enfants, spectacle participatif"
+            width={720}
+            height={480}
+            loading="lazy"
+            class="w-full rounded-sm object-cover"
+          />
+        </div>
         <div class="font-body text-gray-600 leading-relaxed space-y-4 mb-6">
           <p>
             Nous nous produisons dans tous types d'espaces, sans contrainte technique :
