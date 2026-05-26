@@ -65,14 +65,14 @@ const jsonLdFaq = {
 const testimonials = [
   "Super pièce ! Simple et efficace ! Les élèves ont accroché et ont été réactifs ! Une belle occasion pour se questionner et interroger son rapport aux écrans !",
   "Spectacle percutant très bien conçu et adapté à l'âge des enfants, et proche de la vie quotidienne des familles.",
-  "Artistes très professionnels. Pièce touchante et pertinente — en lien avec l'EMI & le projet Parcours Petits Explorateurs du Web avec la mairie de Marseille. Les élèves ont adoré et la maitresse aussi ! Merci.",
+  "Artistes très professionnels. Pièce touchante et pertinente - en lien avec l'EMI & le projet Parcours Petits Explorateurs du Web avec la mairie de Marseille. Les élèves ont adoré et la maitresse aussi ! Merci.",
   "Le message véhiculé par le spectacle a été jugé pertinent par la grande majorité des enseignants. Les élèves se sont montrés actifs et réactifs face aux situations rencontrées dans ces scénettes.",
 ];
 ---
 
 <Layout
-  title="Les écrans pas tout le temps — Spectacle enfants 6-12 ans"
-  description="Spectacle participatif de sensibilisation aux écrans pour les enfants de 6 à 12 ans. 30 min de théâtre + 30 min de débat. +90 interventions, 4 000 élèves sensibilisés. Devis gratuit sous 48h — Marseille PACA."
+  title="Les écrans pas tout le temps - Spectacle enfants 6-12 ans"
+  description="Spectacle participatif de sensibilisation aux écrans pour les enfants de 6 à 12 ans. 30 min de théâtre + 30 min de débat. +90 interventions, 4 000 élèves sensibilisés. Devis gratuit sous 48h - Marseille PACA."
   jsonLd={[jsonLdWebsite, jsonLdPerformingGroup, jsonLdFaq]}
   preloadImage="/images/hero-illustration.webp"
 >
@@ -109,7 +109,7 @@ const testimonials = [
         ></div>
         <OptimizedImage
           src="/images/hero-illustration.png"
-          alt="Illustration Les écrans pas tout le temps — personnages d'enfants entourés d'écrans"
+          alt="Illustration Les écrans pas tout le temps - personnages d'enfants entourés d'écrans"
           width="768"
           height="715"
           loading="eager"
@@ -131,7 +131,7 @@ const testimonials = [
         <span class="w-2.5 h-2.5 bg-accent rounded-sm flex-shrink-0" aria-hidden="true"></span>
         <span class="font-heading font-bold text-sm text-text-main group-hover:text-accent transition-colors">
           Pertinence pédagogique validée par l'Académie d'Aix-Marseille
-          <span class="font-normal text-gray-500 ml-1 whitespace-nowrap">— analyse des retours (PDF)</span>
+          <span class="font-normal text-gray-500 ml-1 whitespace-nowrap">- analyse des retours (PDF)</span>
         </span>
       </a>
       <p class="font-heading font-semibold text-xs uppercase tracking-widest text-gray-500 whitespace-nowrap">
@@ -188,6 +188,12 @@ const testimonials = [
             <p class="font-body text-xs text-gray-500 mt-0.5">{role}</p>
           </div>
         ))}
+      </div>
+      <div class="relative z-10 text-center mt-8">
+        <a href="/a-propos/" class="inline-flex items-center gap-2 font-body text-sm text-gray-400 hover:text-accent transition-colors duration-200">
+          En savoir plus sur Béatrice &amp; Samy
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
       </div>
     </div>
   </section>

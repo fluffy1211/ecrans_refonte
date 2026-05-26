@@ -18,7 +18,7 @@ export const onRequest = defineMiddleware((context, next) => {
     return Response.redirect(url.toString(), 301);
   }
 
-  // Trailing slash enforcement (dev only — Astro handles it in prod)
+  // Trailing slash enforcement (dev only - Astro handles it in prod)
   if (!import.meta.env.PROD) {
     if (
       pathname !== '/' &&
