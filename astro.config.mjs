@@ -18,7 +18,16 @@ export default defineConfig({
     critters(),
     compress({
       CSS: true,
-      HTML: true,
+      HTML: {
+        'html-minifier-terser': {
+          collapseWhitespace: true,
+          removeComments: true,
+          caseSensitive: true,
+          minifyCSS: false,
+          minifyJS: false,
+          processScripts: [],
+        },
+      },
       JavaScript: true,
       Image: false,
       SVG: false,
