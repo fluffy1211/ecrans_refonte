@@ -84,15 +84,16 @@ const jsonLd = [
           </p>
           <Cta />
         </div>
-        <div class="hidden md:block">
+        <div class="hidden md:block relative">
+          <div class="absolute inset-0 translate-x-3 translate-y-3 bg-accent rounded-sm" aria-hidden="true"></div>
           <OptimizedImage
             src="/images/scene-duo-sourires.jpg"
             alt="Béatrice et Samy, comédiens du spectacle Les écrans pas tout le temps, sur scène"
             width={600}
-            height={400}
+            height={450}
             loading="eager"
             fetchpriority="high"
-            class="w-full rounded-sm object-cover"
+            class="relative w-full aspect-[4/3] object-cover rounded-sm"
           />
         </div>
       </div>
@@ -151,23 +152,31 @@ const jsonLd = [
   <!-- PHOTOS SPECTACLE -->
   <section class="bg-white pb-14 sm:pb-20" aria-label="Photos du spectacle">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="grid sm:grid-cols-2 gap-4">
-        <OptimizedImage
-          src="/images/salle-main-levee.jpg"
-          alt="Enfant qui lève la main pour participer au spectacle théâtral sur les écrans"
-          width={600}
-          height={400}
-          loading="lazy"
-          class="w-full rounded-sm object-cover aspect-[3/2]"
-        />
-        <OptimizedImage
-          src="/images/scene-action.jpg"
-          alt="Samy en plein jeu scénique, spectacle de théâtre participatif sur les écrans et les enfants"
-          width={600}
-          height={400}
-          loading="lazy"
-          class="w-full rounded-sm object-cover aspect-[3/2]"
-        />
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div class="relative overflow-hidden rounded-sm">
+          <OptimizedImage
+            src="/images/salle-main-levee.jpg"
+            alt="Enfant qui lève la main pour participer au spectacle théâtral sur les écrans"
+            width={600}
+            height={400}
+            loading="lazy"
+            class="w-full aspect-[3/2] object-cover block"
+          />
+          <div class="absolute inset-0 ring-2 ring-inset ring-gray-900/10 rounded-sm pointer-events-none" aria-hidden="true"></div>
+          <div class="absolute bottom-0 left-0 w-10 h-1 bg-accent" aria-hidden="true"></div>
+        </div>
+        <div class="relative overflow-hidden rounded-sm">
+          <OptimizedImage
+            src="/images/scene-action.jpg"
+            alt="Samy en plein jeu scénique, spectacle de théâtre participatif sur les écrans et les enfants"
+            width={600}
+            height={400}
+            loading="lazy"
+            class="w-full aspect-[3/2] object-cover block"
+          />
+          <div class="absolute inset-0 ring-2 ring-inset ring-gray-900/10 rounded-sm pointer-events-none" aria-hidden="true"></div>
+          <div class="absolute bottom-0 left-0 w-10 h-1 bg-accent" aria-hidden="true"></div>
+        </div>
       </div>
     </div>
   </section>

@@ -72,15 +72,16 @@ const villesParZone = [
             dans de nombreuses villes de la région PACA, touchant des milliers d'élèves.
           </p>
         </div>
-        <div class="hidden md:block">
+        <div class="hidden md:block relative">
+          <div class="absolute inset-0 translate-x-3 translate-y-3 bg-accent rounded-sm" aria-hidden="true"></div>
           <OptimizedImage
             src="/images/salle-dos-scene.jpg"
             alt="Vue de scène — Béatrice et Samy face au public d'enfants lors d'une représentation"
             width={600}
-            height={400}
+            height={450}
             loading="eager"
             fetchpriority="high"
-            class="w-full rounded-sm object-cover"
+            class="relative w-full aspect-[4/3] object-cover rounded-sm"
           />
         </div>
       </div>
@@ -159,15 +160,17 @@ const villesParZone = [
         <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main mb-5">
           Villes et lieux où nous avons joué
         </h2>
-        <div class="mb-8">
+        <div class="relative mb-8 overflow-hidden rounded-sm">
           <OptimizedImage
             src="/images/salle-vue-large.jpg"
             alt="Samy et Béatrice sur scène devant une salle remplie d'enfants, spectacle participatif"
             width={720}
-            height={480}
+            height={405}
             loading="lazy"
-            class="w-full rounded-sm object-cover"
+            class="w-full aspect-[16/9] object-cover block"
           />
+          <div class="absolute inset-0 ring-2 ring-inset ring-gray-900/10 rounded-sm pointer-events-none" aria-hidden="true"></div>
+          <div class="absolute bottom-0 left-0 w-16 h-1 bg-accent" aria-hidden="true"></div>
         </div>
         <div class="font-body text-gray-600 leading-relaxed space-y-4 mb-6">
           <p>
