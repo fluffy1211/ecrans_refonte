@@ -246,11 +246,19 @@ const villesParZone = [
   </section>
 
   <!-- GALERIE PHOTOS -->
-  <section class="bg-gray-50 border-t-4 border-accent py-14 sm:py-20" aria-label="Galerie photos">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <h2 class="font-heading font-black text-2xl sm:text-3xl text-text-main mb-8">
-        En images
-      </h2>
+  <section class="bg-text-main border-t-4 border-accent py-12 sm:py-16" aria-label="Galerie photos">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-baseline gap-4 mb-6">
+        <div>
+          <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-2">En images</p>
+          <h2 class="font-heading font-black text-2xl sm:text-3xl text-white leading-tight">
+            Le spectacle en photos
+          </h2>
+        </div>
+        <span class="font-heading font-bold text-xs tracking-widest text-gray-600 uppercase ml-auto flex-shrink-0">
+          {galleryPhotos.length} photos
+        </span>
+      </div>
       <Gallery photos={galleryPhotos} />
     </div>
   </section>
