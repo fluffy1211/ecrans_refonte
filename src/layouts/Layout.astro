@@ -11,6 +11,12 @@ interface Props {
   jsonLd?: object | object[];
   noindex?: boolean;
   preloadImage?: string;
+  video?: {
+    url: string;
+    type?: string;
+    width?: number;
+    height?: number;
+  };
 }
 
 const { preloadImage, ...seoProps } = Astro.props;

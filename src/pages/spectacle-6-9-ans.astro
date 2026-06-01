@@ -41,7 +41,7 @@ const jsonLd = [
     mainEntity: faqItems.map(({ q, a }) => ({
       '@type': 'Question',
       name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a },
+      acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]*>/g, '') },
     })),
   },
   {
@@ -157,8 +157,8 @@ const jsonLd = [
           <div class="absolute inset-0 translate-x-2 translate-y-2 bg-accent rounded-sm" aria-hidden="true"></div>
           <div class="relative overflow-hidden rounded-sm">
             <OptimizedImage
-              src="/images/salle-main-levee.jpg"
-              alt="Enfant qui lève la main pour participer au spectacle théâtral sur les écrans"
+              src="/images/gallery-01.jpg"
+              alt="Béatrice désigne un élève parmi les mains levées, Samy en retrait - intervention scolaire"
               width={600}
               height={400}
               loading="lazy"

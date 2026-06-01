@@ -6,6 +6,12 @@ interface Props {
   ogImage?: string;
   jsonLd?: object | object[];
   noindex?: boolean;
+  video?: {
+    url: string;
+    type?: string;
+    width?: number;
+    height?: number;
+  };
 }
 
 const {
@@ -15,6 +21,7 @@ const {
   ogImage = '/images/og-image.jpg',
   jsonLd,
   noindex = false,
+  video,
 } = Astro.props;
 
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
@@ -54,6 +61,15 @@ const processedLd = (() => {
 <meta property="og:image:alt" content={title} />
 <meta property="og:locale" content="fr_FR" />
 <meta property="og:site_name" content="Les écrans pas tout le temps" />
+
+{video && (
+  <>
+    <meta property="og:video" content={video.url} />
+    {video.type && <meta property="og:video:type" content={video.type} />}
+    {video.width && <meta property="og:video:width" content={String(video.width)} />}
+    {video.height && <meta property="og:video:height" content={String(video.height)} />}
+  </>
+)}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
