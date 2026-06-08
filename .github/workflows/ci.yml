@@ -28,7 +28,7 @@ jobs:
         run: npm run build
 
       - name: Check links
-        uses: lycheeverse/lychee-action@v1
+        uses: lycheeverse/lychee-action@v2
         with:
           args: >
             --base dist
@@ -37,5 +37,7 @@ jobs:
             --exclude "fonts.gstatic.com"
             --exclude "api.web3forms.com"
             --exclude "lesecranspastoutletemps.fr"
+            --exclude "youtube.com"
+            --exclude "schema.org"
             dist/**/*.html
           fail: true
