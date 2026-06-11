@@ -35,7 +35,7 @@ jobs:
 
       - name: Check links
         run: |
-          lychee --base dist --no-progress \
+          lychee --base "$GITHUB_WORKSPACE/dist" --no-progress \
             --exclude "fonts.googleapis.com" \
             --exclude "fonts.gstatic.com" \
             --exclude "api.web3forms.com" \
