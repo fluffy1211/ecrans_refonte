@@ -30,6 +30,7 @@ jobs:
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
+          lycheeVersion: latest
           args: >
             --base dist
             --no-progress
