@@ -21,7 +21,7 @@ const jsonLdPerformingGroup = {
   location: { '@type': 'Place', addressLocality: 'Marseille', addressCountry: 'FR' },
   member: [
     { '@type': 'Person', name: 'Béatrice Herrero', jobTitle: 'Autrice, direction artistique, comédienne', description: 'Autrice et comédienne basée à Marseille, à l\'origine du spectacle Les écrans pas tout le temps sur la sensibilisation aux écrans pour les enfants.' },
-    { '@type': 'Person', name: 'Samy', jobTitle: 'Comédien' },
+    { '@type': 'Person', name: 'Samy Adjouadi', jobTitle: 'Comédien' },
   ],
   contactPoint: {
     '@type': 'ContactPoint',
@@ -105,7 +105,7 @@ const testimonials = [
       <!-- Texte -->
       <div class="flex-1 text-center md:text-left">
         <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-5">
-          Béatrice &amp; Samy
+          Béatrice &amp; Samy Adjouadi
         </p>
         <h1 class="font-heading font-black text-5xl sm:text-6xl lg:text-[5.5rem] text-white leading-[1.02] mb-7">
           Les écrans<br />
@@ -193,8 +193,8 @@ const testimonials = [
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-2 gap-5 sm:gap-8 max-w-xl mx-auto">
         {[
-          { src: '/images/beatrice-portrait.jpg', cls: 'object-cover',     name: 'Béatrice',   role: 'Direction artistique · Comédienne', alt: 'Portrait de Béatrice Herrero, comédienne du spectacle Les écrans pas tout le temps' },
-          { src: '/images/samy-portrait.jpg',     cls: 'object-cover object-top', name: 'Samy', role: 'Comédien',                        alt: 'Samy, comédien du spectacle Les écrans pas tout le temps, avec casque audio' },
+          { src: '/images/beatrice-portrait.jpg', cls: 'object-cover',     name: 'Béatrice',        role: 'Direction artistique · Comédienne', alt: 'Portrait de Béatrice Herrero, comédienne du spectacle Les écrans pas tout le temps' },
+          { src: '/images/samy-portrait.jpg',     cls: 'object-cover object-top', name: 'Samy Adjouadi', role: 'Comédien',                        alt: 'Samy Adjouadi, comédien du spectacle Les écrans pas tout le temps' },
         ].map(({ src, name, role, alt, cls }) => (
           <div class="text-center">
             <div class="aspect-square overflow-hidden rounded-sm bg-gray-800 mb-3 ring-2 ring-transparent hover:ring-accent transition-all duration-200">
