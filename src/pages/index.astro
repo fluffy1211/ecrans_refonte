@@ -2,7 +2,6 @@
 import Layout from '@layouts/Layout.astro';
 import OptimizedImage from '@components/OptimizedImage.astro';
 import Cta from '@components/Cta.astro';
-import { organizationSchema, canonicalOrganizationId } from '@lib/schema';
 
 const jsonLdWebsite = {
   '@context': 'https://schema.org',
@@ -10,6 +9,26 @@ const jsonLdWebsite = {
   name: 'Les écrans pas tout le temps',
   description: 'Spectacle participatif sur la prévention numérique pour les enfants de 6 à 12 ans. Interventions en école primaire, médiathèque, centre social. Marseille et région PACA.',
   url: 'https://www.lesecranspastoutletemps.fr',
+};
+
+const jsonLdPerformingGroup = {
+  '@context': 'https://schema.org',
+  '@type': 'PerformingGroup',
+  name: 'Les écrans pas tout le temps',
+  description: 'Compagnie de spectacle théâtral participatif sur les écrans pour les enfants de 6 à 12 ans.',
+  url: 'https://www.lesecranspastoutletemps.fr',
+  image: 'https://www.lesecranspastoutletemps.fr/images/gallery-01.jpg',
+  location: { '@type': 'Place', addressLocality: 'Marseille', addressCountry: 'FR' },
+  member: [
+    { '@type': 'Person', name: 'Béatrice Herrero', jobTitle: 'Autrice, direction artistique, comédienne', description: 'Autrice et comédienne basée à Marseille, à l\'origine du spectacle Les écrans pas tout le temps sur la sensibilisation aux écrans pour les enfants.' },
+    { '@type': 'Person', name: 'Samy Adjouadi', jobTitle: 'Comédien' },
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+33673158508',
+    email: 'lesecranspastoutletemps@gmail.com',
+    contactType: 'customer service',
+  },
 };
 
 const jsonLdFaq = {
@@ -52,7 +71,11 @@ const jsonLdVideo = {
   contentUrl: 'https://www.youtube.com/watch?v=Pc4mR2p0zK0',
   embedUrl: 'https://www.youtube.com/embed/Pc4mR2p0zK0',
   uploadDate: '2024-01-15T00:00:00+01:00',
-  publisher: { '@id': canonicalOrganizationId },
+  publisher: {
+    '@type': 'PerformingGroup',
+    name: 'Les écrans pas tout le temps',
+    url: 'https://www.lesecranspastoutletemps.fr',
+  },
 };
 
 const testimonials = [
@@ -66,7 +89,7 @@ const testimonials = [
 <Layout
   title="Les écrans pas tout le temps - Spectacle enfants 6-12 ans"
   description="Spectacle participatif de sensibilisation aux écrans pour les enfants de 6 à 12 ans. 30 min de théâtre + 30 min de débat. +90 interventions, 4 000 élèves sensibilisés. Devis gratuit sous 48h - Marseille PACA."
-  jsonLd={[jsonLdWebsite, organizationSchema, jsonLdFaq, jsonLdVideo]}
+  jsonLd={[jsonLdWebsite, jsonLdPerformingGroup, jsonLdFaq, jsonLdVideo]}
   preloadImage="/images/hero-illustration.webp"
   video={{ url: 'https://www.youtube.com/embed/Pc4mR2p0zK0', type: 'text/html', width: 1280, height: 720 }}
 >
@@ -231,6 +254,39 @@ const testimonials = [
             allowfullscreen
             loading="lazy"
           ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 sm:py-24" aria-label="Pourquoi cette démarche">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div>
+          <p class="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-accent mb-3">Parents, éducateurs</p>
+          <h2 class="font-heading font-black text-3xl sm:text-4xl text-text-main mb-5">
+            Pourquoi cette démarche&nbsp;?
+          </h2>
+          <div class="font-body text-gray-600 leading-relaxed space-y-4">
+            <p>
+              Les enfants d'aujourd'hui grandissent avec les écrans. Ni interdiction systématique, ni exposition sans limites : la clé est la <strong>conscience et l'équilibre</strong>.
+            </p>
+            <p>
+              Notre spectacle invite les enfants à réfléchir par eux-mêmes sur leur temps d'écran, les impacts sur leur sommeil, leurs relations, leur créativité. À travers l'humour et des situations du quotidien, ils découvrent comment les écrans les fascinent — et comment reprendre le contrôle.
+            </p>
+            <p>
+              C'est un complément idéal aux conversations en famille. Les enfants qui ont vu le spectacle reviennent souvent chez eux avec des questions, des envies de débat. Un vrai catalyseur de dialogue.
+            </p>
+          </div>
+        </div>
+        <div class="bg-accent p-8 rounded-sm text-center">
+          <p class="font-heading font-black text-4xl text-text-main mb-2">4&nbsp;000+</p>
+          <p class="font-heading font-semibold text-xs uppercase tracking-widest text-text-main opacity-70 mb-6">enfants sensibilisés</p>
+          <div class="border-t-2 border-text-main/20 pt-6">
+            <p class="font-body text-sm text-text-main mb-4">
+              Parents et enseignants rapportent des changements positifs : <strong>moins d'écran compulsif</strong>, <strong>plus de conscience</strong> du temps passé, et surtout <strong>des conversations enrichies</strong> entre enfants et adultes.
+            </p>
+          </div>
         </div>
       </div>
     </div>
