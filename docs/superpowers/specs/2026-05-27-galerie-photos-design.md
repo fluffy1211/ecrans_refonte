@@ -1,4 +1,4 @@
-# Spec : Galerie photos — /projet-realisations
+# Spec : Galerie photos - /projet-realisations
 
 **Date :** 2026-05-27  
 **Statut :** Approuvé
@@ -14,7 +14,7 @@ Intégrer une galerie complète des photos disponibles dans la section `/projet-
 ## Assets
 
 ### Photos nouvelles (16 uniques depuis `~/Pictures/ecrans`)
-Les 6 suivantes sont des doublons exacts (MD5) de photos déjà dans `public/images/` — à ignorer :
+Les 6 suivantes sont des doublons exacts (MD5) de photos déjà dans `public/images/` - à ignorer :
 - `WhatsApp Image 2026-05-20 at 11.31.12 (3).jpeg` = `salle-dos-scene.jpg`
 - `WhatsApp Image 2026-05-20 at 11.31.13 (1).jpeg` = `salle-vue-large.jpg`
 - `WhatsApp Image 2026-05-20 at 11.31.11 (1).jpeg` = `salle-main-levee.jpg`
@@ -27,7 +27,7 @@ Les 16 restantes sont copiées dans `public/images/` sous les noms `gallery-07.w
 Conversion : `cwebp -q 82` (qualité 82, bon rapport qualité/poids pour du JPEG WhatsApp).
 
 ### Photos existantes incluses dans la galerie (14)
-`gallery-01` → `gallery-06`, `scene-action`, `scene-duo-accueil`, `scene-duo-sourires`, `salle-dos-scene`, `salle-vue-large`, `salle-main-levee`, `en-scene`, `photo-ensemble` — toutes en `.webp`.
+`gallery-01` → `gallery-06`, `scene-action`, `scene-duo-accueil`, `scene-duo-sourires`, `salle-dos-scene`, `salle-vue-large`, `salle-main-levee`, `en-scene`, `photo-ensemble` - toutes en `.webp`.
 
 Exclus de la galerie : portraits bio (`beatrice-portrait`, `samy-portrait`, `portrait-samy`), visuels décoratifs (`deco-*`, `hero-illustration`, `sticker`), images hero contextuelles (`hero-beatrice-enfants`, `projet-hero`), og/icons.
 

@@ -53,7 +53,7 @@ npm run deploy
 
 1. Ouvrir le fichier `.astro` correspondant dans `src/pages/`
 2. Éditer le texte directement dans le HTML
-3. Commit et push — le site se redéploie automatiquement
+3. Commit et push - le site se redéploie automatiquement
 
 | Page | Fichier |
 |---|---|
@@ -71,7 +71,7 @@ Chaque page appelle le composant `<Layout>` avec des props `title`, `description
 
 ```astro
 <Layout
-  title="Nouveau titre — Les écrans pas tout le temps"
+  title="Nouveau titre - Les écrans pas tout le temps"
   description="Nouvelle meta description."
   jsonLd={[...]}
 >
@@ -127,12 +127,12 @@ Ce script génère les versions WebP et l'image Open Graph.
 ### Données structurées (JSON-LD)
 
 Chaque page contient son propre JSON-LD dans le frontmatter. Les types utilisés :
-- `WebSite` — page d'accueil
-- `PerformingGroup` — accueil, à propos, projet
-- `Event` — pages spectacle
-- `FAQPage` — pages spectacle
-- `LocalBusiness` — contact
-- `BreadcrumbList` — toutes les pages internes
+- `WebSite` - page d'accueil
+- `PerformingGroup` - accueil, à propos, projet
+- `Event` - pages spectacle
+- `FAQPage` - pages spectacle
+- `LocalBusiness` - contact
+- `BreadcrumbList` - toutes les pages internes
 
 ### Sitemap
 
@@ -176,4 +176,4 @@ Généré automatiquement par `@astrojs/sitemap` à chaque build. Disponible sur
 
 ## Contact technique
 
-Gabriel Martin — gabrielmartin13009@gmail.com
+Gabriel Martin - gabrielmartin13009@gmail.com

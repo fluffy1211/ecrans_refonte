@@ -1,4 +1,4 @@
-# Mémoire de session — 10 mai 2026
+# Mémoire de session - 10 mai 2026
 
 ## Contexte
 Session de reprise : transfert domaine OVH → Cloudflare.
@@ -64,7 +64,7 @@ L'utilisateur est connecté chez OVH.
 - ⏳ Revenir dans 24h pour : vérifier DNSSEC désactivé → appliquer nameservers Cloudflare (`evangeline.ns.cloudflare.com` / `yichun.ns.cloudflare.com`) → attendre propagation
 
 ## Commit
-- `[P6] Audit perf/SEO — WebP, OG, JSON-LD, trailingSlash, README, CI`
+- `[P6] Audit perf/SEO - WebP, OG, JSON-LD, trailingSlash, README, CI`
 - 37 fichiers changés, 1254 insertions(+), 121 suppressions(-)
 
 ## Rappels / actions bloquantes (toujours valides)

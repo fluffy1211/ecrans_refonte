@@ -1,4 +1,4 @@
-# CLAUDE.md — Refonte lesecranspastoutletemps.fr
+# CLAUDE.md - Refonte lesecranspastoutletemps.fr
 
 Lis **project.md** et **workflow.md** au début de chaque session avant de faire quoi que ce soit.
 
@@ -19,7 +19,7 @@ Astro + Tailwind CSS + TypeScript strict. Pas de React/Next/Vue. Pas de CMS.
 - **URL de staging :** `ecransrefonte.pages.dev`
 - **Formulaire contact :** Web3Forms (clé : `587e8bb5-1715-4a5f-87e5-20512bd2566c`)
 - **Analytics :** aucun pour l'instant
-- **Typos :** Raleway + Nunito (placeholders — à confirmer via DevTools sur le site Wix)
+- **Typos :** Raleway + Nunito (placeholders - à confirmer via DevTools sur le site Wix)
 - **Accent couleur :** `#F8E71C` (jaune), texte `#1C1C1C`
 - **Favicon :** hors scope pour l'instant
 
@@ -43,7 +43,7 @@ Astro + Tailwind CSS + TypeScript strict. Pas de React/Next/Vue. Pas de CMS.
 
 ## Actions en attente (bloquants Gabriel/Béatrice)
 
-- [x] **Gabriel** : bascule domaine OVH → Cloudflare (nameservers + DNSSEC désactivé + apex/www attachés) — ~~fait 2026-05-11~~
+- [x] **Gabriel** : bascule domaine OVH → Cloudflare (nameservers + DNSSEC désactivé + apex/www attachés) - ~~fait 2026-05-11~~
 - [x] **Gabriel** : fournir le code `google-site-verification` (Search Console) → décommenté dans `Layout.astro`
 - [ ] **Gabriel** : décider analytics (Plausible / Umami / rien)
 - [ ] **Béatrice** : valider les synopses des spectacles
@@ -52,9 +52,9 @@ Astro + Tailwind CSS + TypeScript strict. Pas de React/Next/Vue. Pas de CMS.
 
 ## Ce qui reste à coder (P6)
 
-- [x] `README.md` — comment éditer le contenu, ajouter une image, déployer
-- [x] GitHub Actions CI — build + check liens cassés
-- [ ] Lightbox `/projet-realisations` : remplacer le pattern `:target` par une vraie modale (focus trap, pas de pollution de l'historique) — dette acceptable post-MVP
+- [x] `README.md` - comment éditer le contenu, ajouter une image, déployer
+- [x] GitHub Actions CI - build + check liens cassés
+- [ ] Lightbox `/projet-realisations` : remplacer le pattern `:target` par une vraie modale (focus trap, pas de pollution de l'historique) - dette acceptable post-MVP
 
 ## Règles absolues
 
