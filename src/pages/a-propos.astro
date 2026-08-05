@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import Cta from '@components/Cta.astro';
 import OptimizedImage from '@components/OptimizedImage.astro';
+import { organizationSchema, canonicalOrganizationId } from '@lib/schema';
 
 const jsonLd = [
   {
@@ -12,7 +13,7 @@ const jsonLd = [
     familyName: 'Herrero',
     jobTitle: 'Autrice, direction artistique, comédienne',
     description: 'Autrice et comédienne basée à Marseille, Béatrice Herrero est à l\'origine du spectacle participatif Les écrans pas tout le temps - sensibilisation à la prévention numérique pour les enfants de 6 à 12 ans.',
-    worksFor: { '@type': 'Organization', name: 'Les écrans pas tout le temps', url: 'https://www.lesecranspastoutletemps.fr' },
+    worksFor: { '@id': canonicalOrganizationId },
   },
   {
     '@context': 'https://schema.org',
@@ -21,21 +22,9 @@ const jsonLd = [
     givenName: 'Samy',
     familyName: 'Adjouadi',
     jobTitle: 'Comédien',
-    worksFor: { '@type': 'Organization', name: 'Les écrans pas tout le temps', url: 'https://www.lesecranspastoutletemps.fr' },
+    worksFor: { '@id': canonicalOrganizationId },
   },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'PerformingGroup',
-    name: 'Les écrans pas tout le temps',
-    description: 'Compagnie de spectacle théâtral participatif sur la prévention numérique pour les enfants de 6 à 12 ans.',
-    url: 'https://www.lesecranspastoutletemps.fr',
-    image: 'https://www.lesecranspastoutletemps.fr/images/gallery-01.jpg',
-    location: { '@type': 'Place', addressLocality: 'Marseille', addressCountry: 'FR' },
-    member: [
-      { '@type': 'Person', name: 'Béatrice Herrero', jobTitle: 'Autrice, direction artistique, comédienne' },
-      { '@type': 'Person', name: 'Samy Adjouadi', jobTitle: 'Comédien' },
-    ],
-  },
+  organizationSchema,
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',

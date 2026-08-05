@@ -4,6 +4,7 @@ import Cta from '@components/Cta.astro';
 import Faq from '@components/Faq.astro';
 import type { FaqItem } from '@components/Faq.astro';
 import OptimizedImage from '@components/OptimizedImage.astro';
+import { organizationSchema, canonicalOrganizationId } from '@lib/schema';
 
 const faqItems: FaqItem[] = [
   { q: "Quelle est la durée totale de l'intervention ?", a: "Le spectacle dure 30 minutes, suivi d'un temps de débat participatif de 30 minutes avec les élèves. Comptez environ 1 heure au total pour l'intervention." },
@@ -17,6 +18,7 @@ const faqItems: FaqItem[] = [
 ];
 
 const jsonLd = [
+  organizationSchema,
   {
     '@context': 'https://schema.org',
     '@type': 'Event',
@@ -26,7 +28,7 @@ const jsonLd = [
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     image: 'https://www.lesecranspastoutletemps.fr/images/gallery-01.jpg',
     location: { '@type': 'Place', name: 'À définir selon la structure', addressLocality: 'Marseille', addressCountry: 'FR' },
-    organizer: { '@type': 'Organization', name: 'Les écrans pas tout le temps', url: 'https://www.lesecranspastoutletemps.fr' },
+    organizer: { '@id': canonicalOrganizationId },
     performer: [
       { '@type': 'Person', name: 'Béatrice Herrero' },
       { '@type': 'Person', name: 'Samy Adjouadi' },

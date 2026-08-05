@@ -25,9 +25,7 @@ Astro + Tailwind CSS + TypeScript strict. Pas de React/Next/Vue. Pas de CMS.
 
 ## Arborescence (toutes les pages existent)
 
-`/` · `/spectacle-6-9-ans` · `/spectacle-9-12-ans` · `/projet-realisations` · `/zone-intervention` · `/contact` · `/a-propos` · `/mentions-legales`
-
-> Note : `/zone-intervention` ajoutée hors arborescence initiale (ajout assumé après audit pour mieux adresser la cible géographique). Liée dans la nav principale, le footer, depuis `/projet-realisations` et la FAQ des pages spectacle.
+`/` · `/spectacle-6-9-ans` · `/spectacle-9-12-ans` · `/projet-realisations` · `/contact` · `/a-propos` · `/mentions-legales`
 
 ## État d'avancement
 

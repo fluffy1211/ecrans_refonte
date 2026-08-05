@@ -63,7 +63,6 @@ npm run deploy
 | Projet & réalisations | `src/pages/projet-realisations.astro` |
 | À propos | `src/pages/a-propos.astro` |
 | Contact | `src/pages/contact.astro` |
-| Zone d'intervention | `src/pages/zone-intervention.astro` |
 | Mentions légales | `src/pages/mentions-legales.astro` |
 
 ### Modifier le titre / description / meta d'une page

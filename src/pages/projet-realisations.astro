@@ -3,27 +3,10 @@ import Layout from '@layouts/Layout.astro';
 import Cta from '@components/Cta.astro';
 import OptimizedImage from '@components/OptimizedImage.astro';
 import Gallery from '@components/Gallery.astro';
+import { organizationSchema } from '@lib/schema';
 
 const jsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'PerformingGroup',
-    name: 'Les écrans pas tout le temps',
-    description: 'Compagnie de spectacle théâtral participatif sur les écrans pour les enfants de 6 à 12 ans.',
-    url: 'https://www.lesecranspastoutletemps.fr/',
-    image: 'https://www.lesecranspastoutletemps.fr/images/gallery-01.jpg',
-    location: { '@type': 'Place', addressLocality: 'Marseille', addressCountry: 'FR' },
-    areaServed: [
-      { '@type': 'AdministrativeArea', name: 'Bouches-du-Rhône' },
-      { '@type': 'AdministrativeArea', name: 'Var' },
-      { '@type': 'AdministrativeArea', name: 'Vaucluse' },
-      { '@type': 'AdministrativeArea', name: "Provence-Alpes-Côte d'Azur" },
-    ],
-    member: [
-      { '@type': 'Person', name: 'Béatrice Herrero', jobTitle: 'Autrice, direction artistique, comédienne' },
-      { '@type': 'Person', name: 'Samy Adjouadi', jobTitle: 'Comédien' },
-    ],
-  },
+  organizationSchema,
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
