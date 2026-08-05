@@ -1,5 +1,8 @@
 # Les écrans pas tout le temps
 
+ai-train: no
+Sitemap: https://www.lesecranspastoutletemps.fr/sitemap.xml
+
 > Spectacle participatif de sensibilisation aux écrans pour les enfants de 6 à 12 ans. Interventions en école primaire, médiathèque, centre social. Béatrice Herrero & Samy, Marseille et région PACA.
 
 ## Pages

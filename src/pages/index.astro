@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import OptimizedImage from '@components/OptimizedImage.astro';
 import Cta from '@components/Cta.astro';
+import { organizationSchema } from '@lib/schema';
 
 const jsonLdWebsite = {
   '@context': 'https://schema.org',
@@ -9,26 +10,6 @@ const jsonLdWebsite = {
   name: 'Les écrans pas tout le temps',
   description: 'Spectacle participatif sur la prévention numérique pour les enfants de 6 à 12 ans. Interventions en école primaire, médiathèque, centre social. Marseille et région PACA.',
   url: 'https://www.lesecranspastoutletemps.fr',
-};
-
-const jsonLdPerformingGroup = {
-  '@context': 'https://schema.org',
-  '@type': 'PerformingGroup',
-  name: 'Les écrans pas tout le temps',
-  description: 'Compagnie de spectacle théâtral participatif sur les écrans pour les enfants de 6 à 12 ans.',
-  url: 'https://www.lesecranspastoutletemps.fr',
-  image: 'https://www.lesecranspastoutletemps.fr/images/gallery-01.jpg',
-  location: { '@type': 'Place', addressLocality: 'Marseille', addressCountry: 'FR' },
-  member: [
-    { '@type': 'Person', name: 'Béatrice Herrero', jobTitle: 'Autrice, direction artistique, comédienne', description: 'Autrice et comédienne basée à Marseille, à l\'origine du spectacle Les écrans pas tout le temps sur la sensibilisation aux écrans pour les enfants.' },
-    { '@type': 'Person', name: 'Samy Adjouadi', jobTitle: 'Comédien' },
-  ],
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+33673158508',
-    email: 'lesecranspastoutletemps@gmail.com',
-    contactType: 'customer service',
-  },
 };
 
 const jsonLdFaq = {
@@ -89,7 +70,7 @@ const testimonials = [
 <Layout
   title="Les écrans pas tout le temps - Spectacle enfants 6-12 ans"
   description="Spectacle participatif de sensibilisation aux écrans pour les enfants de 6 à 12 ans. 30 min de théâtre + 30 min de débat. +90 interventions, 4 000 élèves sensibilisés. Devis gratuit sous 48h - Marseille PACA."
-  jsonLd={[jsonLdWebsite, jsonLdPerformingGroup, jsonLdFaq, jsonLdVideo]}
+  jsonLd={[jsonLdWebsite, organizationSchema, jsonLdFaq, jsonLdVideo]}
   preloadImage="/images/hero-illustration.avif"
   video={{ url: 'https://www.youtube.com/embed/Pc4mR2p0zK0', type: 'text/html', width: 1280, height: 720 }}
 >

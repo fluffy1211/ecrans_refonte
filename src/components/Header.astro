@@ -198,6 +198,12 @@ function isActive(href: string): boolean {
   const lines = document.querySelectorAll<HTMLElement>('.burger-line');
 
   if (toggle && nav) {
+    const getFocusableElements = (): HTMLElement[] => {
+      return Array.from(nav.querySelectorAll<HTMLElement>(
+        'a, button, [tabindex]:not([tabindex="-1"])'
+      ));
+    };
+
     const openBurger = () => {
       toggle.setAttribute('aria-expanded', 'true');
       toggle.setAttribute('aria-label', 'Fermer le menu de navigation');
@@ -205,6 +211,9 @@ function isActive(href: string): boolean {
       lines[0]?.classList.add('translate-y-2', 'rotate-45');
       lines[1]?.classList.add('opacity-0');
       lines[2]?.classList.add('-translate-y-2', '-rotate-45');
+      // Focus first link in menu after opening
+      const focusables = getFocusableElements();
+      focusables[0]?.focus();
     };
     const closeBurger = () => {
       toggle.setAttribute('aria-expanded', 'false');
@@ -213,12 +222,33 @@ function isActive(href: string): boolean {
       lines[0]?.classList.remove('translate-y-2', 'rotate-45');
       lines[1]?.classList.remove('opacity-0');
       lines[2]?.classList.remove('-translate-y-2', '-rotate-45');
+      // Return focus to toggle
+      toggle.focus();
     };
     toggle.addEventListener('click', () => {
       toggle.getAttribute('aria-expanded') === 'true' ? closeBurger() : openBurger();
     });
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') closeBurger();
+    });
+    nav.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab' && toggle.getAttribute('aria-expanded') === 'true') {
+        const focusables = getFocusableElements();
+        const activeIndex = focusables.indexOf(document.activeElement as HTMLElement);
+        if (e.shiftKey) {
+          // Shift+Tab: wrap to last if on first
+          if (activeIndex === 0) {
+            e.preventDefault();
+            focusables[focusables.length - 1]?.focus();
+          }
+        } else {
+          // Tab: wrap to first if on last
+          if (activeIndex === focusables.length - 1) {
+            e.preventDefault();
+            focusables[0]?.focus();
+          }
+        }
+      }
     });
     nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeBurger));
   }
