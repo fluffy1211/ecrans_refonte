@@ -4,6 +4,7 @@ import Cta from '@components/Cta.astro';
 import Faq from '@components/Faq.astro';
 import type { FaqItem } from '@components/Faq.astro';
 import OptimizedImage from '@components/OptimizedImage.astro';
+import { canonicalOrganizationId } from '@lib/schema';
 
 const faqItems: FaqItem[] = [
   { q: "Quelle est la durée totale de l'intervention ?", a: "Le spectacle dure 30 minutes, suivi d'un temps de débat participatif de 30 minutes avec les élèves. Comptez environ 1 heure au total pour l'intervention." },
@@ -19,21 +20,14 @@ const faqItems: FaqItem[] = [
 const jsonLd = [
   {
     '@context': 'https://schema.org',
-    '@type': 'Event',
+    '@type': 'Service',
     name: 'Les écrans pas tout le temps - Spectacle 6-9 ans',
+    serviceType: 'Spectacle participatif de prévention numérique',
     description: "Spectacle théâtral participatif et humoristique sur les écrans pour les enfants de 6 à 9 ans, suivi d'un débat de 30 minutes.",
-    eventStatus: 'https://schema.org/EventScheduled',
-    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     image: 'https://www.lesecranspastoutletemps.fr/images/gallery-01.jpg',
-    location: { '@type': 'Place', name: 'À définir selon la structure', addressLocality: 'Marseille', addressCountry: 'FR' },
-    organizer: { '@type': 'Organization', name: 'Les écrans pas tout le temps', url: 'https://www.lesecranspastoutletemps.fr' },
-    performer: [
-      { '@type': 'Person', name: 'Béatrice Herrero' },
-      { '@type': 'Person', name: 'Samy Adjouadi' },
-    ],
+    provider: { '@id': canonicalOrganizationId },
+    areaServed: { '@type': 'AdministrativeArea', name: "Provence-Alpes-Côte d'Azur" },
     audience: { '@type': 'Audience', audienceType: 'Enfants de 6 à 9 ans', suggestedMinAge: 6, suggestedMaxAge: 9 },
-    typicalAgeRange: '6-9',
-    duration: 'PT60M',
   },
   {
     '@context': 'https://schema.org',

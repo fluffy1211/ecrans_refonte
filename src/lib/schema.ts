@@ -13,11 +13,6 @@ export const organizationSchema = {
   description: 'Compagnie de spectacle théâtral participatif sur la prévention numérique pour les enfants de 6 à 12 ans.',
   url: 'https://www.lesecranspastoutletemps.fr',
   image: 'https://www.lesecranspastoutletemps.fr/images/gallery-01.jpg',
-  location: {
-    '@type': 'Place',
-    addressLocality: 'Marseille',
-    addressCountry: 'FR',
-  },
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Marseille',
