@@ -23,6 +23,7 @@ export const organizationSchema = {
     addressLocality: 'Marseille',
     addressCountry: 'FR',
     addressRegion: 'PACA',
+    postalCode: '13000',
   },
   contactPoint: {
     '@type': 'ContactPoint',
@@ -30,6 +31,14 @@ export const organizationSchema = {
     email: 'lesecranspastoutletemps@gmail.com',
     contactType: 'customer service',
   },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+  ],
   member: [
     {
       '@type': 'Person',

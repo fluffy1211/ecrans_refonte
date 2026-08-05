@@ -1,0 +1,38 @@
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Extract URLs from sitemap and submit to IndexNow
+        run: |
+          # Extract URLs from sitemap.xml
+          URLS=$(grep -oP 'https://[^<]+' dist/sitemap-0.xml | jq -R -s -c 'split("\n")[:-1]')
+
+          # Call IndexNow API
+          curl -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"host\": \"www.lesecranspastoutletemps.fr\",
+              \"key\": \"${{ secrets.INDEXNOW_KEY }}\",
+              \"keyLocation\": \"https://www.lesecranspastoutletemps.fr/indexnow.txt\",
+              \"urlList\": $URLS
+            }"
