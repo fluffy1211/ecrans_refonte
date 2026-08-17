@@ -20,6 +20,19 @@ interface Props {
 }
 
 const { preloadImage, ...seoProps } = Astro.props;
+
+// Le `type` permet aux navigateurs sans support du format d'ignorer le preload
+// plutôt que de télécharger un fichier qu'ils ne pourront pas décoder.
+const mimeByExtension: Record<string, string> = {
+  webp: 'image/webp',
+  png: 'image/png',
+  jpg: 'image/jpeg',
+  jpeg: 'image/jpeg',
+  svg: 'image/svg+xml',
+};
+const preloadImageType = preloadImage
+  ? mimeByExtension[preloadImage.split('.').pop()?.toLowerCase() ?? '']
+  : undefined;
 ---
 
 <!doctype html>
@@ -59,7 +72,15 @@ const { preloadImage, ...seoProps } = Astro.props;
 
     <meta name="google-site-verification" content="pUgm5gUZcvRwqpUNeClExgfROGM-P84Uj2YxoZ-M2I4" />
 
-    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
+    {preloadImage && (
+      <link
+        rel="preload"
+        as="image"
+        href={preloadImage}
+        type={preloadImageType}
+        fetchpriority="high"
+      />
+    )}
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
