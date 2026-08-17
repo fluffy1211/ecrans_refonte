@@ -26,6 +26,9 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
+      // Les pages en noindex ne doivent pas figurer dans le sitemap :
+      // Search Console les remonte sinon en « Exclue par la balise noindex ».
+      filter: (page) => !page.includes('/mentions-legales/'),
       serialize(item) {
         const lastmod = getGitLastmod(item.url);
         if (lastmod) item.lastmod = lastmod;
