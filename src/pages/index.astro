@@ -12,37 +12,6 @@ const jsonLdWebsite = {
   url: 'https://www.lesecranspastoutletemps.fr',
 };
 
-const jsonLdFaq = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'Quel est le public cible du spectacle ?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Les enfants de 6 à 12 ans, en priorité les classes de CP à 6e. Nous intervenons en école primaire, médiathèque, centre social et mairie.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Comment se déroule une intervention ?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '30 minutes de spectacle participatif suivies de 30 minutes de débat avec les élèves. La pièce aborde le temps d\'écran, les réseaux sociaux et le cyberharcèlement de manière adaptée à l\'âge.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Dans quelle zone géographique intervenez-vous ?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Basés à Marseille, nous intervenons dans toute la région PACA et au-delà sur demande.',
-      },
-    },
-  ],
-};
-
 const jsonLdVideo = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
@@ -69,8 +38,8 @@ const testimonials = [
 
 <Layout
   title="Les écrans pas tout le temps - Spectacle enfants 6-12 ans"
-  description="Spectacle participatif de sensibilisation aux écrans pour les enfants de 6 à 12 ans. 30 min de théâtre + 30 min de débat. +90 interventions, 4 000 élèves sensibilisés. Devis gratuit sous 48h - Marseille PACA."
-  jsonLd={[jsonLdWebsite, organizationSchema, jsonLdFaq, jsonLdVideo]}
+  description="Spectacle participatif de sensibilisation aux écrans pour les 6-12 ans. 30 min de théâtre + 30 min de débat. Devis gratuit sous 48h, Marseille et PACA."
+  jsonLd={[jsonLdWebsite, organizationSchema, jsonLdVideo]}
   preloadImage="/images/hero-illustration.webp"
   video={{ url: 'https://www.youtube.com/embed/Pc4mR2p0zK0', type: 'text/html', width: 1280, height: 720 }}
 >
