@@ -4,12 +4,11 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run images:avif && astro build",
+    "build": "astro build",
     "preview": "npm run build && wrangler dev",
     "astro": "astro",
     "deploy": "npm run build && wrangler deploy",
     "cf-typegen": "wrangler types",
-    "images:avif": "node scripts/generate-avif.mjs",
     "lint": "eslint src --ext .ts,.astro",
     "lint:fix": "eslint src --ext .ts,.astro --fix",
     "format": "prettier --write src"

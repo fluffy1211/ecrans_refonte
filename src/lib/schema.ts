@@ -12,13 +12,12 @@ export const organizationSchema = {
   name: 'Les écrans pas tout le temps',
   description: 'Compagnie de spectacle théâtral participatif sur la prévention numérique pour les enfants de 6 à 12 ans.',
   url: 'https://www.lesecranspastoutletemps.fr',
-  image: 'https://www.lesecranspastoutletemps.fr/images/gallery-01.jpg',
+  image: 'https://www.lesecranspastoutletemps.fr/images/og-image.jpg',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Marseille',
     addressCountry: 'FR',
-    addressRegion: 'PACA',
-    postalCode: '13000',
+    addressRegion: "Provence-Alpes-Côte d'Azur",
   },
   contactPoint: {
     '@type': 'ContactPoint',
@@ -26,14 +25,6 @@ export const organizationSchema = {
     email: 'lesecranspastoutletemps@gmail.com',
     contactType: 'customer service',
   },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '09:00',
-      closes: '18:00',
-    },
-  ],
   member: [
     {
       '@type': 'Person',
@@ -66,5 +57,4 @@ export const organizationSchema = {
       name: "Provence-Alpes-Côte d'Azur",
     },
   ],
-  sameAs: [],
 };

@@ -18,7 +18,7 @@ const {
   title,
   description,
   canonical,
-  ogImage = '/images/gallery-01.jpg',
+  ogImage = '/images/og-image.jpg',
   jsonLd,
   noindex = false,
   video,
@@ -48,7 +48,7 @@ const processedLd = (() => {
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
 
-<meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1'} />
+<meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1'} />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />

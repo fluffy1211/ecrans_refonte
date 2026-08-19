@@ -4,16 +4,26 @@ on:
   push:
     branches: [main]
 
+# La clé IndexNow est publique par conception : le protocole exige qu'elle soit
+# lisible à https://<domaine>/indexnow.txt pour prouver la propriété du site.
+# Elle n'a donc rien à faire dans un secret GitHub — et doit rester identique
+# à celle servie dans public/indexnow.txt, sinon les soumissions sont rejetées.
+env:
+  INDEXNOW_KEY: 63cb8a4ba9803d551c7a53de1ede7f8c
+  HOST: www.lesecranspastoutletemps.fr
+
 jobs:
   indexnow:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
 
       - name: Install dependencies
@@ -22,17 +32,23 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Extract URLs from sitemap and submit to IndexNow
+      - name: Vérifier que la clé servie correspond à celle soumise
         run: |
-          # Extract URLs from sitemap.xml
-          URLS=$(grep -oP 'https://[^<]+' dist/sitemap-0.xml | jq -R -s -c 'split("\n")[:-1]')
+          SERVED=$(cat dist/indexnow.txt)
+          if [ "$SERVED" != "$INDEXNOW_KEY" ]; then
+            echo "::error::La clé de dist/indexnow.txt ($SERVED) ne correspond pas à INDEXNOW_KEY."
+            exit 1
+          fi
 
-          # Call IndexNow API
-          curl -X POST https://api.indexnow.org/indexnow \
+      - name: Soumettre les URLs à IndexNow
+        run: |
+          URLS=$(grep -oP '(?<=<loc>)[^<]+' dist/sitemap-0.xml | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "URLs soumises : $URLS"
+          curl --fail-with-body -sS -X POST https://api.indexnow.org/indexnow \
             -H "Content-Type: application/json" \
             -d "{
-              \"host\": \"www.lesecranspastoutletemps.fr\",
-              \"key\": \"${{ secrets.INDEXNOW_KEY }}\",
-              \"keyLocation\": \"https://www.lesecranspastoutletemps.fr/indexnow.txt\",
+              \"host\": \"$HOST\",
+              \"key\": \"$INDEXNOW_KEY\",
+              \"keyLocation\": \"https://$HOST/indexnow.txt\",
               \"urlList\": $URLS
             }"

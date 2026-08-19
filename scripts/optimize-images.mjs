@@ -1,5 +1,5 @@
 import sharp from 'sharp';
-import { readdirSync, existsSync, mkdirSync } from 'fs';
+import { readdirSync, existsSync } from 'fs';
 import { join, extname, basename } from 'path';
 
 const IMAGES_DIR = 'public/images';
@@ -28,7 +28,7 @@ async function main() {
 
   // Create OG image 1200x675
   console.log('\nCreating OG image...');
-  const ogSource = join(IMAGES_DIR, 'hero-beatrice-enfants.jpg');
+  const ogSource = join(IMAGES_DIR, 'gallery-01.jpg');
   if (existsSync(ogSource)) {
     await sharp(ogSource)
       .resize({ width: 1200, height: 675, fit: 'cover', position: 'center' })
