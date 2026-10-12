@@ -1,6 +1,6 @@
 # CLAUDE.md - Refonte lesecranspastoutletemps.fr
 
-Lis **project.md** et **workflow.md** au début de chaque session avant de faire quoi que ce soit.
+Lis **README.md** et les consignes du projet au début de chaque session. `project.md` et `workflow.md` ne sont pas présents dans ce checkout.
 
 ## Résumé du projet
 
@@ -68,13 +68,8 @@ les pièges sont faciles à refaire :
   268 Ko vs 52 Ko). Comme `<source type="image/avif">` passait en premier, c'est la
   version lourde qui était servie. Toute nouvelle couche AVIF doit partir des
   originaux et être comparée fichier par fichier au WebP avant d'être commitée.
-- **Un seul sitemap** : `@astrojs/sitemap` (`sitemap-index.xml`). Le
-  `src/pages/sitemap.xml.ts` custom a été supprimé (deux sources divergentes, ordre
-  des éléments non conforme au XSD). `robots.txt`, `public/_headers` et
-  `indexnow.yml` doivent rester alignés dessus.
-- **Une page en `noindex` ne va jamais dans le sitemap** — c'est ce qui a déclenché
-  l'alerte Search Console « Exclue par la balise noindex » sur `/mentions-legales/`.
-  L'exclusion se fait via le `filter` de `@astrojs/sitemap`.
+- **Un seul sitemap** : `/sitemap.xml`, construit par `scripts/sitemap.mjs` et la route statique Astro. `robots.txt`, `public/_headers` et `indexnow.yml` restent alignés dessus. Les anciennes URL de sitemap redirigent vers ce chemin.
+- **Une page en `noindex` ne va jamais dans le sitemap** : la découverte exclut les pages d’erreur et les pages déclarant littéralement `noindex` ou `noindex={true}`, dont les mentions légales.
 - **Pas de `FAQPage` sans FAQ visible** dans le HTML rendu : les guidelines Google
   l'interdisent (risque d'action manuelle). La home en avait une fantôme depuis P5.
 - **La clé IndexNow est publique par conception** (le protocole exige qu'elle soit

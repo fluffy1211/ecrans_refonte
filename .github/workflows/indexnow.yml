@@ -42,7 +42,7 @@ jobs:
 
       - name: Soumettre les URLs à IndexNow
         run: |
-          URLS=$(grep -oP '(?<=<loc>)[^<]+' dist/sitemap-0.xml | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          URLS=$(grep -oP '(?<=<loc>)[^<]+' dist/sitemap.xml | jq -R -s -c 'split("\n") | map(select(length > 0))')
           echo "URLs soumises : $URLS"
           curl --fail-with-body -sS -X POST https://api.indexnow.org/indexnow \
             -H "Content-Type: application/json" \

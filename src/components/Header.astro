@@ -226,7 +226,8 @@ function isActive(href: string): boolean {
       toggle.focus();
     };
     toggle.addEventListener('click', () => {
-      toggle.getAttribute('aria-expanded') === 'true' ? closeBurger() : openBurger();
+      if (toggle.getAttribute('aria-expanded') === 'true') closeBurger();
+      else openBurger();
     });
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') closeBurger();
@@ -271,7 +272,8 @@ function isActive(href: string): boolean {
     };
 
     btn.addEventListener('click', () => {
-      btn.getAttribute('aria-expanded') === 'true' ? closeDropdown() : openDropdown();
+      if (btn.getAttribute('aria-expanded') === 'true') closeDropdown();
+      else openDropdown();
     });
 
     // Fermer si clic ailleurs

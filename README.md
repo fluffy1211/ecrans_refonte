@@ -3,14 +3,14 @@
 Site vitrine du spectacle participatif de sensibilisation aux écrans pour les enfants de 6 à 12 ans.
 
 - **Stack** : Astro 5 + Tailwind CSS + TypeScript
-- **Hébergement** : Cloudflare Pages (auto-deploy sur `main`)
+- **Hébergement** : Cloudflare Workers (auto-deploy sur `main`)
 - **URL** : https://www.lesecranspastoutletemps.fr
 
 ---
 
 ## Prérequis
 
-- Node.js 20+
+- Node.js 22.18+ (CI et déploiement sur Node 22)
 - npm
 
 ## Installation
@@ -33,11 +33,11 @@ Le site est disponible sur http://localhost:4321
 npm run build
 ```
 
-Le build statique est généré dans `dist/`.
+Le build statique est généré dans `dist/`. `npm test` vérifie les métadonnées, le sitemap et la préparation des images ; `npm run astro -- check` vérifie les types.
 
 ## Déploiement
 
-Le site se déploie automatiquement sur Cloudflare Pages à chaque push sur `main`.
+Le site se déploie automatiquement sur Cloudflare Workers à chaque push sur `main`.
 
 Pour déployer manuellement :
 
@@ -108,17 +108,19 @@ import OptimizedImage from '@components/OptimizedImage.astro';
 />
 ```
 
-Le composant sert automatiquement une version WebP avec fallback JPEG/PNG.
+Le module annonce les variantes WebP disponibles, avec la source originale comme fallback.
 
-### Convertir les images en WebP
+### Préparer les variantes WebP
 
 Après avoir ajouté des images JPEG ou PNG, lancez :
 
 ```bash
-node scripts/optimize-images.mjs
+npm run images:prepare
 ```
 
-Ce script génère les versions WebP et l'image Open Graph.
+La préparation fait aussi partie de `npm run build`. Les variantes sont générées dans `.astro/image-variants/`, puis copiées dans `dist/images/` après le build ; les images versionnées dans `public/images/` restent inchangées. Le cache compare les empreintes du contenu source et des variantes, même si leurs dates sont identiques. Les JPEG/PNG sont prioritaires sur leurs dérivés WebP ; les images disponibles seulement en WebP sont conservées sans recompression. Une conversion échouée fait échouer le build.
+
+Pour prévisualiser les variantes nouvellement générées, utiliser `npm run preview`, qui sert le build complet.
 
 ---
 
@@ -126,17 +128,19 @@ Ce script génère les versions WebP et l'image Open Graph.
 
 ### Données structurées (JSON-LD)
 
-Chaque page contient son propre JSON-LD dans le frontmatter. Les types utilisés :
+Les pages spectacle utilisent `spectacleMetadata` dans `src/lib/schema.ts` pour construire leur JSON-LD à partir de leur contenu. La compagnie est également définie dans ce module. Les types utilisés :
 - `WebSite` - page d'accueil
 - `PerformingGroup` - accueil, à propos, projet
-- `Event` - pages spectacle
+- `Service` - pages spectacle
 - `FAQPage` - pages spectacle
-- `LocalBusiness` - contact
+- `PerformingGroup` - contact
 - `BreadcrumbList` - toutes les pages internes
 
 ### Sitemap
 
-Généré automatiquement par `@astrojs/sitemap` à chaque build. Disponible sur `/sitemap-index.xml`.
+Un seul sitemap est publié sur `/sitemap.xml`, le chemin référencé par `public/robots.txt`. `scripts/sitemap.mjs` découvre les pages Astro statiques, hors pages d’erreur, pages déclarant `noindex` ou `noindex={true}` et routes dynamiques. Les routes dynamiques nécessiteraient une prise en charge explicite si elles étaient ajoutées au site.
+
+Le `lastmod` utilise le dernier commit de la page ou des fichiers partagés (`src/components`, `src/layouts`, `src/lib`, `public`). Cette estimation est conservatrice : une modification partagée actualise toutes les pages. Sans historique Git, le sitemap omet cette date.
 
 ### Robots
 
@@ -166,7 +170,9 @@ Généré automatiquement par `@astrojs/sitemap` à chaque build. Disponible sur
 │   ├── pages/           # Pages du site
 │   └── env.d.ts
 ├── scripts/
-│   └── optimize-images.mjs
+│   ├── optimize-images.mjs
+│   ├── publish-images.mjs
+│   └── sitemap.mjs
 ├── astro.config.mjs
 ├── tailwind.config.mjs
 └── package.json

@@ -26,8 +26,14 @@ jobs:
       - name: Check Astro types
         run: npm run astro -- check
 
+      - name: Test architecture contracts
+        run: npm test
+
       - name: Build
         run: npm run build
+
+      - name: Verify built metadata, sitemap and images
+        run: npm run test:build
 
       - name: Install lychee
         run: |

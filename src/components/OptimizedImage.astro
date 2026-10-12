@@ -1,4 +1,6 @@
 ---
+import { imageSources } from '@lib/images.mjs';
+
 interface Props {
   src: string;
   alt: string;
@@ -19,11 +21,11 @@ const {
   class: className,
 } = Astro.props;
 
-const webpSrc = src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+const sources = imageSources(src);
 ---
 
 <picture>
-  <source srcset={webpSrc} type="image/webp" />
+  {sources.map(({ src, type }) => <source srcset={src} type={type} />)}
   <img
     src={src}
     alt={alt}

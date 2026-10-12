@@ -5,6 +5,54 @@
 
 export const canonicalOrganizationId = 'https://www.lesecranspastoutletemps.fr/#organization';
 
+type SpectacleMetadata = {
+  name: string;
+  description: string;
+  path: string;
+  minAge: number;
+  maxAge: number;
+  faq: { q: string; a: string }[];
+};
+
+export function spectacleMetadata({ name, description, path, minAge, maxAge, faq }: SpectacleMetadata) {
+  const site = 'https://www.lesecranspastoutletemps.fr';
+  return [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: `Les écrans pas tout le temps - ${name}`,
+      serviceType: 'Spectacle participatif de prévention numérique',
+      description,
+      image: `${site}/images/og-image.jpg`,
+      provider: { '@id': canonicalOrganizationId },
+      areaServed: { '@type': 'AdministrativeArea', name: "Provence-Alpes-Côte d'Azur" },
+      audience: {
+        '@type': 'Audience',
+        audienceType: `Enfants de ${minAge} à ${maxAge} ans`,
+        suggestedMinAge: minAge,
+        suggestedMaxAge: maxAge,
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]*>/g, '') },
+      })),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${site}/` },
+        { '@type': 'ListItem', position: 2, name, item: new URL(path, site).toString() },
+      ],
+    },
+  ];
+}
+
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'PerformingGroup',

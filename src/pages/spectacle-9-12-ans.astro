@@ -4,7 +4,7 @@ import Cta from '@components/Cta.astro';
 import Faq from '@components/Faq.astro';
 import type { FaqItem } from '@components/Faq.astro';
 import OptimizedImage from '@components/OptimizedImage.astro';
-import { canonicalOrganizationId } from '@lib/schema';
+import { spectacleMetadata } from '@lib/schema';
 
 const faqItems: FaqItem[] = [
   { q: "Quelle est la durée totale de l'intervention ?", a: "Le spectacle dure 30 minutes, suivi d'un temps de débat participatif de 30 minutes avec les élèves. Comptez environ 1 heure au total pour l'intervention." },
@@ -17,36 +17,14 @@ const faqItems: FaqItem[] = [
   { q: "Comment réserver ?", a: "Envoyez-nous un message via le formulaire de contact en précisant votre structure, vos dates souhaitées et le nombre d'élèves. Nous vous répondons rapidement." },
 ];
 
-const jsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: 'Les écrans pas tout le temps - Spectacle 9-12 ans',
-    serviceType: 'Spectacle participatif de prévention numérique',
-    description: "Spectacle théâtral participatif et humoristique sur les écrans pour les enfants de 9 à 12 ans, suivi d'un débat de 30 minutes.",
-    image: 'https://www.lesecranspastoutletemps.fr/images/og-image.jpg',
-    provider: { '@id': canonicalOrganizationId },
-    areaServed: { '@type': 'AdministrativeArea', name: "Provence-Alpes-Côte d'Azur" },
-    audience: { '@type': 'Audience', audienceType: 'Enfants de 9 à 12 ans', suggestedMinAge: 9, suggestedMaxAge: 12 },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqItems.map(({ q, a }) => ({
-      '@type': 'Question',
-      name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]*>/g, '') },
-    })),
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.lesecranspastoutletemps.fr/' },
-      { '@type': 'ListItem', position: 2, name: 'Spectacle 9-12 ans', item: 'https://www.lesecranspastoutletemps.fr/spectacle-9-12-ans/' },
-    ],
-  },
-];
+const jsonLd = spectacleMetadata({
+  name: 'Spectacle 9-12 ans',
+  description: "Spectacle théâtral participatif et humoristique sur les écrans pour les enfants de 9 à 12 ans, suivi d'un débat de 30 minutes.",
+  path: '/spectacle-9-12-ans/',
+  minAge: 9,
+  maxAge: 12,
+  faq: faqItems,
+});
 ---
 
 <Layout

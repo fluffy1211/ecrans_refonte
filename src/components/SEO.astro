@@ -4,7 +4,7 @@ interface Props {
   description: string;
   canonical?: string;
   ogImage?: string;
-  jsonLd?: object | object[];
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
   video?: {
     url: string;
@@ -31,9 +31,9 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 const processedLd = (() => {
   if (jsonLdArray.length === 0) return null;
   if (jsonLdArray.length === 1) return jsonLdArray[0];
-  const contexts = jsonLdArray.map((s: any) => s['@context']).filter(Boolean);
+  const contexts = jsonLdArray.map((s) => s['@context']).filter(Boolean);
   const uniqueContext = contexts.length > 0 ? contexts[0] : 'https://schema.org';
-  const graph = jsonLdArray.map((s: any) => {
+  const graph = jsonLdArray.map((s) => {
     const { '@context': _, ...rest } = s;
     return rest;
   });
