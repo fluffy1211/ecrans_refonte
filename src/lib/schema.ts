@@ -83,7 +83,7 @@ export const organizationSchema = {
     },
     {
       '@type': 'Person',
-      name: 'Samy Adjouadi',
+      name: 'Samy',
       jobTitle: 'Comédien',
     },
   ],
